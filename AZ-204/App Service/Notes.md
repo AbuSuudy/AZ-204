@@ -40,7 +40,7 @@ Each deployment slot has their hosting and URL so you creating testing, staging 
 ### Swapping Deployment Slot
 How to do zero down time deployments using deployment slots. You could reverse the swap to roll back to previous production.
 
-![[App Service/Images/Pasted image 20251014132357.png]]
+[[App Service/Images/Pasted image 20251014132357.png]]
 
 ### Deployment slot traffic 
 You could manage traffic into these deployment slot once if you want to gradual deployment to production.
