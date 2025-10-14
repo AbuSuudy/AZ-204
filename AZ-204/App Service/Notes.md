@@ -23,8 +23,14 @@ Auto scale set on the app service level per app. So each app can scale independe
 
 You could configure rule based on how your apps should scale: based on metric (CPU, memory, Usage) or a schedule. Also send email alerts when new instances are created.
 
-> [!Info] 
+> [!NOTE] 
 > Rules based auto scale is not available in Free, shared or basic. It's standard and above. Tiers below have manual scale where you select the number of instances you want running.
+
+
+> [!NOTE]
+> Useful information that users should know, even when skimming content.
+
+
 ## Deployment methods
 - *Automated* - CI/CD on merges into source control 
 - *Manual* - cli, merge into your local git branch, zip deployment and FTP/S
