@@ -1,3 +1,5 @@
+# App Service
+
 App service is (PaaS) that host your applications. It abstracts away infrastructure management, letting you focus on your application code.  The *app service* an instance of you application is using resources defined in your *app service plan*. You could have multiple app services sharing resources of an app service plan.
 
 *App Service plan* defines a set of dedicated compute resources for an app to run. Each app service plan defines: 
