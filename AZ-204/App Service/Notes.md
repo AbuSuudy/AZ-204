@@ -25,6 +25,8 @@ Auto scale set on the app service level per app. So each app can scale independe
 
 You could configure rule based on how your apps should scale: based on metric (CPU, memory, Usage) or a schedule. Also send email alerts when new instances are created.
 
+Down steams services such as database may be able to deal with a certain number of instances so this should be takes into consideration to what you can scale up to.
+
 > [!NOTE] 
 > Rules based auto scale is not available in Free, shared or basic. It's standard and above. Tiers below have manual scale where you select the number of instances you want running.
 ## Deployment methods

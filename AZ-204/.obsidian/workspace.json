@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "App Service/Notes.md",
+                "file": "Functions/Function.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Notes"
+              "title": "Function"
             }
           }
         ]
@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "62fdcff39ed67652",
@@ -170,13 +171,18 @@
       "file-cleaner-redux:Clean files": false
     }
   },
-  "active": "d393867e5e936caa",
+  "active": "00a92fd060513478",
   "lastOpenFiles": [
+    "App Service/Notes.md",
+    "Functions/Function.md",
+    "Functions/Images/Pasted image 20251014165310.png",
+    "Functions/Images",
+    "Functions/Images/Pasted image 20251014162756.png",
+    "Functions",
     "css/center.css",
     "css",
     "New folder",
     "Untitled.md",
-    "App Service/Notes.md",
     "CSS",
     "App Service/Images/Pasted image 20251014160132.png",
     "App Service/Images/Pasted image 20251014123834.png",
@@ -188,8 +194,6 @@
     "App Service/Images/68747470733a2f2f70696373756d2e70686f746f732f3130302f313030.jpg",
     "Images",
     "App Service/Images/Pasted image 20251014132357.png",
-    "App Service/Images/Pasted image 20251014123218.png",
-    "App Service/Images/Pasted image 20251014123104.png",
     "Welcome.md",
     "App Service"
   ]
