@@ -23,7 +23,7 @@ Auto scale set on the app service level per app. So each app can scale independe
 
 You could configure rule based on how your apps should scale: based on metric (CPU, memory, Usage) or a schedule. Also send email alerts when new instances are created.
 
-> [!Info] App Service Plan Level
+> [!Info] 
 > Rules based auto scale is not available in Free, shared or basic. It's standard and above. Tiers below have manual scale where you select the number of instances you want running.
 ## Deployment methods
 - *Automated* - CI/CD on merges into source control 
@@ -32,7 +32,7 @@ You could configure rule based on how your apps should scale: based on metric (C
 ## Deployment Slots
 Each deployment slot has their hosting and URL so you creating testing, staging environment in the same app.  For dependent resources like database, app insights it would useful to have one for each environment for slots to interact with.
 
-> [!Info] Tiers
+> [!Info] 
 > You can create separate deployment slots if your plan is on: Standard, Premium or Isolated 
 
 ### Swapping Deployment Slot
