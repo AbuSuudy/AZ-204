@@ -166,15 +166,21 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "bases:Create new base": false,
+      "file-cleaner-redux:Clean files": false
     }
   },
-  "active": "00a92fd060513478",
+  "active": "d393867e5e936caa",
   "lastOpenFiles": [
+    "css/center.css",
+    "css",
+    "New folder",
+    "Untitled.md",
+    "App Service/Notes.md",
+    "CSS",
     "App Service/Images/Pasted image 20251014160132.png",
     "App Service/Images/Pasted image 20251014123834.png",
     "App Service/Images/Pasted image 20251014132646.png",
-    "App Service/Notes.md",
     "App Service/Images/Pasted image 20251014155904.png",
     "App Service/Images/Pasted image 20251014155805.png",
     "App Service/Images",
@@ -184,7 +190,6 @@
     "App Service/Images/Pasted image 20251014132357.png",
     "App Service/Images/Pasted image 20251014123218.png",
     "App Service/Images/Pasted image 20251014123104.png",
-    "Pasted image 20251014122714.png",
     "Welcome.md",
     "App Service"
   ]

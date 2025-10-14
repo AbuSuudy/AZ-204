@@ -1,0 +1,21 @@
+{
+  "deletionDestination": "system",
+  "obsidianTrashCleanupAge": -1,
+  "excludeInclude": 0,
+  "excludedFolders": [],
+  "attachmentsExcludeInclude": 1,
+  "attachmentExtensions": [
+    "png"
+  ],
+  "deletionConfirmation": true,
+  "runOnStartup": false,
+  "removeFolders": false,
+  "ignoredFrontmatter": [],
+  "ignoreAllFrontmatter": false,
+  "codeblockTypes": [],
+  "deleteEmptyMarkdownFiles": true,
+  "deleteEmptyMarkdownFilesWithBacklinks": false,
+  "fileAgeThreshold": 0,
+  "closeNewTabs": false,
+  "deleteEmptyFileOnClose": false
+}

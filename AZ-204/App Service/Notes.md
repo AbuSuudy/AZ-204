@@ -56,4 +56,3 @@ Some app setting is deployment slot specific e.g. you want staging to connect to
 
 ![](Images/Pasted%20image%2020251014132646.png)
 
-![](Images/Pasted%20image%2020251014160132.png)
