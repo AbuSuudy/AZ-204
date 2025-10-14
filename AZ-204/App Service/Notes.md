@@ -43,7 +43,7 @@ How to do zero down time deployments using deployment slots. You could reverse t
 ### Deployment slot traffic 
 You could manage traffic into these deployment slot once if you want to gradual deployment to production.
 
-![](App%20Service/Images/Pasted%20image%2020251014123834.png)
+![](Images/Pasted%20image%2020251014123834.png)
 
 Due to azure deciding which slot you're entering, you provider header information that could direct to your intended slot.
 
@@ -54,4 +54,6 @@ https://contoso-html.azurewebsites.net/x-ms-routing-name-staging
 ### Deployment Slot Configuration 
 Some app setting is deployment slot specific e.g. you want staging to connect to non prod database. If you mark an app setting as a deployment slot setting it doesn't get copied over during a swap, but you're expecting have the same app setting name in prod but with a prod database connection string.
 
-![](App%20Service/Images/Pasted%20image%2020251014132646.png)
+![](Images/Pasted%20image%2020251014132646.png)
+
+![](Images/Pasted%20image%2020251014160132.png)
