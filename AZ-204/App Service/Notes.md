@@ -36,16 +36,14 @@ Each deployment slot has their hosting and URL so you creating testing, staging 
 
 > [!NOTE] 
 > You can create separate deployment slots if your plan is on: Standard, Premium or Isolated 
-
 ### Swapping Deployment Slot
 How to do zero down time deployments using deployment slots. You could reverse the swap to roll back to previous production.
 
 ![](Images/Pasted%20image%2020251014132357.png)
-
 ### Deployment slot traffic 
 You could manage traffic into these deployment slot once if you want to gradual deployment to production.
 
-![](Images/Pasted%20image%2020251014123834.png)
+![](App%20Service/Images/Pasted%20image%2020251014123834.png)
 
 Due to azure deciding which slot you're entering, you provider header information that could direct to your intended slot.
 
@@ -56,4 +54,4 @@ https://contoso-html.azurewebsites.net/x-ms-routing-name-staging
 ### Deployment Slot Configuration 
 Some app setting is deployment slot specific e.g. you want staging to connect to non prod database. If you mark an app setting as a deployment slot setting it doesn't get copied over during a swap, but you're expecting have the same app setting name in prod but with a prod database connection string.
 
-![](Images/Pasted%20image%2020251014132646.png)
+![](App%20Service/Images/Pasted%20image%2020251014132646.png)

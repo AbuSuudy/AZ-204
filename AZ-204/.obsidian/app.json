@@ -1,9 +1,9 @@
 {
   "showInlineTitle": false,
-  "newLinkFormat": "absolute",
+  "newLinkFormat": "relative",
   "useMarkdownLinks": true,
   "alwaysUpdateLinks": true,
   "newFileLocation": "folder",
   "newFileFolderPath": "",
-  "attachmentFolderPath": "Images"
+  "attachmentFolderPath": "./Images"
 }
