@@ -25,12 +25,6 @@ You could configure rule based on how your apps should scale: based on metric (C
 
 > [!NOTE] 
 > Rules based auto scale is not available in Free, shared or basic. It's standard and above. Tiers below have manual scale where you select the number of instances you want running.
-
-
-> [!NOTE]
-> Useful information that users should know, even when skimming content.
-
-
 ## Deployment methods
 - *Automated* - CI/CD on merges into source control 
 - *Manual* - cli, merge into your local git branch, zip deployment and FTP/S
@@ -38,7 +32,7 @@ You could configure rule based on how your apps should scale: based on metric (C
 ## Deployment Slots
 Each deployment slot has their hosting and URL so you creating testing, staging environment in the same app.  For dependent resources like database, app insights it would useful to have one for each environment for slots to interact with.
 
-> [!Info] 
+> [!NOTE] 
 > You can create separate deployment slots if your plan is on: Standard, Premium or Isolated 
 
 ### Swapping Deployment Slot
