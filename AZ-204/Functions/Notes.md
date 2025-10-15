@@ -1,26 +1,32 @@
 # Functions
 
-*Triggers* - Start execution of an function 
+## Hosting Plans
 
-*Binding*- Connect your functions to other services. e.g. blob storage could be trigger when an item is created. A binding would be getting the file name of the file that has been created. You could have input binding that would inject information to you function app or output binding by placing data in another azure application.
-
-**Web jobs** - Also allows you to write code that react to events in azure and has some similar use case to azure functions. It's more suited to long running and  resource intensive task. Suited for background processing. 
-
-## Hosting plans 
-- Consumption - Default, based on compute resource usage
-- Premium -  Pre warmed workers, more powerful instances, allows for private networking 
-- Dedicated  - Runs on an app service plan
+| Option                    | Benefits                                                                                                                                                                                                                                                                                                                                                         |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Flex Consumption plan** | Experience fast horizontal scaling, with flexible compute options, virtual network integration, and serverless pay-as-you-go billing.  <br><br>🔴 Function instances dynamically scale out (up to 1,000)<br>🔴 Virtual network integration<br>🔴 Scale to 0. Can lead to cold starts if *always-ready* instances isn't enabled.<br>🔴 Only Linux based<br>  <br> |
+| **Premium plan**          | Automatically scales based on demand using prewarmed workers. Suited for always running instances, runs on more powerful instances, and connects to virtual networks.  <br><br>                                                                                                                                                                                  |
+| **Dedicated plan**        | Run your functions within an App Service plan. Best for long-running scenarios where *Durable Functions* can't be used<br><br>🔴 You need access to larger compute size choices.<br>🔴 You want to run multiple web apps and function apps on the same plan<br><br>                                                                                              |
+| **Container Apps**        | Create and deploy containerized function apps in a fully managed environment hosted by Azure Container Apps.<br><br>                                                                                                                                                                                                                                             |
+| **Consumption plan**      | Pay for compute resources only when your functions are running (pay-as-you-go) with automatic scale on Windows. This doesn't allow for virtual network integration an could only be deployed on Windows.<br><br>                                                                                                                                                 |
+### Timeout
 
 | Plan        | Defaults (Mins) | Maximum (Mins) |
 | ----------- | --------------- | -------------- |
 | Consumption | 5               | 10             |
 | Premium     | 30              | unlimited      |
 | Dedicated   | 30              | unlimited      |
+
 If you need longer you could use the *Durable Functions* async pattern.
 
-Consumption you can scale to 0, but will lead to cold starts on the first request. The Premium plan has warm instances waiting to prevent cold starts. 
+## Web Jobs
+Azure WebJobs is a built-in feature of Azure App Service that enables you to run background tasks, scripts, and programs alongside your web, API, or mobile applications.  Azure Functions is built on the WebJobs SDK.
 
-Azure functions are based on the WebJobs SDK
+How to create Web jobs in an existing app service: 
+
+![](Images/Pasted%20image%2020251015123508.png)
+
+Web job are more limited, but suited for long running task, but you could also use [durable Azure functions](https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview?tabs=in-process%2Cnodejs-v3%2Cv1-model&pivots=csharp) as well.
 
 |                                                                                                                                                                                  | Functions                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | WebJobs with WebJobs SDK                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -32,15 +38,36 @@ Azure functions are based on the WebJobs SDK
 | Supported languages                                                                                                                                                              | C#  <br>F#  <br>JavaScript  <br>Java  <br>Python  <br>PowerShell                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | C#1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | Package managers                                                                                                                                                                 | npm and NuGet                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | NuGet2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 
-Function apps is container for all your function and share resources 
-- Functions in the same function app have to the same runtime
-- If you decide to use containers/code your function app you have use that for all your functions.
-- Operating system the code runs on 
+## Triggers and Binding
+**Triggers**:  cause a function to run
+
+**Binding** : is a way of declaratively connecting your functions to other resources.
+- _input binding_ :  pass data into your function e.g. file name created in blob storage
+- _output binding_ :  Enable you to write data out from your function e.g. write some data to cosmos database. 
+
+Azure function that uses a http trigger and output to Cosmos container.
+
+```c#
+[Function(nameof(CosmosDBFunction))]
+[CosmosDBOutput("%CosmosDb%", "%CosmosContainerOut%", Connection = "CosmosDBConnection", CreateIfNotExists = true)]
+[Function("HttpExample")]
+public static MultiResponse Run([HttpTrigger(AuthorizationLevel.Function, "get")]      HttpRequestData req,
+    FunctionContext executionContext)
+{
+}
+```
+
+## Functions App
+Function app are the container for all your functions and they share the same:
+- Runtime
+- Operating system 
+- Hosting plan
+- Region
   
 ![](Images/Pasted%20image%2020251014165310.png)
 
-All functions apps need a storage account. It needs: blob, queues and tables enabled because it stored information that it required for the function app to run. Such as:
-- Code / Binaries 
-- Logging
-- Configuration 
-- Binding information e.g. timer trigger last run time
+## Function App Storage Account
+
+When you create a function app instance in Azure, you must provide access to a default Azure Storage account.
+
+![](Images/Pasted%20image%2020251015130003.png)

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Functions/Function.md",
+                "file": "Functions/Notes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Function"
+              "title": "Notes"
             }
           }
         ]
@@ -170,10 +170,12 @@
       "file-cleaner-redux:Clean files": false
     }
   },
-  "active": "00a92fd060513478",
+  "active": "d393867e5e936caa",
   "lastOpenFiles": [
     "App Service/Notes.md",
-    "Functions/Function.md",
+    "Functions/Notes.md",
+    "Functions/Images/Pasted image 20251015130003.png",
+    "Functions/Images/Pasted image 20251015123508.png",
     "Functions/Images/Pasted image 20251014165310.png",
     "Functions/Images",
     "Functions/Images/Pasted image 20251014162756.png",
@@ -190,9 +192,7 @@
     "App Service/Images/Pasted image 20251014155805.png",
     "App Service/Images",
     "Images/Pasted image 20251014155429.png",
-    "App Service/Images/68747470733a2f2f70696373756d2e70686f746f732f3130302f313030.jpg",
     "Images",
-    "App Service/Images/Pasted image 20251014132357.png",
     "Welcome.md",
     "App Service"
   ]
