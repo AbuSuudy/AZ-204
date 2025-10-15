@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Functions/Notes.md",
+                "file": "2) Functions/Notes.md",
                 "mode": "source",
                 "source": false
               },
@@ -170,30 +170,31 @@
       "file-cleaner-redux:Clean files": false
     }
   },
-  "active": "00a92fd060513478",
+  "active": "d393867e5e936caa",
   "lastOpenFiles": [
-    "App Service/Notes.md",
-    "Functions/Notes.md",
-    "Functions/Images/Pasted image 20251015133326.png",
-    "Functions/Images/Pasted image 20251015130003.png",
-    "Functions/Images/Pasted image 20251015123508.png",
-    "Functions/Images/Pasted image 20251014165310.png",
-    "Functions/Images",
+    "3) Blob Storage",
+    "1) App Service/Notes.md",
+    "2) Functions/Notes.md",
+    "2) Functions/Images/Pasted image 20251015133326.png",
+    "2) Functions/Images/Pasted image 20251015130003.png",
+    "2) Functions/Images/Pasted image 20251015123508.png",
+    "2) Functions/Images/Pasted image 20251014165310.png",
+    "2) Functions/Images",
     "Functions/Images/Pasted image 20251014162756.png",
-    "Functions",
+    "2) Functions",
     "css/center.css",
     "css",
     "New folder",
     "Untitled.md",
     "CSS",
     "App Service/Images/Pasted image 20251014160132.png",
-    "App Service/Images/Pasted image 20251014123834.png",
-    "App Service/Images/Pasted image 20251014132646.png",
+    "1) App Service/Images/Pasted image 20251014123834.png",
+    "1) App Service/Images/Pasted image 20251014132646.png",
     "App Service/Images/Pasted image 20251014155904.png",
     "App Service/Images/Pasted image 20251014155805.png",
-    "App Service/Images",
+    "1) App Service/Images",
     "Images",
     "Welcome.md",
-    "App Service"
+    "1) App Service"
   ]
 }
