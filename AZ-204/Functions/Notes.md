@@ -10,15 +10,20 @@
 | **Container Apps**        | Create and deploy containerized function apps in a fully managed environment hosted by Azure Container Apps.<br><br>                                                                                                                                                                                                                                             |
 | **Consumption plan**      | Pay for compute resources only when your functions are running (pay-as-you-go) with automatic scale on Windows. This doesn't allow for virtual network integration an could only be deployed on Windows.<br><br>                                                                                                                                                 |
 ### Timeout
+| Plan                                                                                                       | Default | Maximum1   |
+| ---------------------------------------------------------------------------------------------------------- | ------- | ---------- |
+| **[Flex Consumption plan](https://learn.microsoft.com/en-us/azure/azure-functions/flex-consumption-plan)** | 30      | Unbounded2 |
+| **[Premium plan](https://learn.microsoft.com/en-us/azure/azure-functions/functions-premium-plan)**         | 304     | Unbounded2 |
+| **[Dedicated plan](https://learn.microsoft.com/en-us/azure/azure-functions/dedicated-plan)**               | 304     | Unbounded3 |
+| **[Container Apps](https://learn.microsoft.com/en-us/azure/container-apps/functions-overview)**            | 30      | Unbounded5 |
+| **[Consumption plan](https://learn.microsoft.com/en-us/azure/azure-functions/consumption-plan)**           | 5       | 10         |
 
-| Plan        | Defaults (Mins) | Maximum (Mins) |
-| ----------- | --------------- | -------------- |
-| Consumption | 5               | 10             |
-| Premium     | 30              | unlimited      |
-| Dedicated   | 30              | unlimited      |
+It mentions unlimited, but this could be cut short:
+- 230 seconds is the maximum amount of time that an HTTP triggered function can take to respond to a request. This is because of the default idle time-out of Azure Load Balancer.
+- C# `Httpclient` default timeout is 100 second and this could be extended
+- If you're in the portal [chromium](https://source.chromium.org/chromium/chromium/src/+/main:net/socket/client_socket_pool.cc;l=41) also have their timeout set to 5 mins which can't be increased.
 
 If you need longer you could use the *Durable Functions* async pattern.
-
 ## Web Jobs
 Azure WebJobs is a built-in feature of Azure App Service that enables you to run background tasks, scripts, and programs alongside your web, API, or mobile applications.  Azure Functions is built on the WebJobs SDK.
 
@@ -67,7 +72,10 @@ Function app are the container for all your functions and they share the same:
 ![](Images/Pasted%20image%2020251014165310.png)
 
 ## Function App Storage Account
-
 When you create a function app instance in Azure, you must provide access to a default Azure Storage account.
 
 ![](Images/Pasted%20image%2020251015130003.png)
+## Load Testing 
+You're able to do load testing in azure and in live metric in app insight you could see how the function horizontally scales.
+
+![](Images/Pasted%20image%2020251015133326.png)

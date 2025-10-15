@@ -31,7 +31,7 @@ Down steams services such as database may be able to deal with a certain number 
 > Rules based auto scale is not available in Free, shared or basic. It's standard and above. Tiers below have manual scale where you select the number of instances you want running.
 ## Deployment methods
 - *Automated* - CI/CD on merges into source control 
-- *Manual* - cli, merge into your local git branch, zip deployment and FTP/S
+- *Manual* - cli, merge into your local git branch, zip deployment (when you deploy via the IDE) and FTP/S
 - *Deployment slot*-  live apps with their own host names. You could have use it as staging environment to test Once verified you could deploy staging to prod or roll back the previous prod slot.
 ## Deployment Slots
 Each deployment slot has their hosting and URL so you creating testing, staging environment in the same app.  For dependent resources like database, app insights it would useful to have one for each environment for slots to interact with.
