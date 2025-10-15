@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2) Functions/Notes.md",
+                "file": "3) Blob Storage/Notes.md",
                 "mode": "source",
                 "source": false
               },
@@ -170,11 +170,14 @@
       "file-cleaner-redux:Clean files": false
     }
   },
-  "active": "d393867e5e936caa",
+  "active": "00a92fd060513478",
   "lastOpenFiles": [
+    "2) Functions/Notes.md",
+    "3) Blob Storage/Notes.md",
+    "3) Blob Storage/Images/Pasted image 20251015140044.png",
+    "3) Blob Storage/Images",
     "3) Blob Storage",
     "1) App Service/Notes.md",
-    "2) Functions/Notes.md",
     "2) Functions/Images/Pasted image 20251015133326.png",
     "2) Functions/Images/Pasted image 20251015130003.png",
     "2) Functions/Images/Pasted image 20251015123508.png",
@@ -191,10 +194,8 @@
     "1) App Service/Images/Pasted image 20251014123834.png",
     "1) App Service/Images/Pasted image 20251014132646.png",
     "App Service/Images/Pasted image 20251014155904.png",
-    "App Service/Images/Pasted image 20251014155805.png",
     "1) App Service/Images",
     "Images",
-    "Welcome.md",
-    "1) App Service"
+    "Welcome.md"
   ]
 }
