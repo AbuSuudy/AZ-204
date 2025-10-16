@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "62fdcff39ed67652",
@@ -172,8 +173,12 @@
   },
   "active": "ec0eba6c52e6d9af",
   "lastOpenFiles": [
-    "3) Blob Storage/Images/image.png",
+    "Untitled.md",
     "3) Blob Storage/Notes.md",
+    "3) Blob Storage/Images/sas-url-token.png",
+    "3) Blob Storage/Images/Pasted image 20251016152612.png",
+    "3) Blob Storage/Images/Pasted image 20251016144414.png",
+    "3) Blob Storage/Images/image.png",
     "3) Blob Storage/Images/Pasted image 20251016123625.png",
     "3) Blob Storage/Images/Pasted image 20251016123212.png",
     "1) App Service/Notes.md",
@@ -184,16 +189,11 @@
     "3) Blob Storage/Images",
     "3) Blob Storage",
     "2) Functions/Images/Pasted image 20251015133326.png",
-    "2) Functions/Images/Pasted image 20251015130003.png",
-    "2) Functions/Images/Pasted image 20251015123508.png",
-    "2) Functions/Images/Pasted image 20251014165310.png",
     "2) Functions/Images",
-    "Functions/Images/Pasted image 20251014162756.png",
     "2) Functions",
     "css/center.css",
     "css",
     "New folder",
-    "Untitled.md",
     "CSS",
     "1) App Service/Images",
     "Images",
