@@ -58,6 +58,7 @@ In Azure blob storage you pay an early deletion penalty if you move tiers before
 | **Cool**     | *Online tier* optimized for storing data that is infrequently accessed or modified. Data in the cool tier should be stored for a minimum of **30** days. The cool tier has lower storage costs and higher access costs compared to the                                                                                                                                                                 |
 | **Cold**     | *Online tier* optimized for storing data that is rarely accessed or modified, but still requires fast retrieval. Data in the cold tier should be stored for a minimum of **90** days. The cold tier has lower storage costs and higher                                                                                                                                                                 |
 | **Archieve** | A *Offline tier* so not accessible for download or via `blobstorage` client. Optimized for storing data that is rarely accessed, and that has flexible latency requirements, on the order of hours. Data in the archive tier should be stored for a minimum of 180 days. If you change access tiers from archive to another tier the file would need to be rehydrated which could take up to 15 hours. |
+
 You could use Lifecyle management on the storage account and create rules which would updated the access tier of the file based on usage. You could set filters on the rule so it could be applied to certain files  
 
 ![](Images/Pasted%20image%2020251016152612.png)
