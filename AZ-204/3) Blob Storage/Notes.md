@@ -21,6 +21,7 @@ Types of Availability Deployments:
 - **Zonal deployments**: A zonal resource is deployed to a single, self-selected availability zone. This approach doesn't provide a resiliency benefit, but it helps you to achieve more stringent latency or performance requirements.
 ### Storage Account Redundancy Options
 - **Locally redundant storage (LRS)** replicates the data within your storage accounts to one or more Azure availability zones located in the primary region of your choice.
+  
   ![](Images/Pasted%20image%2020251016120406.png)
 - **Geo-redundant storage (GRS)** copies your data synchronously to one or more availability zones in the primary region using LRS to a to a secondary region.
 
