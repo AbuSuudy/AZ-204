@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "c68b145e9f02ac75",
+        "id": "a4c8542146fc2c7e",
         "type": "tabs",
         "children": [
           {
-            "id": "00a92fd060513478",
+            "id": "ec0eba6c52e6d9af",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -170,14 +170,18 @@
       "file-cleaner-redux:Clean files": false
     }
   },
-  "active": "00a92fd060513478",
+  "active": "ec0eba6c52e6d9af",
   "lastOpenFiles": [
-    "2) Functions/Notes.md",
     "3) Blob Storage/Notes.md",
+    "3) Blob Storage/Images/Pasted image 20251016123625.png",
+    "3) Blob Storage/Images/Pasted image 20251016123212.png",
+    "1) App Service/Notes.md",
+    "2) Functions/Notes.md",
+    "3) Blob Storage/Images/Pasted image 20251016120415.png",
+    "3) Blob Storage/Images/Pasted image 20251016120406.png",
     "3) Blob Storage/Images/Pasted image 20251015140044.png",
     "3) Blob Storage/Images",
     "3) Blob Storage",
-    "1) App Service/Notes.md",
     "2) Functions/Images/Pasted image 20251015133326.png",
     "2) Functions/Images/Pasted image 20251015130003.png",
     "2) Functions/Images/Pasted image 20251015123508.png",
@@ -190,10 +194,6 @@
     "New folder",
     "Untitled.md",
     "CSS",
-    "App Service/Images/Pasted image 20251014160132.png",
-    "1) App Service/Images/Pasted image 20251014123834.png",
-    "1) App Service/Images/Pasted image 20251014132646.png",
-    "App Service/Images/Pasted image 20251014155904.png",
     "1) App Service/Images",
     "Images",
     "Welcome.md"
