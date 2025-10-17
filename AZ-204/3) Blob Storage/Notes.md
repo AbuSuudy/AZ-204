@@ -85,10 +85,10 @@ There are three types of access SAS signature:
   
 - **Account SAS** - secured with the storage account key.  Delegates access to resources in one or more of the storage services.
 
-> [!NOTE] Using Account Key
+> [!NOTE]
 > No imposed maximum time limit; however, best practices recommended that you configure an expiration policy to limit the interval and minimize compromise.
 
-> [!NOTE] Access to Files
+> [!NOTE] 
 > If I give access via a SAS token to a container I'm able to programmatically access to each item in the container, but you won't have access to this if you open the SAS URL in the browser.  If you apply a SAS token to a file you're able to download the file via the browser
 
 ```c#
