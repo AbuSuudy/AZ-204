@@ -16,6 +16,7 @@ Blobs are store din hierarchy in storage accounts. A container organizes a set o
 ## Redundancy 
 ### Availability Zones
 Before going over redundancy options you have to know about Availability Zones.  Availability Zones are separated groups of data centres within the same region. Each availability zone has independent power, cooling, and networking infrastructure, so that if one zone experiences an outage, then regional services, capacity, and high availability are supported by the remaining zones. AZ are separated by several kilometres, and usually are within 100 kilometres. Far enough to reduce he likelihood that more than one will be affected by local outages or weather, but close enough for low latency. Not all azure regions have availability zones and you could us this [list](https://learn.microsoft.com/en-us/azure/reliability/regions-list) 
+
 Types of Availability Deployments: 
 - **Zone-redundant storage (ZRS)** copies your data synchronously across three or more Azure availability zones in the primary region
 - **Zonal deployments**: A zonal resource is deployed to a single, self-selected availability zone. This approach doesn't provide a resiliency benefit, but it helps you to achieve more stringent latency or performance requirements.
@@ -66,7 +67,7 @@ You could use Lifecyle management on the storage account and create rules which 
 > [!NOTE] 
 > In premium you don't have access tiers since you'll be getting the max performance available 
 ## Security 
-`SAS (shared access signatures) Token`  - gives granular temporary access to Azure resources.  For example:
+**SAS (shared access signatures) Token**  - gives granular temporary access to Azure resources.  For example:
 - What resource the client has access to 
 - What permission they have on these resource
 - How long they should have access for
@@ -83,3 +84,21 @@ There are three types of access SAS signature:
 - **Service SAS** -  secured with the storage account key.  Delegates access to a resource in **only one** of the Azure Storage services: Blob storage , Queue storage, Table storage, or Azure Files.
   
 - **Account SAS** - secured with the storage account key.  Delegates access to resources in one or more of the storage services.
+
+> [!NOTE] Using Account Key
+> No imposed maximum time limit; however, best practices recommended that you configure an expiration policy to limit the interval and minimize compromise.
+
+
+> [!NOTE] Access to Files
+> If I give access via a SAS token to a container I'm able to programmatically access to each item in the container, but you won't have access to this if you open the SAS URL in the browser.  If you apply a SAS token to a file you're able to download the file via the browser
+
+```c#
+string sasUrl = ""
+
+BlobContainerClient containerClient = new BlobContainerClient(new Uri(sasUrl));
+
+await foreach (BlobItem blobItem in containerClient.GetBlobsAsync())
+{
+    Console.WriteLine($"- {blobItem.Name}");
+}
+```
