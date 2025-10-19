@@ -67,12 +67,14 @@ You could use Lifecyle management on the storage account and create rules which 
 > [!NOTE] 
 > In premium you don't have access tiers since you'll be getting the max performance available 
 ## Security 
+
+### SAS Tokens
 **SAS (shared access signatures) Token**  - gives granular temporary access to Azure resources.  For example:
 - What resource the client has access to 
 - What permission they have on these resource
 - How long they should have access for
 
-It's useful to grant access to azure resources who's identity doesn't exist in our entra id tenant e.g. external application running on on-prem servers.  
+It's useful to grant access to azure resources who's identity doesn't exist in our entra id tenant e.g. external application running on on-prem servers, giving access to file outside of your org.
 
 ![](Images/sas-url-token.png)
 
@@ -88,8 +90,7 @@ There are three types of access SAS signature:
 > [!NOTE]
 > No imposed maximum time limit; however, best practices recommended that you configure an expiration policy to limit the interval and minimize compromise.
 
-> [!NOTE] 
-> If I give access via a SAS token to a container I'm able to programmatically access to each item in the container, but you won't have access to this if you open the SAS URL in the browser.  If you apply a SAS token to a file you're able to download the file via the browser
+ If I give access via a SAS token to a container you're able to programmatically access to each item in the container in c# or view the container in Azure Blob Storage Explorer desktop app. You won't have access it if you open the SAS URL in the browser. If you apply a SAS token to a file you're able to download the file via the browser.
 
 ```c#
 string sasUrl = ""
@@ -101,3 +102,22 @@ await foreach (BlobItem blobItem in containerClient.GetBlobsAsync())
     Console.WriteLine($"- {blobItem.Name}");
 }
 ```
+
+![](Images/Pasted%20image%2020251019181742.png)
+### SAS Token Hierarchy 
+You're able to give SAS token depending on the hierarchy you are on blob storage 
+
+***Storage account level***
+![](Images/Pasted%20image%2020251019185844.png)
+
+***Container*** 
+![](Images/Pasted%20image%2020251019185946.png)
+
+***File***
+![](Images/Pasted%20image%2020251019191221.png)
+### Access Policies 
+You can create access policy on the container level that have root: permission and valid date range. You can create SAS token that use this access policy. Once the work is done you're able delete the access policy so the SAS token can no longer be used. This is helpful because forcing key rotation to revoke access can be destructive since every SAS token generated with that key will no longer be valid. 
+
+![](Images/Pasted%20image%2020251019184853.png)
+
+![](Images/Pasted%20image%2020251019185008.png)

@@ -2,5 +2,8 @@
   "cssTheme": "Tokyo Night",
   "enabledCssSnippets": [
     "center"
-  ]
+  ],
+  "showRibbon": true,
+  "showViewHeader": false,
+  "baseFontSize": 16
 }
