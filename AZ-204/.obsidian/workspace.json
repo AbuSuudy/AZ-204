@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "62fdcff39ed67652",
@@ -172,6 +173,8 @@
   },
   "active": "ec0eba6c52e6d9af",
   "lastOpenFiles": [
+    "4) Cosmos/Images/Pasted image 20251020201232.png",
+    "4) Cosmos/Images/Pasted image 20251020201015.png",
     "Untitled.md",
     "4) Cosmos/Notes.md",
     "4) Cosmos/Images/Pasted image 20251020164502.png",
@@ -184,7 +187,6 @@
     "4) Cosmos/Images/strong-consistency.gif",
     "4) Cosmos/Images/five-consistency-levels.png",
     "4) Cosmos/Images/request-units.png",
-    "4) Cosmos/Images/hierarchy.png",
     "4) Cosmos/Images",
     "3) Blob Storage/Notes.md",
     "2) Functions/Notes.md",
