@@ -57,7 +57,7 @@ Consistency model determines how data is replicated across nodes.
 
 Latency is for one request, multiple request could be made which increase overall time exponentially. 
 
-![](Images/Pasted%20image%2020251020164502.png)
+![](Images/Pasted%20image%2020251020222401.png)
 
 **Weaker Consistency**- They will eventually be in-sync, but will take a longer time. Offers higher availability and better performance, but it's more difficult to program applications because data might not be consistent across all regions.
 
