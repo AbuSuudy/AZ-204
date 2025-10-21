@@ -14,6 +14,45 @@ The advantages here:
 > [!NOTE] 
 > You're able to shared a relational database across multiple servers to allows for horizontal scaling, but you will need coordination with syncing schema changes and and having a mechanism to distribute data based on a *Shared Key*. Cosmos allows managed environment that handles this for you. Also schemas are not as strict compared to typical relational databases.
 ## Cosmos Architecture 
+
+Each region contains all the data partitions of an Azure Cosmos DB container and can serve reads as well as serve writes when multi-region writes is enabled. If your Azure Cosmos DB account is distributed across _N_ Azure regions, there will be at least _N_ x 4 copies of all your data.
+
+**Fault Domain** - makes sure the VMs don't share the same hardware, so for example if the switch dies, it won't take down your whole infrastructure but only a small part of it. 
+
+Machines within a cluster are typically spread across 10-20 fault domains for high availability within a region
+
+Data in an Azure Cosmos DB container is automatically indexed upon ingestion. Automatic indexing enables users to query the data without the hassles of schema or index management, especially in a globally distributed setup.
+
+In a given region, data within a container is distributed by using a partition-key, which you provide and is transparently managed by the underlying physical partitions
+
+
+Data within a container is distributed along two dimensions - within a region and across regions, worldwide:
+
+![](Images/logical-partitions.png)
+
+![](Images/distributed-system-topology.png)
+
+Each machine hosts hundreds of replicas that correspond to various physical partitions
+
+Each replica hosts an instance of Azure Cosmos DB’s database engine, which manages the resources as well as the associated indexes. 
+
+Azure Cosmos DB achieves full schema agnosticism by automatically indexing everything upon ingestion in an efficient manner, which allows users to query their globally distributed data
+
+To provide durability and high availability, the database engine persists its data and index on SSDs and replicates it among the database engine instances within the replica-set(s) respectively.
+
+**Replica Set** self-managed and dynamically load-balanced group of replicas spread across multiple fault domains. The replica-set membership _N_ is dynamic – it keeps fluctuating between _NMin_ and _NMax_ based on the failures, administrative operations, and the time for failed replicas to regenerate/recover
+
+First, the cost of processing the write requests on the leader is higher than the cost of applying the updates on the follower. We avoid contacting the leader for serving reads unless required.
+
+![](Images/Pasted%20image%2020251021135417.png)
+
+
+**Partition Set**- A group of physical partitions, one from each of the configured with the Azure Cosmos DB database regions. Is composed to manage the same set of keys replicated across all the configured regions. While a given physical partition (a replica-set) is scoped within a cluster, a partition-set can span clusters, data centres, and geographical regions owning the same set of keys. Similar to a replica-set, a partition-set’s membership is also dynamic – it fluctuates based: operations to add/remove new partitions to/from a given partition-set, add/remove a region to your Azure Cosmos DB database, or when failures occur. This is self healing and have several back ups lead to having such a high SLA 99.99%
+
+The service allows you to configure your Azure Cosmos DB databases with either a single write region or multiple write regions, and depending on the choice, partition-sets are configured to accept writes in exactly one or all regions.
+
+![](Images/Pasted%20image%2020251020201015.png)
+
 **Azure Database Account** -  account contains all of your Azure Cosmos DB resources: databases, containers, and items. Database account can have multiple databases.
 
 **Database** - is similar to a namespace. A database is simply a group of container.
