@@ -11,12 +11,14 @@
             "id": "ec0eba6c52e6d9af",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "4) Cosmos/Images/Pasted image 20251021151254.png"
+                "file": "4) Cosmos/2) Stored procedure, functions.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "Pasted image 20251021151254"
+              "icon": "lucide-file",
+              "title": "2) Stored procedure, functions"
             }
           }
         ]
@@ -168,12 +170,13 @@
       "file-cleaner-redux:Clean files": false
     }
   },
-  "active": "d393867e5e936caa",
+  "active": "ec0eba6c52e6d9af",
   "lastOpenFiles": [
+    "4) Cosmos/1) Cosmos Architecture.md",
+    "4) Cosmos/2) Stored procedure, functions.md",
+    "4) Cosmos/Images/Pasted image 20251021151254.png",
     "4) Cosmos/Images/Pasted image 20251021153957.png",
     "4) Cosmos/Images/Pasted image 20251021161726.png",
-    "4) Cosmos/Images/Pasted image 20251021151254.png",
-    "4) Cosmos/Notes.md",
     "4) Cosmos/Images/logical-partitions.png",
     "4) Cosmos/Images/Pasted image 20251020222401.png",
     "Untitled.md",
