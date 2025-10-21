@@ -11,14 +11,12 @@
             "id": "ec0eba6c52e6d9af",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "4) Cosmos/Notes.md",
-                "mode": "source",
-                "source": false
+                "file": "4) Cosmos/Images/Pasted image 20251021151254.png"
               },
-              "icon": "lucide-file",
-              "title": "Notes"
+              "icon": "lucide-image",
+              "title": "Pasted image 20251021151254"
             }
           }
         ]
@@ -170,18 +168,18 @@
       "file-cleaner-redux:Clean files": false
     }
   },
-  "active": "ec0eba6c52e6d9af",
+  "active": "d393867e5e936caa",
   "lastOpenFiles": [
+    "4) Cosmos/Images/Pasted image 20251021153957.png",
+    "4) Cosmos/Images/Pasted image 20251021161726.png",
+    "4) Cosmos/Images/Pasted image 20251021151254.png",
+    "4) Cosmos/Notes.md",
     "4) Cosmos/Images/logical-partitions.png",
     "4) Cosmos/Images/Pasted image 20251020222401.png",
     "Untitled.md",
     "4) Cosmos/Images/distributed-system-topology.png",
     "4) Cosmos/Images/strong-consistency.gif",
     "4) Cosmos/Images/request-units.png",
-    "4) Cosmos/Notes.md",
-    "Images/Pasted image 20251021161726.png",
-    "Images/Pasted image 20251021153957.png",
-    "Images/Pasted image 20251021151254.png",
     "Images",
     "4) Cosmos/Images/Pasted image 20251021135417.png",
     "4) Cosmos/Images/Pasted image 20251021130844.png",
