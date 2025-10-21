@@ -52,6 +52,7 @@ Each replica set has can have *N* nodes which all have the copy of the data. Eac
 | 4   | allows for 1 failure                           |
 | 3   | allows for 1 failure                           |
 | <3  | allows for 0 failures                          |
+
 Replicas are spread across multiple fault domains. Fault domains define the group of virtual machines that share a common power source and network switch. 
 
 ![](Images/Pasted%20image%2020251021153957.png)
