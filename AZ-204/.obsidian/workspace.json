@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "62fdcff39ed67652",
@@ -172,9 +173,11 @@
   },
   "active": "ec0eba6c52e6d9af",
   "lastOpenFiles": [
-    "4) Cosmos/1) Cosmos Architecture.md",
+    "4) Cosmos/Images/Pasted image 20251109150402.png",
     "4) Cosmos/3) Change Feed.md",
+    "2) Functions/Notes.md",
     "4) Cosmos/2) SP, UDF, Triggers.md",
+    "4) Cosmos/1) Cosmos Architecture.md",
     "Untitled.md",
     "4) Cosmos/Images/Pasted image 20251108163445.png",
     "1) App Service/Notes.md",
@@ -191,7 +194,6 @@
     "Untitled 1.md",
     "4) Cosmos/Images",
     "3) Blob Storage/Notes.md",
-    "2) Functions/Notes.md",
     "4) Cosmos",
     "3) Blob Storage/Images",
     "3) Blob Storage",

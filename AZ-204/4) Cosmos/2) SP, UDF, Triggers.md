@@ -7,7 +7,7 @@ var helloWorldStoredProc = {
     serverScript: function () {
         var context = getContext();
         var response = context.getResponse();
-
+        
         response.setBody("Hello, World");
     }
 }
@@ -104,6 +104,7 @@ await client.GetContainer("database", "container").CreateItemAsync(newItem, null
 **Post-triggers** are executed after modifying a database item.  
 
 This trigger queries for the metadata item and updates it with details about the newly created item.
+
 ```js
 function updateMetadata() {
     var context = getContext();
