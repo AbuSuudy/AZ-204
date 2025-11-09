@@ -15,7 +15,7 @@ The change feed processor has four main components:
    
 3) **The Compute Instance** :  The instance that is running that is consuming the change feed e.g. an Azure function.
    
-4) **The Delegate**: That is registered in you consumer application that responds to event changes in the consumer feed. This mostly if you have C# application that uses *Change Feed Processor SDK*. If you use an azure function with a cosmos db trigger you will not need this delegate. The function it self acts as the event handler.
+4) **The Delegate**: That is registered in you consumer application that responds to event changes in the consumer feed. This mostly if you have C# application that's not an azure function. If you use an azure function with a cosmos db trigger you will not need this delegate. The function it self acts as the event handler.
 
 The diagram shows two compute instances, and the change feed processor assigns different ranges to each instance to maximize compute distribution.  The combination of all the leases represents the current state of the change feed processor. The lease collection coordination prevent the same message being read twice.
 
