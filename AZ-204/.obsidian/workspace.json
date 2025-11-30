@@ -11,14 +11,12 @@
             "id": "4f502415db50ae14",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "4) Cosmos/3) Change Feed.md",
-                "mode": "source",
-                "source": false
+                "file": "6) Identity/Images/Pasted image 20251130160810.png"
               },
-              "icon": "lucide-file",
-              "title": "3) Change Feed"
+              "icon": "lucide-image",
+              "title": "Pasted image 20251130160810"
             }
           }
         ]
@@ -170,26 +168,28 @@
       "file-cleaner-redux:Clean files": false
     }
   },
-  "active": "d393867e5e936caa",
+  "active": "4f502415db50ae14",
   "lastOpenFiles": [
-    "6) Identity",
-    "4) Cosmos/Untitled",
+    "6) Identity/Images/Pasted image 20251130154631.png",
+    "6) Identity/Images/Pasted image 20251130150113.png",
+    "6) Identity/Images/about-microsoft-identity-platform.svg",
+    "6) Identity/Indentity.md",
+    "6) Identity/Images/basic-app-service-architecture-flow.svg",
+    "6) Identity/Images/Pasted image 20251130160810.png",
+    "6) Identity/Images/Pasted image 20251130152912.png",
+    "6) Identity/Images",
     "4) Cosmos/3) Change Feed.md",
-    "4) Cosmos/Images/Pasted image 20251109150402.png",
-    "2) Functions/Notes.md",
     "4) Cosmos/2) SP, UDF, Triggers.md",
     "4) Cosmos/1) Cosmos Architecture.md",
+    "6) Identity",
+    "4) Cosmos/Untitled",
+    "4) Cosmos/Images/Pasted image 20251109150402.png",
+    "2) Functions/Notes.md",
     "Untitled.md",
     "4) Cosmos/Images/Pasted image 20251108163445.png",
     "1) App Service/Notes.md",
     "4) Cosmos/Images/Pasted image 20251021151254.png",
     "4) Cosmos/Images/Pasted image 20251021153957.png",
-    "4) Cosmos/Images/Pasted image 20251021161726.png",
-    "4) Cosmos/Images/logical-partitions.png",
-    "4) Cosmos/Images/Pasted image 20251020222401.png",
-    "4) Cosmos/Images/distributed-system-topology.png",
-    "4) Cosmos/Images/strong-consistency.gif",
-    "4) Cosmos/Images/request-units.png",
     "Images",
     "Untitled 1.md",
     "4) Cosmos/Images",
@@ -199,8 +199,6 @@
     "3) Blob Storage",
     "2) Functions/Images",
     "2) Functions",
-    "css/center.css",
-    "css",
     "Welcome.md"
   ]
 }
