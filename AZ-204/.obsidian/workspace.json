@@ -11,12 +11,14 @@
             "id": "4f502415db50ae14",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "6) Identity/Images/Pasted image 20251130160810.png"
+                "file": "6) Identity/Indentity.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "Pasted image 20251130160810"
+              "icon": "lucide-file",
+              "title": "Indentity"
             }
           }
         ]
@@ -170,12 +172,17 @@
   },
   "active": "4f502415db50ae14",
   "lastOpenFiles": [
+    "6) Identity/Images/Pasted image 20251202111925.png",
+    "6) Identity/Images/Pasted image 20251202111905.png",
+    "6) Identity/Images/Pasted image 20251202111844.png",
+    "3) Blob Storage/Notes.md",
+    "6) Identity/Indentity.md",
+    "6) Identity/Images/Pasted image 20251202103819.png",
+    "6) Identity/Images/Pasted image 20251130160810.png",
     "6) Identity/Images/Pasted image 20251130154631.png",
     "6) Identity/Images/Pasted image 20251130150113.png",
     "6) Identity/Images/about-microsoft-identity-platform.svg",
-    "6) Identity/Indentity.md",
     "6) Identity/Images/basic-app-service-architecture-flow.svg",
-    "6) Identity/Images/Pasted image 20251130160810.png",
     "6) Identity/Images/Pasted image 20251130152912.png",
     "6) Identity/Images",
     "4) Cosmos/3) Change Feed.md",
@@ -186,14 +193,10 @@
     "4) Cosmos/Images/Pasted image 20251109150402.png",
     "2) Functions/Notes.md",
     "Untitled.md",
-    "4) Cosmos/Images/Pasted image 20251108163445.png",
     "1) App Service/Notes.md",
-    "4) Cosmos/Images/Pasted image 20251021151254.png",
-    "4) Cosmos/Images/Pasted image 20251021153957.png",
     "Images",
     "Untitled 1.md",
     "4) Cosmos/Images",
-    "3) Blob Storage/Notes.md",
     "4) Cosmos",
     "3) Blob Storage/Images",
     "3) Blob Storage",
