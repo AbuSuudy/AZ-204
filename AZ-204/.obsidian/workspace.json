@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "6) Identity/Indentity.md",
+                "file": "6) Identity Platform/Notes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Indentity"
+              "title": "Notes"
             }
           }
         ]
@@ -172,24 +172,26 @@
   },
   "active": "4f502415db50ae14",
   "lastOpenFiles": [
-    "6) Identity/Indentity.md",
+    "6) Identity Platform/Images/convergence-scenarios-client-creds.svg",
+    "6) Identity Platform/Notes.md",
+    "6) Identity Platform/Images/convergence-scenarios-client-creds.svg.crdownload",
+    "6) Identity Platform/Images/convergence-scenarios-native.svg",
+    "6) Identity Platform/Images/access-scenarios.png",
+    "6) Identity Platform/Images/about-microsoft-identity-platform.svg",
+    "6) Identity Platform/Images/convergence-scenarios-native.svg.crdownload",
+    "6) Identity Platform/Images/Pasted image 20251202153318.png",
+    "6) Identity Platform/Images/Pasted image 20251202111925.png",
+    "6) Identity Platform/Images/Pasted image 20251130160810.png",
+    "6) Identity Platform/Images/Pasted image 20251130150113.png",
+    "6) Identity Platform/Images/Pasted image 20251204222740.png",
     "Untitled.md",
-    "6) Identity/Images/access-scenarios.png",
-    "6) Identity/Images/Pasted image 20251202153318.png",
     "6) Identity/Images/Pasted image 20251202150936.png",
-    "6) Identity/Images/Pasted image 20251202150928.png",
-    "6) Identity/Images/Pasted image 20251202111925.png",
-    "6) Identity/Images/Pasted image 20251202111905.png",
-    "6) Identity/Images/Pasted image 20251202111844.png",
     "3) Blob Storage/Notes.md",
-    "6) Identity/Images/Pasted image 20251202103819.png",
-    "6) Identity/Images/Pasted image 20251130160810.png",
-    "6) Identity/Images/Pasted image 20251130154631.png",
-    "6) Identity/Images",
+    "6) Identity Platform/Images",
     "4) Cosmos/3) Change Feed.md",
     "4) Cosmos/2) SP, UDF, Triggers.md",
     "4) Cosmos/1) Cosmos Architecture.md",
-    "6) Identity",
+    "6) Identity Platform",
     "4) Cosmos/Untitled",
     "2) Functions/Notes.md",
     "1) App Service/Notes.md",
@@ -199,8 +201,6 @@
     "4) Cosmos",
     "3) Blob Storage/Images",
     "3) Blob Storage",
-    "2) Functions/Images",
-    "2) Functions",
     "Welcome.md"
   ]
 }

@@ -94,6 +94,18 @@ You can configure scope permission in the allowed to have on API Permissions tab
 ## Conditional Access 
 Conditional Access is Microsoft's Zero Trust policy engine taking signals from various sources into account when enforcing policy decisions.
 Common applied Polices:
-- Required MFA
-- Allow access from specific locations 
-- Requiring organization-managed devices for specific applications 
+- Multifactor authentication
+- Allowing only Intune enrolled devices to access specific services
+- Restricting user locations and IP range
+## Authentication Flow
+
+### Authorisation Code Flow with PKCE (MSAL.js)
+Runs on an untrusted client where secrets cannot be stored.  This will using the signed in user identity to access the resource and is seen as *delegates access*.
+
+![](Images/convergence-scenarios-native.svg)
+### Client Credential Flow (MSAL.NET)
+Application is a machine to machine interaction with a service  that sits in your infrastructure and secrets are safe in these environments.  Once permission is approved by admin it can generate token and use it based on the resource identity in a non interactive way (without open browser) . This is seen as *application only access*
+
+![](Images/convergence-scenarios-client-creds.svg)
+
+## Microsoft 365
