@@ -26,6 +26,9 @@ var app = PublicClientApplicationBuilder.Create(clientId)
 // Scopes for delegated permissions
 string[] scopes = new string[] { "User.Read" };
 
+//Give me an access every permission that an admin has already granted to my application for that API.
+string[] scopes = new string[] {"/.default"" };
+
 // Acquire token interactively
 var result = await app.AcquireTokenInteractive(scopes)
 	.ExecuteAsync();
@@ -45,15 +48,15 @@ Registering your application in Microsoft Entra establishes a trust relationship
 > [!NOTE] 
 > A scope is essentially a **string identifier** for a permission or group of permissions.
 
-This is a list of scopes available in the app registration that can be requested from other tenants. Some request could be set to be manually approved by the home tenant admin if it's asking for high privilege scope.
+This is a list of scopes available in the app registration. Some request could be set to be manually approved by the home tenant admin if it's asking for high privilege scope.
 
 ![](Images/Pasted%20image%2020251130160810.png)
 
-During application registration in the home tenant an application registration is created and also  a service principle. If it's multi tenant once an use signs in a service principle is created in that tenant.
+During application registration in the home tenant an application registration is created and also  a service principle. If it's multi tenant once a user signs in a service principle is created in that tenant.
 
 ![](Images/Pasted%20image%2020251202153318.png)
 
-The reason for multiple service principles in each tenant admin can manage their own permissions. This is stored as **OAuth2PermissionGrants** linked to the Service Principal.
+The reason for multiple service principles in each tenant admin can manage their own permissions.
 - Tenant A might grant `User.Read`.
 - Tenant B might grant `User.Read` + `Mail.Read`.
 
@@ -61,12 +64,13 @@ Here is an example of approval needed from an admin on their local tenant becaus
 
 ![](Images/Pasted%20image%2020251202111925.png)
 
-You could also set No admin approval for certain scopes and let the use accept them on their end.
+You could also set No admin approval for certain scopes and let the user accept them on their end.
+Except if the type is an application permission which is always admin approved. This type of permission will be discussed later.
 
 ![](Images/Pasted%20image%2020251130160810.png)
 ## Types of Permissions  
 
-**Delegated Access** - The client application access the resource on behalf of the user.  The application will generate token on behalf of user if they approve and access the resource. The user will be need to have RBAC role access to resource.
+**Delegated Access** - The client application access the resource on behalf of the user.  The application will generate token on behalf of user if they approve and use it to access the resource. The user will be need to have RBAC role access to resource.
 
 **Delegate permission** - An application that is granted the `user_impersonation` . The application is only able to act **on behalf of a user** rather than as itself.
 
@@ -87,7 +91,6 @@ You can configure scope permission in the allowed to have on API Permissions tab
 	- *Dynamic User Consent* - Only when that permission is about to be used.
 - **Administrator consent**  - Only on administrator end and will have to wait for a response 
 - **Preauthorization** enables a resource application owner to grant permissions without requiring users to see a consent prompt for the same set of permissions that are preauthorized
-  
 ## Conditional Access 
 Conditional Access is Microsoft's Zero Trust policy engine taking signals from various sources into account when enforcing policy decisions.
 Common applied Polices:
