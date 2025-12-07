@@ -69,7 +69,6 @@ Except if the type is an application permission which is always admin approved. 
 
 ![](Images/Pasted%20image%2020251130160810.png)
 ## Types of Permissions  
-
 **Delegated Access** - The client application access the resource on behalf of the user.  The application will generate token on behalf of user if they approve and use it to access the resource. The user will be need to have RBAC role access to resource.
 
 **Delegate permission** - An application that is granted the `user_impersonation` . The application is only able to act **on behalf of a user** rather than as itself.
@@ -150,7 +149,9 @@ az vm create \
 --assign-identity <USER ASSIGNED IDENTITY NAME>
 ```
 ### Access Token Flow
-The generating of the token is handled when you use this package `Azure.Identity` under the hood it will generate a token based on system assigned / user assigned based on configuration. 
+The generating of the token is handled when you use this package `Azure.Identity` under the hood it does http request to from Microsoft Entra ID to get a token based on system assigned / user assigned based on configuration. 
+
+![Credential chain sequence diagram](https://learn.microsoft.com/en-us/dotnet/azure/sdk/media/mermaidjs/chain-sequence.svg)
 
 *User Assigned*
 ```c#
@@ -180,6 +181,79 @@ var credential = new DefaultAzureCredential(
 );
 ```
 ### The `DefaultAzureCredential` Chain Order
-The configuration is optional above since if credentials are not found it will move on the next on the chain. It can be difficult to debug if creds are created before your ideal type. Also it does slow down the process since you're checking in places where you know you can skip. It's best to be explicit. 
+If that credential fails to acquire an access token, the next credential in the sequence is attempted, and so on, until an access token is successfully obtained.
 
-![](Images/Pasted%20image%2020251207014724.png)
+| Order | Credential                                                                                                                                           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                            | Enabled by default? | Use Case Environment |
+| ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------- | -------------------- |
+| 1     | [Environment](https://learn.microsoft.com/en-us/dotnet/api/azure.identity.environmentcredential?view=azure-dotnet&preserve-view=true)                | Reads a collection of [environment variables](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/identity/Azure.Identity/README.md#environment-variables) to determine if an application service principal (application user) is configured for the app. If so, `DefaultAzureCredential` uses these values to authenticate the app to Azure. This method is most often used in server environments but can also be used when developing locally. | Yes                 | Deployed Service     |
+| 2     | [Workload Identity](https://learn.microsoft.com/en-us/dotnet/api/azure.identity.workloadidentitycredential?view=azure-dotnet&preserve-view=true)     | If the app is deployed to an Azure host with Workload Identity enabled, authenticate that account.                                                                                                                                                                                                                                                                                                                                                     | Yes                 | Deployed Service     |
+| 3     | [Managed Identity](https://learn.microsoft.com/en-us/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true)       | If the app is deployed to an Azure host with Managed Identity enabled, authenticate the app to Azure using that Managed Identity.                                                                                                                                                                                                                                                                                                                      | Yes                 | Deployed Service     |
+| 4     | [Visual Studio](https://learn.microsoft.com/en-us/dotnet/api/azure.identity.visualstudiocredential?view=azure-dotnet&preserve-view=true)             | If the developer authenticated to Azure by logging into Visual Studio, authenticate the app to Azure using that same account.                                                                                                                                                                                                                                                                                                                          | Yes                 | Local Developer tool |
+| 5     | [Visual Studio Code](https://learn.microsoft.com/en-us/dotnet/api/azure.identity.visualstudiocodecredential?view=azure-dotnet&preserve-view=true)    | If the developer authenticated via Visual Studio Code's [Azure Resources extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureresourcegroups) and the [Azure.Identity.Broker package](https://www.nuget.org/packages/Azure.Identity.Broker) is installed, authenticate that account.                                                                                                                               | Yes                 | Local Developer tool |
+| 6     | [Azure CLI](https://learn.microsoft.com/en-us/dotnet/api/azure.identity.azureclicredential?view=azure-dotnet&preserve-view=true)                     | If the developer authenticated to Azure using Azure CLI's `az login` command, authenticate the app to Azure using that same account.                                                                                                                                                                                                                                                                                                                   | Yes                 | Local Developer tool |
+| 7     | [Azure PowerShell](https://learn.microsoft.com/en-us/dotnet/api/azure.identity.azurepowershellcredential?view=azure-dotnet&preserve-view=true)       | If the developer authenticated to Azure using Azure PowerShell's `Connect-AzAccount` cmdlet, authenticate the app to Azure using that same account.                                                                                                                                                                                                                                                                                                    | Yes                 | Local Developer tool |
+| 8     | [Azure Developer CLI](https://learn.microsoft.com/en-us/dotnet/api/azure.identity.azuredeveloperclicredential?view=azure-dotnet&preserve-view=true)  | If the developer authenticated to Azure using Azure Developer CLI's `azd auth login` command, authenticate with that account.                                                                                                                                                                                                                                                                                                                          | Yes                 | Local Developer tool |
+| 9     | [Interactive browser](https://learn.microsoft.com/en-us/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) | If enabled, interactively authenticate the developer via the current system's default browser.                                                                                                                                                                                                                                                                                                                                                         | No                  | Browser              |
+| 10    | [Broker](https://learn.microsoft.com/en-us/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true)              | Authenticates using the default account logged into the OS via a broker. Requires that the [Azure.Identity.Broker package](https://www.nuget.org/packages/Azure.Identity.Broker) is installed.                                                                                                                                                                                                                                                         | Yes                 | Local Developer tool |
+```c#
+clientBuilder.UseCredential(new DefaultAzureCredential(
+	new DefaultAzureCredentialOptions
+	{
+		ExcludeEnvironmentCredential = true,
+		ExcludeManagedIdentityCredential = true,
+		ExcludeWorkloadIdentityCredential = true,
+	}));
+```
+
+In the above example it will skip credential types will skip: , `EnvironmentCredential`, `ManagedIdentityCredential`, and `WorkloadIdentityCredential` So the next in line will Visual Studio.
+
+![DefaultAzureCredential using Excludes properties](https://learn.microsoft.com/en-us/dotnet/azure/sdk/media/mermaidjs/default-azure-credential-excludes.svg)
+
+The more configuration you put into the advantages dimmish of ease of use. So better solution would be to use *ChainedTokenCredential* which  act as a empty chain to which you add credentials to suit your app's needs.
+
+```c#
+clientBuilder.UseCredential(new ChainedTokenCredential(
+	new AzurePowerShellCredential(),
+	new VisualStudioCredential()));
+```
+
+![ChainedTokenCredential | 350](https://learn.microsoft.com/en-us/dotnet/azure/sdk/media/mermaidjs/chained-token-credential-authentication-flow.svg)
+### Using Environment variables 
+You can set the environment variable `AZURE_TOKEN_CREDENTIALS` to configure what services are used in the tool chain.
+
+| Value  | Chain used (....................................................................................................................................)                                                     |
+| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Dev`  | ![DefaultAzureCredential with AZURE_TOKEN_CREDENTIALS set to 'prod'](https://learn.microsoft.com/en-us/dotnet/azure/sdk/media/mermaidjs/default-azure-credential-environment-variable-production.svg) |
+| `Prod` | ![DefaultAzureCredential with AZURE_TOKEN_CREDENTIALS set to 'dev'](https://learn.microsoft.com/en-us/dotnet/azure/sdk/media/mermaidjs/default-azure-credential-environment-variable-development.svg) |
+Also if you just want to use one service in particular you could set the below value to  `AZURE_TOKEN_CREDENTIALS`:
+- `AzureCliCredential`
+- `AzureDeveloperCliCredential`
+- `AzurePowerShellCredential`
+- `BrokerCredential`
+- `EnvironmentCredential`
+- `InteractiveBrowserCredential`
+- `ManagedIdentityCredential`
+- `VisualStudioCredential`
+- `VisualStudioCodeCredential`
+- `WorkloadIdentityCredential`
+### DefaultAzureCredential Guidance 
+`DefaultAzureCredential` is undoubtedly the easiest way to get started with the Azure Identity library, but with that convenience comes tradeoffs:
+- *Debugging challenge*: Not sure what part of the chain created the token
+- *Performance Overhead* : trying multiple credentials instead of directing to your target. 
+
+With help for debugging by placing this in your start up class.
+
+```c#
+using AzureEventSourceListener listener = new((args, message) =>
+{
+    if (args is { EventSource.Name: "Azure-Identity" })
+    {
+        Console.WriteLine(message);
+    }
+}, EventLevel.LogAlways);
+```
+
+![](Images/Pasted%20image%2020251207154032.png)
+
+> [!NOTE] 
+> This logging can also be used for multiple  Azure Services:  Service Bus, Event Hub, Cosmos etc..
