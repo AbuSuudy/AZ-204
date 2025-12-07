@@ -119,6 +119,7 @@ There are two types of service principles:
 - **Managed Identities Service Principal** - is an automatically managed identity in Microsoft Entra ID can be assigned to an Azure resource. You don't deal with using and rolling secret key values. This is managed by you by Azure. 
 ## Managed Identities 
 There two types of managed identities: 
+
 - **System Assigned Managed Identity** - One-to-one relationship with the Azure resource. Tied to the Azure resource lifecycle. When the resource is deleted, the managed identity associated with it, is automatically deleted.
 
 ```bash
@@ -130,6 +131,8 @@ az vm create \
 --admin-username azureuser \
 --admin-password myPassword12
 ```
+
+![](Images/Pasted%20image%2020251207162638.png)
 
 - **User Assigned Managed Identity** - can be shared by multiple resources that need a same set of permissions, but will need to be explicitly deleted.   You create user identity first and assign to resources on creation.
 
@@ -148,6 +151,8 @@ az vm create \
 --admin-password myPassword12\
 --assign-identity <USER ASSIGNED IDENTITY NAME>
 ```
+
+![](Images/Pasted%20image%2020251207162709.png)
 ### Access Token Flow
 The generating of the token is handled when you use this package `Azure.Identity` under the hood it does http request to from Microsoft Entra ID to get a token based on system assigned / user assigned based on configuration. 
 
@@ -155,7 +160,6 @@ The generating of the token is handled when you use this package `Azure.Identity
 
 *User Assigned*
 ```c#
-
 // uses userAssignedClientId
 string userAssignedClientId = "<your managed identity client ID>";
 var credential = new DefaultAzureCredential(
@@ -180,7 +184,7 @@ var credential = new DefaultAzureCredential(
     }
 );
 ```
-### The `DefaultAzureCredential` Chain Order
+### The DefaultAzureCredential Chain Order
 If that credential fails to acquire an access token, the next credential in the sequence is attempted, and so on, until an access token is successfully obtained.
 
 | Order | Credential                                                                                                                                           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                            | Enabled by default? | Use Case Environment |
@@ -223,8 +227,8 @@ You can set the environment variable `AZURE_TOKEN_CREDENTIALS` to configure what
 
 | Value  | Chain used (....................................................................................................................................)                                                     |
 | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Dev`  | ![DefaultAzureCredential with AZURE_TOKEN_CREDENTIALS set to 'prod'](https://learn.microsoft.com/en-us/dotnet/azure/sdk/media/mermaidjs/default-azure-credential-environment-variable-production.svg) |
-| `Prod` | ![DefaultAzureCredential with AZURE_TOKEN_CREDENTIALS set to 'dev'](https://learn.microsoft.com/en-us/dotnet/azure/sdk/media/mermaidjs/default-azure-credential-environment-variable-development.svg) |
+| `Dev`  | ![DefaultAzureCredential with AZURE_TOKEN_CREDENTIALS set to 'dev'](https://learn.microsoft.com/en-us/dotnet/azure/sdk/media/mermaidjs/default-azure-credential-environment-variable-development.svg) |
+| `Prod` | ![DefaultAzureCredential with AZURE_TOKEN_CREDENTIALS set to 'prod'](https://learn.microsoft.com/en-us/dotnet/azure/sdk/media/mermaidjs/default-azure-credential-environment-variable-production.svg) |
 Also if you just want to use one service in particular you could set the below value to  `AZURE_TOKEN_CREDENTIALS`:
 - `AzureCliCredential`
 - `AzureDeveloperCliCredential`
@@ -240,6 +244,8 @@ Also if you just want to use one service in particular you could set the below v
 `DefaultAzureCredential` is undoubtedly the easiest way to get started with the Azure Identity library, but with that convenience comes tradeoffs:
 - *Debugging challenge*: Not sure what part of the chain created the token
 - *Performance Overhead* : trying multiple credentials instead of directing to your target. 
+
+So it's best to explicit mention what authentication is used by either using `AZURE_TOKEN_CREDENTIALS`, `DefaultAzureCredentialOptions`, `ChainedTokenCredential`
 
 With help for debugging by placing this in your start up class.
 
