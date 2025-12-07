@@ -107,5 +107,79 @@ Runs on an untrusted client where secrets cannot be stored.  This will using the
 Application is a machine to machine interaction with a service  that sits in your infrastructure and secrets are safe in these environments.  Once permission is approved by admin it can generate token and use it based on the resource identity in a non interactive way (without open browser) . This is seen as *application only access*
 
 ![](Images/convergence-scenarios-client-creds.svg)
+## Microsoft Graph  
+Microsoft Graph gives you a programmatic way to access nearly everything in Microsoft 365: users, groups, mail, calendars, files (One Drive/ SharePoint), Teams, managed devices, and security insights. You can use rest API to create automations you need such as: creating new users, provisioning devices etc. 
 
-## Microsoft 365
+API Playground: https://developer.microsoft.com/en-us/graph/graph-explorer
+
+![](Images/Pasted%20image%2020251206181429.png)
+## Service Principles 
+There are two types of service principles:
+- **Application Service Principal**  - Manually created by registering an application in Microsoft Entra ID. : Uses credentials that must be manually managed, such as a client secret (password) or a certificate.
+
+- **Managed Identities Service Principal** - is an automatically managed identity in Microsoft Entra ID can be assigned to an Azure resource. You don't deal with using and rolling secret key values. This is managed by you by Azure. 
+## Managed Identities 
+There two types of managed identities: 
+- **System Assigned Managed Identity** - One-to-one relationship with the Azure resource. Tied to the Azure resource lifecycle. When the resource is deleted, the managed identity associated with it, is automatically deleted.
+
+```bash
+az vm create \
+--resource-group myResourceGroup \ 
+--name myVM-image win2016datacenter \
+--generate-ssh-keys \
+--assign-identity \
+--admin-username azureuser \
+--admin-password myPassword12
+```
+
+- **User Assigned Managed Identity** - can be shared by multiple resources that need a same set of permissions, but will need to be explicitly deleted.   You create user identity first and assign to resources on creation.
+
+``` bash
+# Create the identity first
+az identity create \
+ --resource-group  myResourceGroup \
+ --name myUserAssignedIdentity
+
+# Assign identity during creation
+az vm create \
+--resource-group <RESOURCE GROUP>\
+--name <VM NAME>\
+--image UbuntuLTS \
+--admin-username azureuser \
+--admin-password myPassword12\
+--assign-identity <USER ASSIGNED IDENTITY NAME>
+```
+### Access Token Flow
+The generating of the token is handled when you use this package `Azure.Identity` under the hood it will generate a token based on system assigned / user assigned based on configuration. 
+
+*User Assigned*
+```c#
+
+// uses userAssignedClientId
+string userAssignedClientId = "<your managed identity client ID>";
+var credential = new DefaultAzureCredential(
+    new DefaultAzureCredentialOptions
+    {      
+        ExcludeEnvironmentCredential = true,
+        ExcludeWorkloadIdentityCredential = true,
+        ManagedIdentityClientId = userAssignedClientId
+    }
+);
+
+```
+
+*System Assigned*
+``` c#
+//For System-Assigned MI, ensure ClientId is NOT set
+var credential = new DefaultAzureCredential(
+    new DefaultAzureCredentialOptions
+    {      
+        ExcludeEnvironmentCredential = true,
+        ExcludeWorkloadIdentityCredential = true
+    }
+);
+```
+### The `DefaultAzureCredential` Chain Order
+The configuration is optional above since if credentials are not found it will move on the next on the chain. It can be difficult to debug if creds are created before your ideal type. Also it does slow down the process since you're checking in places where you know you can skip. It's best to be explicit. 
+
+![](Images/Pasted%20image%2020251207014724.png)
