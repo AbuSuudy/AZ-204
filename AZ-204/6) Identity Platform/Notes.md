@@ -153,6 +153,12 @@ az vm create \
 ```
 
 ![](Images/Pasted%20image%2020251207162709.png)
+
+### Security Groups
+Members can be _users, devices, service principals_ and be used to give RBAC access to a set of resources. This is mostly to fill in the gap of AD Groups which can only hold users.
+
+![](Images/Pasted%20image%2020251207212258.png)
+
 ### Access Token Flow
 The generating of the token is handled when you use this package `Azure.Identity` under the hood it does http request to from Microsoft Entra ID to get a token based on system assigned / user assigned based on configuration. 
 
@@ -213,7 +219,7 @@ In the above example it will skip credential types will skip: , `EnvironmentCre
 
 ![DefaultAzureCredential using Excludes properties](https://learn.microsoft.com/en-us/dotnet/azure/sdk/media/mermaidjs/default-azure-credential-excludes.svg)
 
-The more configuration you put into the advantages dimmish of ease of use. So better solution would be to use *ChainedTokenCredential* which  act as a empty chain to which you add credentials to suit your app's needs.
+The more configuration you put into the advantages diminish of ease of use. So better solution would be to use *ChainedTokenCredential* which  act as a empty chain to which you add credentials to suit your app's needs.
 
 ```c#
 clientBuilder.UseCredential(new ChainedTokenCredential(
@@ -241,7 +247,7 @@ Also if you just want to use one service in particular you could set the below v
 - `VisualStudioCodeCredential`
 - `WorkloadIdentityCredential`
 ### DefaultAzureCredential Guidance 
-`DefaultAzureCredential` is undoubtedly the easiest way to get started with the Azure Identity library, but with that convenience comes tradeoffs:
+`DefaultAzureCredential` is undoubtedly the easiest way to get started with the Azure Identity library, but with that convenience comes trade offs:
 - *Debugging challenge*: Not sure what part of the chain created the token
 - *Performance Overhead* : trying multiple credentials instead of directing to your target. 
 
