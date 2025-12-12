@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "6) Identity Platform/Notes.md",
+                "file": "7) App Configuration/Notes.md",
                 "mode": "source",
                 "source": false
               },
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "62fdcff39ed67652",
@@ -173,21 +172,23 @@
   },
   "active": "4f502415db50ae14",
   "lastOpenFiles": [
+    "7) App Configuration/Images/Pasted image 20251212174417.png",
+    "7) App Configuration/Images/Pasted image 20251212174254.png",
+    "7) App Configuration",
+    "7) App Configuration/Images/Pasted image 20251212170344.png",
+    "7) App Configuration/Images",
+    "6) Identity Platform/Notes.md",
+    "7) App Configuration/Notes.md",
     "6) Identity Platform/Images/Pasted image 20251207212258.png",
     "6) Identity Platform/Images/Pasted image 20251207162709.png",
     "6) Identity Platform/Images/Pasted image 20251207162638.png",
     "6) Identity Platform/Images/Pasted image 20251207154032.png",
     "6) Identity Platform/Images/Pasted image 20251207144419.png",
     "6) Identity Platform/Images/Pasted image 20251207014724.png",
-    "6) Identity Platform/Notes.md",
     "6) Identity Platform/Images/Pasted image 20251206181429.png",
     "6) Identity Platform/Images/convergence-scenarios-client-creds.svg",
     "6) Identity Platform/Images/convergence-scenarios-client-creds.svg.crdownload",
-    "6) Identity Platform/Images/convergence-scenarios-native.svg",
-    "6) Identity Platform/Images/access-scenarios.png",
-    "6) Identity Platform/Images/about-microsoft-identity-platform.svg",
     "6) Identity Platform/Images/convergence-scenarios-native.svg.crdownload",
-    "Untitled.md",
     "3) Blob Storage/Notes.md",
     "6) Identity Platform/Images",
     "4) Cosmos/3) Change Feed.md",
@@ -197,12 +198,10 @@
     "4) Cosmos/Untitled",
     "2) Functions/Notes.md",
     "1) App Service/Notes.md",
-    "Images",
     "Untitled 1.md",
     "4) Cosmos/Images",
     "4) Cosmos",
     "3) Blob Storage/Images",
-    "3) Blob Storage",
     "Welcome.md"
   ]
 }
