@@ -1,4 +1,6 @@
 # App Configuration
+
+
 Provides a central configuration that allows to be used multiple resources that aren't secrets.
 
 ```c#
