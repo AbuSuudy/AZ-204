@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "62fdcff39ed67652",
@@ -172,10 +173,10 @@
   },
   "active": "4f502415db50ae14",
   "lastOpenFiles": [
-    "8) API Gateway/Images/Pasted image 20251212175920.png",
-    "8) API Gateway/Images",
     "7) App Configuration/Notes.md",
     "8) API Gateway/Notes.md",
+    "8) API Gateway/Images/Pasted image 20251212175920.png",
+    "8) API Gateway/Images",
     "8) API Gateway",
     "7) App Configuration/Images/Pasted image 20251212174417.png",
     "7) App Configuration/Images/Pasted image 20251212174254.png",
@@ -189,7 +190,6 @@
     "6) Identity Platform/Images/Pasted image 20251207154032.png",
     "6) Identity Platform/Images/Pasted image 20251207144419.png",
     "6) Identity Platform/Images/Pasted image 20251207014724.png",
-    "6) Identity Platform/Images/Pasted image 20251206181429.png",
     "6) Identity Platform/Images/convergence-scenarios-client-creds.svg.crdownload",
     "6) Identity Platform/Images/convergence-scenarios-native.svg.crdownload",
     "3) Blob Storage/Notes.md",
