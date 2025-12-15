@@ -54,6 +54,15 @@ API provider can change the behaviour of an API through configuration Such as :
 </policies>
 ```
 
+API Management enables you to define policies at the following scopes, presented here from broadest to narrowest:
+- Global (all APIs)
+- Workspace (all APIs associated with a selected workspace)
+- Product (all APIs associated with a selected product)
+- API (all operations in an API)
+- Operation (a single operation in an API)
+
+![](Images/Pasted%20image%2020251215012622.png)
+
 If you have a policy at the global level and a policy configured for an API, both policies can be applied whenever that particular API is used. API Management allows for deterministic ordering of combined policy statements via the `base` element. The example the global policy takes policy first in the inbound request 
 
 ```xml
