@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "8) API Gateway/Notes.md",
+                "file": "9) Event Grid/Notes.md",
                 "mode": "source",
                 "source": false
               },
@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "62fdcff39ed67652",
@@ -172,8 +173,14 @@
   },
   "active": "4f502415db50ae14",
   "lastOpenFiles": [
-    "8) API Gateway/Images/Pasted image 20251217232617.png",
+    "9) Event Grid/Images/Pasted image 20251218210240.png",
+    "9) Event Grid/Images/Pasted image 20251218205349.png",
+    "9) Event Grid/Images/Pasted image 20251218203435.png",
+    "9) Event Grid/Images",
     "8) API Gateway/Notes.md",
+    "9) Event Grid/Notes.md",
+    "9) Event Grid",
+    "8) API Gateway/Images/Pasted image 20251217232617.png",
     "8) API Gateway/Images/Pasted image 20251218003736.png",
     "8) API Gateway/Images/Pasted image 20251218003211.png",
     "8) API Gateway/Images/Pasted image 20251218000000.png",
@@ -183,8 +190,6 @@
     "3) Blob Storage/Notes.md",
     "8) API Gateway/Images/Pasted image 20251216204719.png",
     "8) API Gateway/Images/Pasted image 20251215012622.png",
-    "8) API Gateway/Images/Pasted image 20251214221107.png",
-    "8) API Gateway/Images/Pasted image 20251214220047.png",
     "7) App Configuration/Notes.md",
     "8) API Gateway/Images",
     "8) API Gateway",
@@ -197,11 +202,9 @@
     "4) Cosmos/2) SP, UDF, Triggers.md",
     "4) Cosmos/1) Cosmos Architecture.md",
     "6) Identity Platform",
-    "4) Cosmos/Untitled",
     "2) Functions/Notes.md",
     "1) App Service/Notes.md",
     "Untitled 1.md",
-    "4) Cosmos/Images",
     "Welcome.md"
   ]
 }
