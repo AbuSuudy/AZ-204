@@ -1,7 +1,10 @@
 # API Gateway
-Acts as reverse proxy that intercept request and forward them to the correct service and allows for a single point of entry. 
+Acts as reverse proxy that intercept request and forward them to the correct service and allows for a single point of entry. You will configure the downstream services to only allow request that has been initiated by APIM to prevent people going around it.
 
-![](Images/Pasted%20image%2020251212175920.png)
+![](Images/Pasted%20image%2020251216204719.png)
+
+## Regions 
+Depending on the scheme but it could scale out to number of instances also allows for cross region deployment. When you call APIM is will go via azure traffic manager and it will route you to the closest APIM resources. 
 
 ## API Components 
 ![](Images/Pasted%20image%2020251214221107.png)
@@ -76,3 +79,44 @@ If you have a policy at the global level and a policy configured for an API, bot
     </inbound>
 </policies>
 ```
+
+### Multi Region backend 
+You're able to deploy gateway to multiple region. Only the gateway component of your API Management instance is replicated to multiple regions.
+
+![](Images/Pasted%20image%2020251218000000.png)
+
+You can have same application deployed to multi region. You can check what region the user is coming from and then route them to the closest resources. 
+
+With `@` you can use policy expression which uses C#.
+```xml
+<policies>
+    <inbound>
+        <base />
+        <choose>
+            <when condition="@("West US".Equals(context.Deployment.Region, StringComparison.OrdinalIgnoreCase))">
+                <set-backend-service base-url="http://contoso-backend-us.com/" />
+            </when>
+            <when condition="@("East Asia".Equals(context.Deployment.Region, StringComparison.OrdinalIgnoreCase))">
+                <set-backend-service base-url="http://contoso-backend-asia.com/" />
+            </when>
+            <otherwise>
+                <set-backend-service base-url="http://contoso-backend-other.com/" />
+            </otherwise>
+        </choose>
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <outbound>
+        <base />
+    </outbound>
+    <on-error>
+        <base />
+    </on-error>
+</policies>
+```
+
+## Self Hosted Gateway in Subnet
+You could deploy a self hosted gateway to VM on a subnet or on prem whilst using Site to Site VPN. This will allow resources in the subnet, peered or on prem to use it to access resource API'S. The gateway will need to outbound to the internet outside the subnet to get updates on policy from the central API management instance. 
+
+![](Images/Pasted%20image%2020251218003736.png)
