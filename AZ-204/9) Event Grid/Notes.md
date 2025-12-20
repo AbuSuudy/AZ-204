@@ -80,7 +80,7 @@ Where event grid it get a push notification directly from source and causes the 
 
 
 > [!NOTE] 
->  Blobs are scanned in groups of 10,000 at a time with a continuation token used between intervals. If your function app is on the Consumption plan, there can be up to a 10-minute delay in processing new blobs if a function app has gone idle.
+>  Blobs are scanned in groups of 10,000 at a time with a continuation token used between intervals. If your function app is on the Consumption plan, there can be up to a 10-minute delay in processing new blobs if a function app has gone idle. The larger the storage account the longer it will take.
 
 
 ## Native Event Support instead of using Event Grid
