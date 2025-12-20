@@ -1,4 +1,3 @@
-
 # Event Grid
 Event grid is push notification system that can use HTTP and MQTT protocols. Removes the need for constant polling.  Event are sent from the source to the event grid. The event grid is responsible to deliver the messages to the event handlers.
 
@@ -97,12 +96,12 @@ If you have your own application (running in a VM, Container, or even on-premise
 ]
 ```
 
-*Cloud Events schema* which is cloud agnostic way to represent events
+*Cloud Events schema* which is cloud agnostic way to represent events. You could prevent breaking changes by adding versioning of your types if data payload changes. Cloud event C# SDK https://github.com/cloudevents/sdk-csharp
 
 ```json 
 {
   "specversion": "1.0",
-  "type": "com.contoso.order.created",
+  "type": "com.contoso.order.created.v1",
   "source": "/onprem/ordersystem",
   "id": "f4b2c2e1-3c89-4f1a-8c42-0f6a2e5c91d4",
   "time": "2025-03-01T10:15:30Z",
