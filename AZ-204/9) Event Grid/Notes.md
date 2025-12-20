@@ -78,10 +78,8 @@ With the blob trigger the function app will only trigger once the function wakes
 
 Where event grid it get a push notification directly from source and causes the function to wake up and handle the event as it comes in. If low latency is required used event grid. Unless you use plan that never scale to 0 and always has warmed up function ready.
 
-
 > [!NOTE] 
 >  Blobs are scanned in groups of 10,000 at a time with a continuation token used between intervals. If your function app is on the Consumption plan, there can be up to a 10-minute delay in processing new blobs if a function app has gone idle. The larger the storage account the longer it will take.
-
 
 ## Native Event Support instead of using Event Grid
 Some resources have built in integration for event e.g. trigger function app if blob storage changes happen.  Azure uses system topic behind the scenes. 
@@ -89,7 +87,7 @@ Some resources have built in integration for event e.g. trigger function app if 
 If you create event grid topic you can have multiple apps subscribe to that topic and respond to the event from one place. Also could be used to notify another system once function app has finished processing that blob file.
 
 ## Custom Topic
-An Event Grid topic provides an endpoint where the source sends events. Custom event allow applications that are not native to azure to send event. An example would be an application running on prem that will publish events. The event json payload will need to fit in certain schema. 
+An Event Grid topic provides an endpoint where the source sends events. Custom event allow applications that are not native to azure to send event. An example would be an application running on prem that will publish events. The event JSON payload will need to fit in certain schema. 
 
 *Azure Event Grid Schema*
 
@@ -108,6 +106,27 @@ An Event Grid topic provides an endpoint where the source sends events. Custom e
     "dataVersion": "1.0"
   }
 ]
+```
+
+```c#
+using Azure.Messaging.EventGrid;
+
+string eventGridTopic = "";
+string key = "";
+
+EventGridPublisherClient client = new EventGridPublisherClient(
+	new Uri(eventGridTopic),
+	new Azure.AzureKeyCredential(key)
+ );
+
+EventGridEvent egEvent =
+	new EventGridEvent(
+		"ExampleEventSubject",
+		"Example.EventType",
+		"1.0",
+	  new { Data = "Payload", id = Guid.NewGuid() });
+
+await client.SendEventAsync(egEvent);
 ```
 
 *Cloud Events schema* which is cloud agnostic way to represent events. You could prevent breaking changes by adding versioning of your types if data payload changes. 
@@ -129,31 +148,42 @@ An Event Grid topic provides an endpoint where the source sends events. Custom e
 }
 ```
 
-You could generate this json using Cloud event C# SDK https://github.com/cloudevents/sdk-csharp 
+If you want to create event grid topic that accepts Cloud events this is only done on the CLI
+
+```bash
+az eventgrid topic create --name demotopic -l uksouth -g Test --input-schema cloudeventschemav1_0
+```
+
+Minimal example of post cloud event to event grid topic. 
 
 ```c#
-var result = new GameResult
-{
-    PlayerId = "player1",
-    GameId = "game1",
-    Score = 200
-};
+using Azure.Messaging.EventGrid;
+using CloudNative.CloudEvents;
+using Microsoft.Azure.Messaging.EventGrid.CloudNativeCloudEvents;
+
+string eventGridTopic = "";
+string key = "";
+
+EventGridPublisherClient client = new EventGridPublisherClient(
+	new Uri(eventGridTopic),
+	new Azure.AzureKeyCredential(key)
+);
 
 var cloudEvent = new CloudEvent
 {
-    Id = "result-1",
-    Type = "game.played.v1",
-    Source = new Uri("/game", UriKind.Relative),
-    Time = DateTimeOffset.UtcNow,
-    DataContentType = "application/json",
-    Data = result
+	Id = Guid.NewGuid().ToString(),
+	Type = "record",
+	Source = new Uri("http://www.contoso.com"),
+	Data = "data"
 };
 
-var formatter = new JsonEventFormatter();
-
-var request = new HttpRequestMessage
-{
-    Method = HttpMethod.Post,
-    Content = cloudEvent.ToHttpContent(ContentMode.Binary, formatter)
-};
+await client.SendCloudNativeCloudEventAsync(cloudEvent);
 ```
+
+Event grid Topic with storage queue subscription for events to be saved.
+
+![](Images/Pasted%20image%2020251220231756.png)
+
+The storage queue with event
+
+![](Images/Pasted%20image%2020251220231857.png)
