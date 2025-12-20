@@ -7,8 +7,10 @@ Event grid is push notification system that can use HTTP and MQTT protocols. Rem
 - *Event* - What happened 
 - *Event Source* - Where the event took place
 - *Topic* - Where publisher send message to on the event grid. A collection of related events.
-- *Event Subscription* -   Defines how messages from the topic is delivered to the event hander: destination, retries and dead letter queues.
+- *Event Subscription* -  Defines how messages from the topic is delivered to the event hander: destination, retries and dead letter queues.
 - *Event Handler* - The app reacting to the event 
+
+![](Images/Pasted%20image%2020251220003600.png)
 
 ## Event
 Example of event schema sent to event grid. `Subject`, `eventType`, `eventTime` and `Id` are mandatory. 
@@ -41,7 +43,6 @@ Example of event schema sent to event grid. `Subject`, `eventType`, `eventTime` 
 ]
 ```
 
-
 ## MQTT Messaging
 MQTT allows you to use publish-subscribe messaging model. 
 
@@ -52,7 +53,6 @@ Event Grid supports push and pull event delivery by using HTTP. With _push deli
 
 > [!NOTE] 
 > HTTP has both push and pull methods so can be more flexiable than MQTT
-
 
 ![](Images/Pasted%20image%2020251218210240.png)
 
@@ -67,3 +67,51 @@ Event Grid supports push and pull event delivery by using HTTP. With _push deli
 ### Push
 - You want to avoid constant polling to determine that a system state change occurred.
 
+## Event Grid vs Blob Trigger
+If functions apps scale to zero it will need to wake and poll the blob storage and can take up to 10 min, but with event grid you get event as soon as it happens. 
+
+## Native Event Support instead of using Event Grid
+Some resources have built in integration for event e.g. trigger function app if blob storage changes happen.  Azure uses system topic behind the scenes. 
+
+If you create event grid topic you can have multiple apps subscribe to that topic and respond to the event from one place. Also could be used to notify another system once function app has finished processing that blob file.
+
+## Custom Topic
+If you have your own application (running in a VM, Container, or even on-premises) and you want it to notify other systems when something happen. You will need to make a  http post to customer topic. The JSON payload will need to follow one of these formats 
+
+*Azure Event Grid Schema*
+
+```json
+[
+  {
+    "id": "12345",
+    "eventType": "OrderCreated",
+    "subject": "orders/customer-99",
+    "eventTime": "2025-12-20T10:00:00Z",
+    "data": {
+      "orderId": "abc-123",
+      "amount": 49.99,
+      "currency": "USD"
+    },
+    "dataVersion": "1.0"
+  }
+]
+```
+
+*Cloud Events schema* which is cloud agnostic way to represent events
+
+```json 
+{
+  "specversion": "1.0",
+  "type": "com.contoso.order.created",
+  "source": "/onprem/ordersystem",
+  "id": "f4b2c2e1-3c89-4f1a-8c42-0f6a2e5c91d4",
+  "time": "2025-03-01T10:15:30Z",
+  "datacontenttype": "application/json",
+  "subject": "order/12345",
+  "data": {
+    "orderId": "12345",
+    "customerId": "C001",
+    "total": 250.75
+  }
+}
+```
