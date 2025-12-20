@@ -1,5 +1,5 @@
 # Event Grid
-Event grid is push notification system that can use HTTP and MQTT protocols. Removes the need for constant polling.  Event are sent from the source to the event grid. The event grid is responsible to deliver the messages to the event handlers.
+Event grid is push notification system that can use HTTP and MQTT protocols. Removes the need for constant polling. Event are sent from the source to the event grid. The event grid is responsible to deliver the messages to the event handlers.
 
 ![](Images/Pasted%20image%2020251218203435.png)
 
@@ -67,7 +67,21 @@ Event Grid supports push and pull event delivery by using HTTP. With _push deli
 - You want to avoid constant polling to determine that a system state change occurred.
 
 ## Event Grid vs Blob Trigger
-If functions apps scale to zero it will need to wake and poll the blob storage and can take up to 10 min, but with event grid you get event as soon as it happens. 
+For a function app there are two binding related to blob storage update. One used event grid and other uses blob trigger.
+
+```c#
+ [BlobTrigger("test-samples-trigger/{name}")]
+ [EventGridTrigger] MyEventType input
+```
+
+With the blob trigger the function app will only trigger once the function wakes up and polls the blob storage account which can take up to 10 min.
+
+Where event grid it get a push notification directly from source and causes the function to wake up and handle the event as it comes in. If low latency is required used event grid. Unless you use plan that never scale to 0 and always has warmed up function ready.
+
+
+> [!NOTE] 
+>  Blobs are scanned in groups of 10,000 at a time with a continuation token used between intervals. If your function app is on the Consumption plan, there can be up to a 10-minute delay in processing new blobs if a function app has gone idle.
+
 
 ## Native Event Support instead of using Event Grid
 Some resources have built in integration for event e.g. trigger function app if blob storage changes happen.  Azure uses system topic behind the scenes. 
@@ -75,7 +89,7 @@ Some resources have built in integration for event e.g. trigger function app if 
 If you create event grid topic you can have multiple apps subscribe to that topic and respond to the event from one place. Also could be used to notify another system once function app has finished processing that blob file.
 
 ## Custom Topic
-If you have your own application (running in a VM, Container, or even on-premises) and you want it to notify other systems when something happen. You will need to make a  http post to customer topic. The JSON payload will need to follow one of these formats 
+An Event Grid topic provides an endpoint where the source sends events. Custom event allow applications that are not native to azure to send event. An example would be an application running on prem that will publish events. The event json payload will need to fit in certain schema. 
 
 *Azure Event Grid Schema*
 
@@ -96,7 +110,7 @@ If you have your own application (running in a VM, Container, or even on-premise
 ]
 ```
 
-*Cloud Events schema* which is cloud agnostic way to represent events. You could prevent breaking changes by adding versioning of your types if data payload changes. Cloud event C# SDK https://github.com/cloudevents/sdk-csharp
+*Cloud Events schema* which is cloud agnostic way to represent events. You could prevent breaking changes by adding versioning of your types if data payload changes. 
 
 ```json 
 {
@@ -113,4 +127,33 @@ If you have your own application (running in a VM, Container, or even on-premise
     "total": 250.75
   }
 }
+```
+
+You could generate this json using Cloud event C# SDK https://github.com/cloudevents/sdk-csharp 
+
+```c#
+var result = new GameResult
+{
+    PlayerId = "player1",
+    GameId = "game1",
+    Score = 200
+};
+
+var cloudEvent = new CloudEvent
+{
+    Id = "result-1",
+    Type = "game.played.v1",
+    Source = new Uri("/game", UriKind.Relative),
+    Time = DateTimeOffset.UtcNow,
+    DataContentType = "application/json",
+    Data = result
+};
+
+var formatter = new JsonEventFormatter();
+
+var request = new HttpRequestMessage
+{
+    Method = HttpMethod.Post,
+    Content = cloudEvent.ToHttpContent(ContentMode.Binary, formatter)
+};
 ```
