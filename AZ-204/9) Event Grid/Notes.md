@@ -11,6 +11,11 @@ Event grid is push notification system that can use HTTP and MQTT protocols. Rem
 
 ![](Images/Pasted%20image%2020251220003600.png)
 
+## System Topic vs Custom Topic
+**System topic** in Event Grid represents one or more **events published by Azure services**
+
+**Custom topics** provides an endpoint publish event from 3rd party application e.g. software running in azure vm/ application running on prem.
+
 ## Event
 Example of event schema sent to event grid. `Subject`, `eventType`, `eventTime` and `Id` are mandatory. 
 
@@ -56,7 +61,7 @@ Event Grid supports push and pull event delivery by using HTTP. With _push deli
 ![](Images/Pasted%20image%2020251218210240.png)
 
 ## Delivery
-*Push* uses exponential back off and if the messages isn't delivered in 24 hours it's deleted or could be configured to add to a storage account that can act as dead letter. If you use *pull* delivery, your application has full control over event consumption.
+*Push* uses exponential back off and if the messages isn't delivered in 24 hours it's deleted or could be configured to add to a storage account that can act as dead letter. If you use *pull* delivery, your application has full control over the rate of consumption.
 
 ## Push vs Pull
 ### Pull
@@ -74,20 +79,17 @@ For a function app there are two binding related to blob storage update. One use
  [EventGridTrigger] MyEventType input
 ```
 
-With the blob trigger the function app will only trigger once the function wakes up and polls the blob storage account which can take up to 10 min.
-
-Where event grid it get a push notification directly from source and causes the function to wake up and handle the event as it comes in. If low latency is required used event grid. Unless you use plan that never scale to 0 and always has warmed up function ready.
-
 > [!NOTE] 
->  Blobs are scanned in groups of 10,000 at a time with a continuation token used between intervals. If your function app is on the Consumption plan, there can be up to a 10-minute delay in processing new blobs if a function app has gone idle. The larger the storage account the longer it will take.
+>  When using `BlobTrigger` blobs are scanned in groups of 10,000 at a time with a continuation token used between intervals. If your function app is on the Consumption plan, there can be up to a 10-minute delay in processing new blobs if a function app has gone idle. The larger the storage account the longer it will take.
 
-## Native Event Support instead of using Event Grid
-Some resources have built in integration for event e.g. trigger function app if blob storage changes happen.  Azure uses system topic behind the scenes. 
+When you use event grid the event get pushed to the function app and causes it to wake up and process the data as it comes it. If low latency is critical you should be using event grid.
 
-If you create event grid topic you can have multiple apps subscribe to that topic and respond to the event from one place. Also could be used to notify another system once function app has finished processing that blob file.
+## Native Event Support Resources
+Some resources have built in integration for event e.g. trigger function app if blob storage changes happen. This done on the event tab. It uses system event topic behind the scenes. 
 
-## Custom Topic
-An Event Grid topic provides an endpoint where the source sends events. Custom event allow applications that are not native to azure to send event. An example would be an application running on prem that will publish events. The event JSON payload will need to fit in certain schema. 
+If you create a event grid topic resource you can have multiple apps subscribe to that topic and respond to the event in one place. 
+
+## Posting Events
 
 *Azure Event Grid Schema*
 
@@ -148,7 +150,7 @@ await client.SendEventAsync(egEvent);
 }
 ```
 
-If you want to create event grid topic that accepts Cloud events this is only done on the CLI
+You will need to use CLI to  create event grid topic that accepts Cloud Event JSON schema 
 
 ```bash
 az eventgrid topic create --name demotopic -l uksouth -g Test --input-schema cloudeventschemav1_0
