@@ -12,9 +12,9 @@ Event grid is push notification system that can use HTTP and MQTT protocols. Rem
 ![](Images/Pasted%20image%2020251220003600.png)
 
 ## System Topic vs Custom Topic
-**System topic** in Event Grid represents one or more **events published by Azure services**
+*System Topic* in Event Grid represents one or more events published by Azure services
 
-**Custom topics** provides an endpoint publish event from 3rd party application e.g. software running in azure vm/ application running on prem.
+*Custom Topic* provides an endpoint publish event from 3rd party application e.g. software running in azure vm/ application running on prem.
 
 ## Event
 Example of event schema sent to event grid. `Subject`, `eventType`, `eventTime` and `Id` are mandatory. 
@@ -91,21 +91,21 @@ If you create a event grid topic resource you can have multiple apps subscribe t
 
 ## Posting Events
 
-*Azure Event Grid Schema*
+*Azure Event Grid Schema* - `Subject`, `eventType`, `eventTime` , `Data` are the only required fields.
 
 ```json
 [
   {
-    "id": "12345",
-    "eventType": "OrderCreated",
-    "subject": "orders/customer-99",
-    "eventTime": "2025-12-20T10:00:00Z",
-    "data": {
-      "orderId": "abc-123",
-      "amount": 49.99,
-      "currency": "USD"
+    "topic": string,
+    "subject": string,
+    "id": string,
+    "eventType": string,
+    "eventTime": string,
+    "data":{
+      object-unique-to-each-publisher
     },
-    "dataVersion": "1.0"
+    "dataVersion": string,
+    "metadataVersion": string
   }
 ]
 ```
@@ -133,12 +133,14 @@ await client.SendEventAsync(egEvent);
 
 *Cloud Events schema* which is cloud agnostic way to represent events. You could prevent breaking changes by adding versioning of your types if data payload changes. 
 
+Required fields: `id`,`Souce`, `specversion` and `type`
+
 ```json 
 {
   "specversion": "1.0",
+  "id": "f4b2c2e1-3c89-4f1a-8c42-0f6a2e5c91d4",
   "type": "com.contoso.order.created.v1",
   "source": "/onprem/ordersystem",
-  "id": "f4b2c2e1-3c89-4f1a-8c42-0f6a2e5c91d4",
   "time": "2025-03-01T10:15:30Z",
   "datacontenttype": "application/json",
   "subject": "order/12345",
@@ -174,8 +176,8 @@ EventGridPublisherClient client = new EventGridPublisherClient(
 var cloudEvent = new CloudEvent
 {
 	Id = Guid.NewGuid().ToString(),
-	Type = "record",
 	Source = new Uri("http://www.contoso.com"),
+	Type = "record",
 	Data = "data"
 };
 
