@@ -90,7 +90,6 @@ Some resources have built in integration for event e.g. trigger function app if 
 If you create a event grid topic resource you can have multiple apps subscribe to that topic and respond to the event in one place. 
 
 ## Posting Events
-
 *Azure Event Grid Schema* - `Subject`, `eventType`, `eventTime` , `Data` are the only required fields.
 
 ```json
@@ -113,22 +112,25 @@ If you create a event grid topic resource you can have multiple apps subscribe t
 ```c#
 using Azure.Messaging.EventGrid;
 
-string eventGridTopic = "";
-string key = "";
-
-EventGridPublisherClient client = new EventGridPublisherClient(
-	new Uri(eventGridTopic),
-	new Azure.AzureKeyCredential(key)
- );
-
-EventGridEvent egEvent =
-	new EventGridEvent(
-		"ExampleEventSubject",
-		"Example.EventType",
-		"1.0",
-	  new { Data = "Payload", id = Guid.NewGuid() });
-
-await client.SendEventAsync(egEvent);
+public static async Task PostEventGridSchema()
+{
+	string eventGridTopic = "";
+	string key = "";
+	
+	EventGridPublisherClient client = new EventGridPublisherClient(
+		new Uri(eventGridTopic),
+		new Azure.AzureKeyCredential(key)
+	 );
+	 
+	EventGridEvent eventObj = new EventGridEvent(
+		subject: "ExampleEventSubject",
+		eventType: "Example.EventType",
+		dataVersion: "1.0",
+		data: new { Data = "Payload", id = Guid.NewGuid() }
+	 );
+	 
+	await client.SendEventAsync(eventObj);
+}
 ```
 
 *Cloud Events schema* which is cloud agnostic way to represent events. You could prevent breaking changes by adding versioning of your types if data payload changes. 
@@ -165,23 +167,28 @@ using Azure.Messaging.EventGrid;
 using CloudNative.CloudEvents;
 using Microsoft.Azure.Messaging.EventGrid.CloudNativeCloudEvents;
 
-string eventGridTopic = "";
-string key = "";
-
-EventGridPublisherClient client = new EventGridPublisherClient(
-	new Uri(eventGridTopic),
-	new Azure.AzureKeyCredential(key)
-);
-
-var cloudEvent = new CloudEvent
+public static async Task PostCloudEventSchema()
 {
-	Id = Guid.NewGuid().ToString(),
-	Source = new Uri("http://www.contoso.com"),
-	Type = "record",
-	Data = "data"
-};
+	string eventGridTopic = "";
+	string key = "";
 
-await client.SendCloudNativeCloudEventAsync(cloudEvent);
+	EventGridPublisherClient client = new EventGridPublisherClient(
+		new Uri(eventGridTopic),
+		new Azure.AzureKeyCredential(key)
+	);
+
+	//Required: Id, source, specVersion, type
+	//SpecVersion is read only and default to v1 since it's
+	//only one version of the Cloud Event Spec.
+	var cloudEvent = new CloudEvent
+	{
+		Id = Guid.NewGuid().ToString(),
+		Source = new Uri("http://www.contoso.com"),
+		Type = "Event.v1"
+	};
+
+	await client.SendCloudNativeCloudEventAsync(cloudEvent);
+}
 ```
 
 Event grid Topic with storage queue subscription for events to be saved.
