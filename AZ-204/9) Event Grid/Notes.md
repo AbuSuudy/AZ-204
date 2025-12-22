@@ -12,40 +12,22 @@ Event grid is push notification system that can use HTTP and MQTT protocols. Rem
 ![](Images/Pasted%20image%2020251220003600.png)
 
 ## System Topic vs Custom Topic
-*System Topic* in Event Grid represents one or more events published by Azure services
+*System Topic* in Event Grid represents one or more events published by Azure services.
 
 *Custom Topic* provides an endpoint publish event from 3rd party application e.g. software running in azure vm/ application running on prem.
 
-## Event
-Example of event schema sent to event grid. `Subject`, `eventType`, `eventTime` and `Id` are mandatory. 
+## Event Grid Trigger vs Blob Trigger
+For a function app there are two binding related to blob storage update. One used event grid and other uses blob trigger.
 
-```json
-[
-  {
-    "topic": "/subscriptions/providers/Microsoft.Storage/storageAccounts/mystorage",
-    "subject": "/blobServices/default/containers/images/blobs/vacation.jpg",
-    "eventType": "Microsoft.Storage.BlobCreated",
-    "eventTime": "2025-12-18T21:41:38.123456Z",
-    "id": "831e1144-7777-4444-8888-32038531135d",
-    "data": {
-      "api": "PutBlob",
-      "clientRequestId": "6d79dbfb-0e37-4144-904c-7c0c32688000",
-      "requestId": "fb37e000-0001-001f-6500-111111110000",
-      "eTag": "0x8D4BCC2E4835300",
-      "contentType": "image/jpeg",
-      "contentLength": 45812,
-      "blobType": "BlockBlob",
-      "url": "https://mystorage.blob.core.windows.net/images/vacation.jpg",
-      "sequencer": "000000000000000000000000000001D300000000000001a1",
-      "storageDiagnostics": {
-        "batchId": "68147a00-0001-0011-0333-555555555555"
-      }
-    },
-    "dataVersion": "2",
-    "metadataVersion": "1"
-  }
-]
+```c#
+ [BlobTrigger("test-samples-trigger/{name}")]
+ [EventGridTrigger] MyEventType input
 ```
+
+> [!NOTE] 
+>  When using `BlobTrigger` blobs are scanned in groups of 10,000 at a time with a continuation token used between intervals. If your function app is on the Consumption plan, there can be up to a 10-minute delay in processing new blobs if a function app has gone idle. The larger the storage account the longer it will take.
+
+When you use event grid the event get pushed to the function app and causes it to wake up and process the data as it comes it. If low latency is critical you should be using event grid.
 
 ## MQTT Messaging
 MQTT allows you to use publish-subscribe messaging model. 
@@ -71,42 +53,29 @@ Event Grid supports push and pull event delivery by using HTTP. With _push deli
 ### Push
 - You want to avoid constant polling to determine that a system state change occurred.
 
-## Event Grid vs Blob Trigger
-For a function app there are two binding related to blob storage update. One used event grid and other uses blob trigger.
-
-```c#
- [BlobTrigger("test-samples-trigger/{name}")]
- [EventGridTrigger] MyEventType input
-```
-
-> [!NOTE] 
->  When using `BlobTrigger` blobs are scanned in groups of 10,000 at a time with a continuation token used between intervals. If your function app is on the Consumption plan, there can be up to a 10-minute delay in processing new blobs if a function app has gone idle. The larger the storage account the longer it will take.
-
-When you use event grid the event get pushed to the function app and causes it to wake up and process the data as it comes it. If low latency is critical you should be using event grid.
-
 ## Native Event Support Resources
 Some resources have built in integration for event e.g. trigger function app if blob storage changes happen. This done on the event tab. It uses system event topic behind the scenes. 
 
 If you create a event grid topic resource you can have multiple apps subscribe to that topic and respond to the event in one place. 
 
-## Posting Events
+![](Images/Pasted%20image%2020251222213537.png)
+
+## Posting Events to Custom Topic
 *Azure Event Grid Schema* - `Subject`, `eventType`, `eventTime` , `Data` are the only required fields.
 
 ```json
-[
-  {
-    "topic": string,
-    "subject": string,
-    "id": string,
-    "eventType": string,
-    "eventTime": string,
-    "data":{
-      object-unique-to-each-publisher
-    },
-    "dataVersion": string,
-    "metadataVersion": string
-  }
-]
+{
+	"topic": string,
+	"subject": string,
+	"id": string,
+	"eventType": string,
+	"eventTime": string,
+	"data":{
+	  object-unique-to-each-publisher
+	},
+	"dataVersion": string,
+	"metadataVersion": string
+}
 ```
 
 ```c#
@@ -139,18 +108,15 @@ Required fields: `id`,`Souce`, `specversion` and `type`
 
 ```json 
 {
-  "specversion": "1.0",
-  "id": "f4b2c2e1-3c89-4f1a-8c42-0f6a2e5c91d4",
-  "type": "com.contoso.order.created.v1",
-  "source": "/onprem/ordersystem",
-  "time": "2025-03-01T10:15:30Z",
-  "datacontenttype": "application/json",
-  "subject": "order/12345",
-  "data": {
-    "orderId": "12345",
-    "customerId": "C001",
-    "total": 250.75
-  }
+    "specversion": string,
+    "type": string,  
+    "source": string,
+    "id": string,
+    "time": string,
+    "subject": string,    
+	"data":{
+	  object-unique-to-each-publisher
+	}
 }
 ```
 
@@ -171,12 +137,12 @@ public static async Task PostCloudEventSchema()
 {
 	string eventGridTopic = "";
 	string key = "";
-
+	
 	EventGridPublisherClient client = new EventGridPublisherClient(
 		new Uri(eventGridTopic),
 		new Azure.AzureKeyCredential(key)
 	);
-
+	
 	//Required: Id, source, specVersion, type
 	//SpecVersion is read only and default to v1 since it's
 	//only one version of the Cloud Event Spec.
@@ -186,7 +152,7 @@ public static async Task PostCloudEventSchema()
 		Source = new Uri("http://www.contoso.com"),
 		Type = "Event.v1"
 	};
-
+	
 	await client.SendCloudNativeCloudEventAsync(cloudEvent);
 }
 ```
