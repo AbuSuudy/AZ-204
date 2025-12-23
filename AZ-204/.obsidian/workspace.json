@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "9) Event Grid/Notes.md",
+                "file": "10) Event Hub/Notes.md",
                 "mode": "source",
                 "source": false
               },
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "62fdcff39ed67652",
@@ -173,19 +172,22 @@
   },
   "active": "4f502415db50ae14",
   "lastOpenFiles": [
+    "10) Event Hub/Images/Pasted image 20251223234520.png",
+    "10) Event Hub/Images/Pasted image 20251223234322.png",
+    "10) Event Hub/Images/Pasted image 20251223231931.png",
+    "10) Event Hub/Images/Pasted image 20251223231729.png",
+    "10) Event Hub/Images/Pasted image 20251223231507.png",
+    "10) Event Hub/Images",
+    "9) Event Grid/Notes.md",
+    "10) Event Hub/Notes.md",
+    "10) Event Hub",
     "9) Event Grid/Images/Pasted image 20251222213537.png",
     "6) Identity Platform/Notes.md",
     "9) Event Grid/Images/Pasted image 20251220231857.png",
     "9) Event Grid/Images/Pasted image 20251220231756.png",
-    "9) Event Grid/Notes.md",
     "9) Event Grid/Images/Pasted image 20251220003600.png",
     "9) Event Grid/Images/Pasted image 20251220003415.png",
     "9) Event Grid/Images/Pasted image 20251219230311.png",
-    "9) Event Grid/Images/Pasted image 20251219221350.png",
-    "9) Event Grid/Images/Pasted image 20251219221008.png",
-    "9) Event Grid/Images/Pasted image 20251218210240.png",
-    "9) Event Grid/Images/Pasted image 20251218205349.png",
-    "9) Event Grid/Images/Pasted image 20251218203435.png",
     "9) Event Grid/Images",
     "8) API Gateway/Notes.md",
     "9) Event Grid",
@@ -197,11 +199,9 @@
     "7) App Configuration/Images",
     "6) Identity Platform/Images/convergence-scenarios-client-creds.svg.crdownload",
     "6) Identity Platform/Images/convergence-scenarios-native.svg.crdownload",
-    "6) Identity Platform/Images",
     "4) Cosmos/3) Change Feed.md",
     "4) Cosmos/2) SP, UDF, Triggers.md",
     "4) Cosmos/1) Cosmos Architecture.md",
-    "6) Identity Platform",
     "2) Functions/Notes.md",
     "1) App Service/Notes.md",
     "Untitled 1.md",
