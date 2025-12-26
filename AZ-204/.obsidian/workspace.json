@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "62fdcff39ed67652",
@@ -172,6 +173,9 @@
   },
   "active": "4f502415db50ae14",
   "lastOpenFiles": [
+    "10) Event Hub/Images/Pasted image 20251226001606.png",
+    "10) Event Hub/Images/Pasted image 20251225235921.png",
+    "10) Event Hub/Images/Pasted image 20251225233210.png",
     "10) Event Hub/Images/Pasted image 20251225184053.png",
     "10) Event Hub/Images/Pasted image 20251225183736.png",
     "10) Event Hub/Images/Pasted image 20251225180549.png",
@@ -180,8 +184,6 @@
     "10) Event Hub/Images/Pasted image 20251224235524.png",
     "10) Event Hub/Images/Pasted image 20251224222427.png",
     "10) Event Hub/Images/Pasted image 20251224221922.png",
-    "10) Event Hub/Images/Pasted image 20251224220422.png",
-    "10) Event Hub/Images/Pasted image 20251224111958.png",
     "9) Event Grid/Notes.md",
     "8) API Gateway/Notes.md",
     "7) App Configuration/Notes.md",
@@ -193,7 +195,6 @@
     "2) Functions/Notes.md",
     "1) App Service/Notes.md",
     "10) Event Hub/Notes.md",
-    "10) Event Hub/Images/Pasted image 20251223234520.png",
     "10) Event Hub/Images",
     "10) Event Hub",
     "9) Event Grid/Images",
