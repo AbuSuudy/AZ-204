@@ -1,9 +1,6 @@
 ## Event Hub
 
-Articles:
-- https://learn.microsoft.com/en-us/azure/event-hubs/event-processor-balance-partition-load#consumer-application
-
-Azure Event Hubs is a scalable event processing service that ingests and processes large volumes of events and data, with low latency and high reliability
+Azure Event Hubs is a scalable event processing service that ingests and processes large volumes of events and data, with low latency and high reliability.
 ## Anatomy of the Event Hub
 
 ![](Images/Pasted%20image%2020251225184053.png)
@@ -42,7 +39,20 @@ Checkpointing Is a process by which consumer marks their position within a parti
 
 If a reader disconnects from a partition, when it reconnects it begins reading at the checkpoint that was previously submitted by the last reader of that partition in that consumer group.
 
+Users should decide the frequency of updating the checkpoint. Updating after each successfully processed event can have performance and cost implications as it triggers a write operation to the underlying checkpoint store. Also, checkpointing every single event is indicative of a queued messaging pattern for which a Service Bus queue might be a better option than an event hub. The idea behind Event Hubs is that you get "at least once" delivery at great scale.
+
 ![400](Images/Pasted%20image%2020251224222427.png)
+
+### Guidance to use Azure Blob Storage as a checkpoint
+- Use a separate container for each consumer group.
+- Don't use the storage account for anything else.
+- Don't use the container for anything else
+- Create the storage account in the same region
+
+Disable this functionality: 
+- Hierarchical namespace
+- Blob soft delete
+- Versioning
 
 ```
 Blob Container
@@ -50,6 +60,25 @@ Blob Container
       └── PartitionId/
            └── checkpoint.json (offset, sequence number)
 ```
+## Balance Partition Load between Consumers 
+The key to scale for Event Hubs is the idea of *partitioned consumer.* In contrast to the competing consumers pattern.
+
+*Competing consumers* - You have multiple consumers (workers) reading from the same queue or subscription. Each consumer competes for messages.  Partitioned consumer are pinned to reading one or many partitions. 
+
+![](Images/Pasted%20image%2020251227161722.png)
+
+When you design a consumer in a distributed environment, the scenario must handle the following requirements:
+
+1) **Scale:** Create multiple consumers, with each consumer taking ownership of reading from a few Event Hubs partitions.
+2) **Load balance:** Increase or reduce the consumers dynamically
+3) **Seamless resume on failures:** If a consumer (**consumer A**) fails, then other consumers can pick up the partitions owned by another consumer and pick up where it left off.
+
+### Event Processor Client 
+*EventProcessorClient*  is intended to provide a robust experience for processing events. Ownership of partitions is evenly distributed among all the active event processor instances within the consumer group. 
+
+An event processor client instance typically owns and processes events from one or more partitions.  
+
+All event processor instances communicate with this store periodically to update its own processing state and to learn about other active instances. This data is then used to balance the load among the active processors. Change ownership of failed consumers. 
 ## Event Retention 
 You can't explicitly delete events. Published events are removed from an event hub based on a configurable, timed-based retention policy. Events are automatically removed when the retention period has been reached. 
 
