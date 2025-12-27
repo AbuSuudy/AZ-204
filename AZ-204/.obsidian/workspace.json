@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "10) Event Hub/Notes.md",
+                "file": "11) Message Queues/Queue Storage.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Notes"
+              "title": "Queue Storage"
             }
           }
         ]
@@ -172,8 +172,12 @@
   },
   "active": "840fdbf210fd84f1",
   "lastOpenFiles": [
-    "Untitled.md",
+    "11) Message Queues/Service Bus.md",
+    "11) Message Queues/Queue Storage.md",
     "10) Event Hub/Notes.md",
+    "11) Message Queues",
+    "6) Identity Platform/Notes.md",
+    "Untitled.md",
     "10) Event Hub/Images/Pasted image 20251227161722.png",
     "10) Event Hub/Images/Pasted image 20251226001606.png",
     "10) Event Hub/Images/Pasted image 20251225235921.png",
@@ -187,7 +191,6 @@
     "9) Event Grid/Notes.md",
     "8) API Gateway/Notes.md",
     "7) App Configuration/Notes.md",
-    "6) Identity Platform/Notes.md",
     "4) Cosmos/1) Cosmos Architecture.md",
     "4) Cosmos/3) Change Feed.md",
     "4) Cosmos/2) SP, UDF, Triggers.md",
@@ -203,7 +206,6 @@
     "7) App Configuration",
     "7) App Configuration/Images",
     "6) Identity Platform/Images/convergence-scenarios-client-creds.svg.crdownload",
-    "6) Identity Platform/Images/convergence-scenarios-native.svg.crdownload",
     "Untitled 1.md",
     "Welcome.md"
   ]

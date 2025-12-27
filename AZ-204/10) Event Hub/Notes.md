@@ -1,4 +1,4 @@
-## Event Hub
+# Event Hub
 
 Azure Event Hubs is a scalable event processing service that ingests and processes large volumes of events and data, with low latency and high reliability.
 ## Anatomy of the Event Hub
@@ -78,7 +78,7 @@ When you design a consumer in a distributed environment, the scenario must handl
 
 An event processor client instance typically owns and processes events from one or more partitions.  
 
-All event processor instances communicate with this store periodically to update its own processing state and to learn about other active instances. This data is then used to balance the load among the active processors. Change ownership of failed consumers. 
+All event processor instances communicate with a central store periodically to update its own processing state and to learn about other active instances. This data is then used to balance the load among the active processors. Change ownership of failed consumers. 
 ## Event Retention 
 You can't explicitly delete events. Published events are removed from an event hub based on a configurable, timed-based retention policy. Events are automatically removed when the retention period has been reached. 
 
