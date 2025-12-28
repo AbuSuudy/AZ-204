@@ -28,9 +28,7 @@ Subscribers can define which messages they want to receive from a topic:
 ## Dead Letter Queue
 Service Bus queues and topic subscriptions provide a secondary sub queue, called a dead-letter queue (DLQ). The dead letter queue holds messages that can't be delivered to any receiver, or messages that can't be processed.
 ## Duplicate Deletion 
-If any new message is sent with `MessageId` that was logged during the time window, the message is reported as accepted, but the newly sent message is instantly ignored and dropped. 
-
-The time window defaults to 10 minutes for queues and topics, with a minimum value of 20 seconds and a maximum value of 7 days.
+If any new message is sent with `MessageId` that was logged during the time window, the message is reported as accepted, but the newly sent message is instantly ignored and dropped.   The time window defaults to 10 minutes for queues and topics, with a minimum value of 20 seconds and a maximum value of 7 days.
 
 ![](Images/Pasted%20image%2020251228160524.png)
 ## Transaction 
@@ -52,21 +50,39 @@ using (var ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
     ts.Complete();
 }
 ```
-
 ## Message Deferral 
-If you read message in service bus but due to some reason down stream it can't be processed yet you can mark the messages as deferred. Only if you've read it from the service bus. It can't be posted as deferred straight away 
+If you read message in service bus but due to some reason you're not ready to process it e.g. if an orders payment hasn't been processed yet before processing the shipping message.  You can defer the message.  Deferred messages aren't expired and automatically moved to a dead-letter queue until a client app attempts to receive them using an API and the sequence number.
+
+For this processed it's the owner is responsible for remembering the **sequence number
 
 ```c#
-//Save seq number for later use to retieve
-long seq = message.SequenceNumber;
+ServiceBusReceivedMessage message = await receiver.ReceiveMessageAsync();
 
-await receiver.DeferMessageAsync(message);
+if(ready == false)
+{
+	await receiver.DeferMessageAsync(message);
+	
+	//Save Seq number to blob store to retrieve later
+	long seq = message.SequenceNumber;
+}
 ```
 
-Deferred messages aren't expired and automatically moved to a dead-letter queue until a client app attempts to receive them using an API and the sequence number.  To retrieve a deferred message, its owner is responsible for remembering the **sequence number** as it defers it. 
+Get Message using sequence number from blob storage. There could be an azure function that reads deferred message and try and process it based on a timer.
 
 ```c#
-var deferred = await receiver.ReceiveDeferredMessageAsync(seq);
+//Retrieve seq from blob storage
+ServiceBusReceivedMessage deferredMessage =
+    await receiver.ReceiveDeferredMessageAsync(seq);
+  
+// if it's still not ready you can add back in the deffer 
+if(ready == false)
+{
+	await receiver.DeferMessageAsync(message);
+	
+	//Save Seq number to blob store to retrieve later
+	long seq = message.SequenceNumber;
+}  
+
 ```
 ## Auto Forwarding
 Auto‑forwarding allows you to chain a queue or subscription (the source) to another queue or topic (the destination) within the same namespace. 

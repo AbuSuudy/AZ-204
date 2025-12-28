@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "62fdcff39ed67652",
@@ -173,6 +172,9 @@
   },
   "active": "840fdbf210fd84f1",
   "lastOpenFiles": [
+    "10) Event Hub/Notes.md",
+    "11) Message Queues/Service Bus.md",
+    "7) App Configuration/Notes.md",
     "11) Message Queues/Images/Pasted image 20251228160524.png",
     "11) Message Queues/Images/Pasted image 20251228160419.png",
     "11) Message Queues/Images/Pasted image 20251228150408.png",
@@ -183,17 +185,13 @@
     "11) Message Queues/Images/Pasted image 20251228132124.png",
     "11) Message Queues/Images",
     "11) Message Queues/Queue Storage.md",
-    "11) Message Queues/Service Bus.md",
-    "10) Event Hub/Notes.md",
     "11) Message Queues",
     "6) Identity Platform/Notes.md",
     "Untitled.md",
     "10) Event Hub/Images/Pasted image 20251227161722.png",
     "10) Event Hub/Images/Pasted image 20251226001606.png",
-    "10) Event Hub/Images/Pasted image 20251225235921.png",
     "9) Event Grid/Notes.md",
     "8) API Gateway/Notes.md",
-    "7) App Configuration/Notes.md",
     "4) Cosmos/1) Cosmos Architecture.md",
     "4) Cosmos/3) Change Feed.md",
     "4) Cosmos/2) SP, UDF, Triggers.md",
