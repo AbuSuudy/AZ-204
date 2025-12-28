@@ -8,6 +8,9 @@ Messages are delivered in **pull** mode, only delivering messages when request
 - *Topics and Subscriptions*: Routes the same messages to multiple locations 
 - *Decouple Application*: so messages could be processed if consumer is back online.
 - *Transactions*: allow a chain of actions to takes place. Once a message has been processed by consumer on a queue. It could be placed onto another queue to for another consumer to execute a separate set of tasks.
+- *FIFO* - guarantee 
+## Protocol 
+The primary wire protocol for Service Bus is Advanced Messaging Queueing Protocol (AMQP) 1.0. Similar to what event hub uses on the consumer end. Also uses the same protocol is shared by on-premises brokers such as ActiveMQ or RabbitMQ.
 ## Queue 
 Messages are sent to and received from **queues**. Queues store messages until the receiving application is available to receive and process them.
 
@@ -17,8 +20,58 @@ Publishers send messages to a topic in the same way that they send messages to a
 
 *Subscriptions* are durable by default, but can be configured to expire and then be automatically deleted. You can have rules on each subscription that filter messages that are received in each topic  and an optional **action** that can modify message metadata.
 
-![](Images/Pasted%20image%2020251228140519.png)
+![](Images/Pasted%20image%2020251228150408.png)
+## Filter and Actions
+Subscribers can define which messages they want to receive from a topic:
+- *Filters* - are conditions that allow certain messages through
+- *Actions* - Allows you to add information to an existing message before it enters the subscription queue.  
+## Dead Letter Queue
+Service Bus queues and topic subscriptions provide a secondary sub queue, called a dead-letter queue (DLQ). The dead letter queue holds messages that can't be delivered to any receiver, or messages that can't be processed.
+## Duplicate Deletion 
+If any new message is sent with `MessageId` that was logged during the time window, the message is reported as accepted, but the newly sent message is instantly ignored and dropped. 
 
-https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview#namespaces
+The time window defaults to 10 minutes for queues and topics, with a minimum value of 20 seconds and a maximum value of 7 days.
+
+![](Images/Pasted%20image%2020251228160524.png)
+## Transaction 
+A **transaction** in Azure Service Bus is a way to group multiple messaging operations so they either **all succeed together or all fail together**.  Ensures transactional integrity for all internal operations.
+
+```c#
+var options = new ServiceBusClientOptions { EnableCrossEntityTransactions = true };
+await using var client = new ServiceBusClient(connectionString, options);
+
+ServiceBusReceiver receiverA = client.CreateReceiver("queueA");
+ServiceBusSender senderB = client.CreateSender("queueB");
+
+ServiceBusReceivedMessage receivedMessage = await receiverA.ReceiveMessageAsync();
+
+using (var ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+{
+    await receiverA.CompleteMessageAsync(receivedMessage);
+    await senderB.SendMessageAsync(new ServiceBusMessage());
+    ts.Complete();
+}
+```
+
+## Message Deferral 
+If you read message in service bus but due to some reason down stream it can't be processed yet you can mark the messages as deferred. Only if you've read it from the service bus. It can't be posted as deferred straight away 
+
+```c#
+//Save seq number for later use to retieve
+long seq = message.SequenceNumber;
+
+await receiver.DeferMessageAsync(message);
+```
+
+Deferred messages aren't expired and automatically moved to a dead-letter queue until a client app attempts to receive them using an API and the sequence number.  To retrieve a deferred message, its owner is responsible for remembering the **sequence number** as it defers it. 
+
+```c#
+var deferred = await receiver.ReceiveDeferredMessageAsync(seq);
+```
+## Auto Forwarding
+Auto‑forwarding allows you to chain a queue or subscription (the source) to another queue or topic (the destination) within the same namespace. 
+
+![](Images/Pasted%20image%2020251228142745.png)
+
 ## Choosing between Service Bus, Event Hub and Event Grid 
 https://learn.microsoft.com/en-us/azure/service-bus-messaging/compare-messaging-services
