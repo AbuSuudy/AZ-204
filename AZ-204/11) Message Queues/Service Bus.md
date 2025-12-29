@@ -1,14 +1,23 @@
 # Service Bus
 
-Azure Service Bus is a fully managed enterprise message broker with message queues and publish-subscribe topics. Data is transferred between different applications and services using messages. 
+Azure Service Bus is a fully managed enterprise message broker with message queues and publish-subscribe topics. Data is transferred between different applications and services using  high-value messages that can't be lost or duplicated.
 
 Messages are delivered in **pull** mode, only delivering messages when requested. Unlike consistent polling the service bus uses long polling where the connection is made and service bus is empty it will remain open until a configured timeout has been set in case a  new message comes in and you can skip the overhead of establishing another TCP connection.
 ## Benefits 
-- *Load-Balancing*: allow you to use multiple consumers and due to pull based model it can be consumed at the pace the consumer is comfortable with.
+- *Load-Balancing*: allow you to use multiple consumers and due to pull based model it can be consumed at the pace the consumer is comfortable with. via the *Competing Consumers pattern*
+  
+![500](Images/Pasted%20image%2020251229173633.png)
+
+- *Load Levelling* - broker can act as a buffer, and consumers gradually drain messages at their own pace
+  ![500](Images/Pasted%20image%2020251229174437.png)
+  
 - *Topics and Subscriptions*: Routes the same messages to multiple locations 
+- *Resiliency* :  If a consumer fails while processing a message, another instance of the consumer can process that message
 - *Decouple Application*: so messages could be processed if consumer is back online.
 - *Transactions*: allow a chain of actions to takes place. Once a message has been processed by consumer on a queue. It could be placed onto another queue to for another consumer to execute a separate set of tasks.
-- *FIFO* - guarantee 
+- *FIFO* - They guarantee by using session id to group related messages in a given timeframe
+  
+![480](Images/Pasted%20image%2020251229182933.png)
 ## Protocol 
 The primary wire protocol for Service Bus is Advanced Messaging Queueing Protocol (AMQP) 1.0. Similar to what event hub uses on the consumer end. Also uses the same protocol is shared by on-premises brokers such as ActiveMQ or RabbitMQ.
 ## Queue 
