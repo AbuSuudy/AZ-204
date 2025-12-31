@@ -10,14 +10,13 @@ Messages are delivered in **pull** mode, only delivering messages when request
 
 - *Load Levelling* - broker can act as a buffer, and consumers gradually drain messages at their own pace
   ![500](Images/Pasted%20image%2020251229174437.png)
-  
+- *FIFO* - They guarantee by using session id to group related messages in a given timeframe
+  ![480](Images/Pasted%20image%2020251229182933.png)
 - *Topics and Subscriptions*: Routes the same messages to multiple locations 
 - *Resiliency* :  If a consumer fails while processing a message, another instance of the consumer can process that message
 - *Decouple Application*: so messages could be processed if consumer is back online.
 - *Transactions*: allow a chain of actions to takes place. Once a message has been processed by consumer on a queue. It could be placed onto another queue to for another consumer to execute a separate set of tasks.
-- *FIFO* - They guarantee by using session id to group related messages in a given timeframe
-  
-![480](Images/Pasted%20image%2020251229182933.png)
+
 ## Protocol 
 The primary wire protocol for Service Bus is Advanced Messaging Queueing Protocol (AMQP) 1.0. Similar to what event hub uses on the consumer end. Also uses the same protocol is shared by on-premises brokers such as ActiveMQ or RabbitMQ.
 ## Queue 
@@ -97,6 +96,3 @@ if(ready == false)
 Auto‑forwarding allows you to chain a queue or subscription (the source) to another queue or topic (the destination) within the same namespace. 
 
 ![](Images/Pasted%20image%2020251228142745.png)
-
-## Choosing between Service Bus, Event Hub and Event Grid 
-https://learn.microsoft.com/en-us/azure/service-bus-messaging/compare-messaging-services

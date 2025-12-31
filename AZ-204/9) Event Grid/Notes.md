@@ -14,7 +14,7 @@ Event grid is push notification system that can use HTTP and MQTT protocols. Rem
 ## System Topic vs Custom Topic
 *System Topic* in Event Grid represents one or more events published by Azure services.
 
-*Custom Topic* provides an endpoint publish event from 3rd party application e.g. software running in azure vm/ application running on prem.
+*Custom Topic* provides an endpoint publish event from 3rd party application e.g. software running in azure vm/ application running on prem or an Azure service that isn't integrated with Event Grid
 
 ## Event Grid Trigger vs Blob Trigger
 For a function app there are two binding related to blob storage update. One used event grid and other uses blob trigger.

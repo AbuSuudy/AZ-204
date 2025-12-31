@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "11) Message Queues/Service Bus.md",
+                "file": "12)  Asynchronous Messaging/Asynchronous Messaging.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Service Bus"
+              "title": "Asynchronous Messaging"
             }
           }
         ]
@@ -172,27 +172,27 @@
   },
   "active": "840fdbf210fd84f1",
   "lastOpenFiles": [
-    "11) Message Queues/Images/Pasted image 20251229182933.png",
-    "11) Message Queues/Images/Pasted image 20251229174437.png",
-    "11) Message Queues/Images/Pasted image 20251229173633.png",
-    "Messaging.md",
     "11) Message Queues/Service Bus.md",
-    "Images/Pasted image 20251229171531.png",
-    "Images",
+    "12)  Asynchronous Messaging/Asynchronous Messaging.md",
+    "12)  Asynchronous Messaging/Images/Pasted image 20251230200449.png",
+    "12)  Asynchronous Messaging",
+    "12)  Asynchronous Messaging/Images/Pasted image 20251230144030.png",
+    "12)  Asynchronous Messaging/Images/Pasted image 20251230143625.png",
+    "12)  Asynchronous Messaging/Images/Pasted image 20251230113550.png",
+    "12)  Asynchronous Messaging/Images/Pasted image 20251230112254.png",
+    "12)  Asynchronous Messaging/Images/Pasted image 20251230110933.png",
+    "Images/Pasted image 20251230105856.png",
+    "Images/Pasted image 20251230105700.png",
+    "Images/Pasted image 20251230105654.png",
+    "12)  Asynchronous Messaging/Images/Pasted image 20251230105059.png",
     "10) Event Hub/Notes.md",
+    "9) Event Grid/Notes.md",
+    "12)  Asynchronous Messaging/Images",
     "7) App Configuration/Notes.md",
-    "11) Message Queues/Images/Pasted image 20251228160524.png",
-    "11) Message Queues/Images/Pasted image 20251228160419.png",
-    "11) Message Queues/Images/Pasted image 20251228150408.png",
-    "11) Message Queues/Images/Pasted image 20251228142745.png",
-    "11) Message Queues/Images/Pasted image 20251228140519.png",
-    "11) Message Queues/Images/Pasted image 20251228135716.png",
-    "11) Message Queues/Images/Pasted image 20251228134517.png",
     "11) Message Queues/Images",
     "11) Message Queues/Queue Storage.md",
     "11) Message Queues",
     "6) Identity Platform/Notes.md",
-    "9) Event Grid/Notes.md",
     "8) API Gateway/Notes.md",
     "4) Cosmos/1) Cosmos Architecture.md",
     "4) Cosmos/3) Change Feed.md",
@@ -206,7 +206,6 @@
     "9) Event Grid",
     "8) API Gateway/Images",
     "8) API Gateway",
-    "7) App Configuration",
     "Untitled 1.md",
     "Welcome.md"
   ]
