@@ -28,11 +28,11 @@ The producer *may* wait for response from the consumer once it's done processing
 - *Offline Support* - Consumers doesn't need to be online e.g.  during deployment messages could be stored in the queue so it can be processed when back online.
 ## Comparison Between Services
 
-| Service     | Direction | Purpose                                                                                                    | Type                                 | When to use                                |
-| ----------- | --------- | ---------------------------------------------------------------------------------------------------------- | ------------------------------------ | ------------------------------------------ |
-| Event Grid  | Push      | Reactive programming                                                                                       | Event distribution (discrete events) | React to status changes                    |
-| Event Hubs  | Pull      | Big data pipeline.  it's a large buffer that's capable of receiving large volumes of data with low latency | Event streaming (series)             | Telemetry and distributed data streaming   |
-| Service Bus | Pull      | High-value enterprise messaging that can't be dropped or accept duplicates.                                | Message                              | Order processing and financial transaction |
+| Service     | Direction | Purpose                                                                                                                                                                                                                        | Type                                 | When to use                                |
+| ----------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------ | ------------------------------------------ |
+| Event Grid  | Push      | Reactive programming                                                                                                                                                                                                           | Event distribution (discrete events) | React to status changes                    |
+| Event Hubs  | Pull      | Big data pipeline.  it's a large buffer that's capable of receiving large volumes of data with low latency<br><br><br>Same message can be read by two consumer groups. Whereas service bus a message is owned by one consumer. | Event streaming (series)             | Telemetry and distributed data streaming   |
+| Service Bus | Pull      | High-value enterprise messaging that can't be dropped or accept duplicates.                                                                                                                                                    | Message                              | Order processing and financial transaction |
 
 ## Patterns
 
