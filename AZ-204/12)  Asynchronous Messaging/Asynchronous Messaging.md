@@ -27,12 +27,13 @@ The producer *may* wait for response from the consumer once it's done processing
 
 - *Offline Support* - Consumers doesn't need to be online e.g.  during deployment messages could be stored in the queue so it can be processed when back online.
 ## Comparison Between Services
+All of these are message broker that implement different messaging patterns.  
 
-| Service     | Direction | Purpose                                                                                                                                                                                                                        | Type                                 | When to use                                |
-| ----------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------ | ------------------------------------------ |
-| Event Grid  | Push      | Reactive programming                                                                                                                                                                                                           | Event distribution (discrete events) | React to status changes                    |
-| Event Hubs  | Pull      | Big data pipeline.  it's a large buffer that's capable of receiving large volumes of data with low latency<br><br><br>Same message can be read by two consumer groups. Whereas service bus a message is owned by one consumer. | Event streaming (series)             | Telemetry and distributed data streaming   |
-| Service Bus | Pull      | High-value enterprise messaging that can't be dropped or accept duplicates.                                                                                                                                                    | Message                              | Order processing and financial transaction |
+| Service     | Direction | Purpose                                                                                                                                                                                                                                  | Type                                 | When to use                                |
+| ----------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | ------------------------------------------ |
+| Event Grid  | Push      | Reactive programming                                                                                                                                                                                                                     | Event distribution (discrete events) | React to status changes                    |
+| Event Hubs  | Pull      | Big data pipeline.  it's a large buffer that's capable of receiving large volumes of data with low latency<br><br><br>Same message can be read by two consumer groups. Whereas service bus a message is owned by one consumer at a time. | Event streaming (series)             | Telemetry and distributed data streaming   |
+| Service Bus | Pull      | High-value enterprise messaging that can't be dropped or accept duplicates.                                                                                                                                                              | Message                              | Order processing and financial transaction |
 
 ## Patterns
 
@@ -60,7 +61,7 @@ Using centralised queue where independent services consume a message and execute
 ![](Images/Pasted%20image%2020251230112254.png)
 
 #### Issues
-If all service are depended on each other they will need to report failures and undo certain actions and this will add complexity. 
+If all service are depended on each other they will need to report failures and undo certain actions and this will add complexity.
 
 ![350](Images/Pasted%20image%2020251230113550.png)
 
@@ -79,15 +80,20 @@ The example below is booking flights and the logic in each step in the compensat
 #### Issues 
 - It's not easy to generalize compensation logic
 
-Sample code for tracking changes in a object so that it can be rolled back.
+Sample code for tracking changes on a object so that it can be rolled back.
 
 ```c#
 using System.Runtime.CompilerServices;
 
 namespace AuditTrail
 {
-    public record AuditEntry(int ChangeOrder, string PropetyName, 
-    object? OldValue, object? NewValue, DateTime TimeStamp);
+    public record AuditEntry(
+	    int ChangeOrder, 
+	    string PropetyName, 
+	    object? OldValue, 
+	    object? NewValue,
+	    DateTime TimeStamp
+    );
     
     public abstract class AuditableEntity
     {
@@ -122,6 +128,8 @@ namespace AuditTrail
 ### Scheduler Agent Supervisor pattern
 https://learn.microsoft.com/en-us/azure/architecture/patterns/scheduler-agent-supervisor
 
-
 ## Combination of different Queuing systems 
+Since the Azure function that uses a service bus trigger it will poll the service bus after a certain period. This will cost compute for not reason if the service bus doesn't have messages coming in. So you could use event grid to only initiate reading when there is a message to process.
+
+![](Images/Pasted%20image%2020251231145210.png)
 https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/messaging#crossover-scenarios
