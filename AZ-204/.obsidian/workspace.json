@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "62fdcff39ed67652",
@@ -170,8 +171,9 @@
       "file-cleaner-redux:Clean files": false
     }
   },
-  "active": "d393867e5e936caa",
+  "active": "840fdbf210fd84f1",
   "lastOpenFiles": [
+    "12) Asynchronous Messaging/Images/Pasted image 20260102154328.png",
     "12) Asynchronous Messaging/Images/Pasted image 20251231145210.png",
     "11) Message Queues/Service Bus.md",
     "12) Asynchronous Messaging/Asynchronous Messaging.md",
@@ -185,7 +187,6 @@
     "Images/Pasted image 20251230105856.png",
     "Images/Pasted image 20251230105700.png",
     "Images/Pasted image 20251230105654.png",
-    "12)  Asynchronous Messaging/Images/Pasted image 20251230105059.png",
     "10) Event Hub/Notes.md",
     "9) Event Grid/Notes.md",
     "12) Asynchronous Messaging/Images",
