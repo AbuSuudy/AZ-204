@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "05479f5a64effeee",
+        "id": "2e37314f70e26f26",
         "type": "tabs",
         "children": [
           {
-            "id": "5207585e067761be",
+            "id": "0d63704048ee836a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "13) Monitoring/Notes.md",
+                "file": "14) Cache/Notes.md",
                 "mode": "source",
                 "source": false
               },
@@ -170,11 +170,13 @@
       "file-cleaner-redux:Clean files": false
     }
   },
-  "active": "5207585e067761be",
+  "active": "0d63704048ee836a",
   "lastOpenFiles": [
+    "13) Monitoring/Notes.md",
+    "14) Cache/Notes.md",
+    "14) Cache",
     "13) Monitoring/Images/Pasted image 20260103133814.png",
     "Untitled.md",
-    "13) Monitoring/Notes.md",
     "13) Monitoring/Images/Pasted image 20260103131332.png",
     "13) Monitoring/Images",
     "11) Message Queues/Azure Queue Storage.md",
@@ -190,7 +192,6 @@
     "12) Asynchronous Messaging/Images/Pasted image 20251230113550.png",
     "12) Asynchronous Messaging/Images/Pasted image 20251230112254.png",
     "12) Asynchronous Messaging/Images/Pasted image 20251230110933.png",
-    "Images/Pasted image 20251230105856.png",
     "10) Event Hub/Notes.md",
     "9) Event Grid/Notes.md",
     "12) Asynchronous Messaging/Images",
@@ -209,7 +210,6 @@
     "10) Event Hub/Images",
     "10) Event Hub",
     "9) Event Grid/Images",
-    "9) Event Grid",
     "Untitled 1.md",
     "Welcome.md"
   ]
