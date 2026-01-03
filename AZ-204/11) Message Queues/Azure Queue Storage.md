@@ -18,13 +18,15 @@ https://<storage account>.queue.core.windows.net/<queue>
 ### Send Message
 
 ```c#
+string queueName = "";
+
 QueueClient queueClient = new QueueClient( 
 	new Uri($"https://{storageAccountName}.queue.core.windows.net/{queueName}"), 
 	new DefaultAzureCredential()
 );
 
 //create queue if it doesn't exist
-await queueClient.CreateAsync();
+await queueClient.CreateIfNotExists();
 
 await queueClient.SendMessageAsync("First message"); 
 await queueClient.SendMessageAsync("Second message");
@@ -43,6 +45,8 @@ await queueClient.UpdateMessageAsync(
 ### Read Message
 
 ```c#
+string queueName = "";
+
 QueueClient queueClient = new QueueClient( 
 	new Uri($"https://{storageAccountName}.queue.core.windows.net/{queueName}"), 
 	new DefaultAzureCredential()
