@@ -2957,24 +2957,24 @@
         "newlineCount": 0
       }
     },
-    "14) Cache & CDN/Notes.md": {
+    "14) Cache & CDN ❌/Notes.md": {
       "isCountable": true,
       "targetNodeType": "file",
       "noteCount": 1,
-      "wordCount": 190,
+      "wordCount": 318,
       "wordCountTowardGoal": 0,
       "wordGoal": null,
-      "pageCount": 0.6333333333333333,
-      "characterCount": 1213,
-      "nonWhitespaceCharacterCount": 1005,
-      "newlineCount": 16,
-      "readingTimeInMinutes": 0.7169811320754716,
+      "pageCount": 1.06,
+      "characterCount": 2086,
+      "nonWhitespaceCharacterCount": 1734,
+      "newlineCount": 28,
+      "readingTimeInMinutes": 1.2,
       "linkCount": 0,
-      "embedCount": 1,
+      "embedCount": 0,
       "aliases": null,
       "createdDate": 1767538627940,
-      "modifiedDate": 1767541001038,
-      "sizeInBytes": 1213,
+      "modifiedDate": 1767543140128,
+      "sizeInBytes": 2086,
       "sessionStart": {
         "noteCount": 0,
         "pageCount": 0,
@@ -2984,7 +2984,7 @@
         "newlineCount": 0
       }
     },
-    "14) Cache & CDN/Images/Pasted image 20260104152643.png": {
+    "14) Cache & CDN ❌/Images/Pasted image 20260104152643.png": {
       "isCountable": false,
       "targetNodeType": "file",
       "noteCount": 0,
@@ -3002,6 +3002,33 @@
       "createdDate": 1767540403730,
       "modifiedDate": 1767540403744,
       "sizeInBytes": 82521,
+      "sessionStart": {
+        "noteCount": 0,
+        "pageCount": 0,
+        "wordCount": 0,
+        "characterCount": 0,
+        "nonWhitespaceCharacterCount": 0,
+        "newlineCount": 0
+      }
+    },
+    "14) Cache & CDN ❌/Images/Pasted image 20260104154454.png": {
+      "isCountable": false,
+      "targetNodeType": "file",
+      "noteCount": 0,
+      "wordCount": 0,
+      "wordCountTowardGoal": 0,
+      "wordGoal": 0,
+      "pageCount": 0,
+      "characterCount": 0,
+      "nonWhitespaceCharacterCount": 0,
+      "newlineCount": 0,
+      "readingTimeInMinutes": 0,
+      "linkCount": 0,
+      "embedCount": 0,
+      "aliases": [],
+      "createdDate": 1767541494512,
+      "modifiedDate": 1767541494512,
+      "sizeInBytes": 319392,
       "sessionStart": {
         "noteCount": 0,
         "pageCount": 0,

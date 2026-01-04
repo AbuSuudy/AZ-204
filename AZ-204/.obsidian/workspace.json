@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "14) Cache & CDN/Notes.md",
+                "file": "14) Cache & CDN ❌/Notes.md",
                 "mode": "source",
                 "source": false
               },
@@ -170,13 +170,14 @@
       "file-cleaner-redux:Clean files": false
     }
   },
-  "active": "0d63704048ee836a",
+  "active": "d393867e5e936caa",
   "lastOpenFiles": [
+    "14) Cache & CDN ❌/Images/Pasted image 20260104154454.png",
     "4) Cosmos/1) Cosmos Architecture.md",
-    "14) Cache & CDN/Notes.md",
-    "14) Cache & CDN/Images/Pasted image 20260104152643.png",
-    "14) Cache & CDN/Images",
-    "14) Cache & CDN",
+    "14) Cache & CDN ❌/Notes.md",
+    "14) Cache & CDN ❌/Images/Pasted image 20260104152643.png",
+    "14) Cache & CDN ❌/Images",
+    "14) Cache & CDN ❌",
     "14) Cache/Notes.md",
     "13) Monitoring/Notes.md",
     "14) Cache",
