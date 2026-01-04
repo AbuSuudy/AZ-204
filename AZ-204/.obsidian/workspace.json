@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "14) Cache/Notes.md",
+                "file": "14) Cache & CDN/Notes.md",
                 "mode": "source",
                 "source": false
               },
@@ -172,11 +172,15 @@
   },
   "active": "0d63704048ee836a",
   "lastOpenFiles": [
-    "13) Monitoring/Notes.md",
+    "4) Cosmos/1) Cosmos Architecture.md",
+    "14) Cache & CDN/Notes.md",
+    "14) Cache & CDN/Images/Pasted image 20260104152643.png",
+    "14) Cache & CDN/Images",
+    "14) Cache & CDN",
     "14) Cache/Notes.md",
+    "13) Monitoring/Notes.md",
     "14) Cache",
     "13) Monitoring/Images/Pasted image 20260103133814.png",
-    "Untitled.md",
     "13) Monitoring/Images/Pasted image 20260103131332.png",
     "13) Monitoring/Images",
     "11) Message Queues/Azure Queue Storage.md",
@@ -191,7 +195,6 @@
     "12) Asynchronous Messaging/Images/Pasted image 20251230143625.png",
     "12) Asynchronous Messaging/Images/Pasted image 20251230113550.png",
     "12) Asynchronous Messaging/Images/Pasted image 20251230112254.png",
-    "12) Asynchronous Messaging/Images/Pasted image 20251230110933.png",
     "10) Event Hub/Notes.md",
     "9) Event Grid/Notes.md",
     "12) Asynchronous Messaging/Images",
@@ -201,15 +204,12 @@
     "11) Message Queues",
     "6) Identity Platform/Notes.md",
     "8) API Gateway/Notes.md",
-    "4) Cosmos/1) Cosmos Architecture.md",
     "4) Cosmos/3) Change Feed.md",
     "4) Cosmos/2) SP, UDF, Triggers.md",
     "3) Blob Storage/Notes.md",
     "2) Functions/Notes.md",
     "1) App Service/Notes.md",
     "10) Event Hub/Images",
-    "10) Event Hub",
-    "9) Event Grid/Images",
     "Untitled 1.md",
     "Welcome.md"
   ]

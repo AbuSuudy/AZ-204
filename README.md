@@ -4,7 +4,7 @@ Notes for AZ-204
 ## Resources 
 - Syllabus - https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-204
 - Microsoft ILearn - https://learn.microsoft.com/en-us/credentials/certifications/azure-developer/?practice-assessment-type=certification
-- Labs  - https://microsoftlearning.github.io/AZ-204-DevelopingSolutionsforMicrosoftAzure/
+- Labs  - https://microsoftlearning.github.io/AZ-204-DevelopingSolutionsforMicrosoftAzure/, https://techcommunity.microsoft.com/blog/iltcommunicationblog/az-204-lab-experience-is-evolving-%E2%80%93-here%E2%80%99s-what%E2%80%99s-changing/4423863
 - Youtube Playlist - https://www.youtube.com/playlist?list=PLahhVEj9XNTcQ-rtUyuly3KpWFP9xzp7A
 
 From Reddit will look into later:
