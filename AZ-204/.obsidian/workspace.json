@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "14) Cache & CDN ❌/Notes.md",
+                "file": "5) Docker/Notes.md",
                 "mode": "source",
                 "source": false
               },
@@ -170,11 +170,14 @@
       "file-cleaner-redux:Clean files": false
     }
   },
-  "active": "d393867e5e936caa",
+  "active": "0d63704048ee836a",
   "lastOpenFiles": [
+    "4) Cosmos/Untitled.md",
+    "5) Docker/Notes.md",
+    "5) Docker",
+    "14) Cache & CDN ❌/Notes.md",
     "14) Cache & CDN ❌/Images/Pasted image 20260104154454.png",
     "4) Cosmos/1) Cosmos Architecture.md",
-    "14) Cache & CDN ❌/Notes.md",
     "14) Cache & CDN ❌/Images/Pasted image 20260104152643.png",
     "14) Cache & CDN ❌/Images",
     "14) Cache & CDN ❌",
@@ -195,7 +198,6 @@
     "12) Asynchronous Messaging/Images/Pasted image 20251230144030.png",
     "12) Asynchronous Messaging/Images/Pasted image 20251230143625.png",
     "12) Asynchronous Messaging/Images/Pasted image 20251230113550.png",
-    "12) Asynchronous Messaging/Images/Pasted image 20251230112254.png",
     "10) Event Hub/Notes.md",
     "9) Event Grid/Notes.md",
     "12) Asynchronous Messaging/Images",
@@ -210,7 +212,6 @@
     "3) Blob Storage/Notes.md",
     "2) Functions/Notes.md",
     "1) App Service/Notes.md",
-    "10) Event Hub/Images",
     "Untitled 1.md",
     "Welcome.md"
   ]
