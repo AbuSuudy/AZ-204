@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "62fdcff39ed67652",
@@ -172,6 +173,10 @@
   },
   "active": "0d63704048ee836a",
   "lastOpenFiles": [
+    "5) Docker/Images/Pasted image 20260117154241.png",
+    "5) Docker/Images/Pasted image 20260117135303.png",
+    "5) Docker/Images/Pasted image 20260117133212.png",
+    "5) Docker/Images",
     "4) Cosmos/Untitled.md",
     "5) Docker/Notes.md",
     "5) Docker",
@@ -196,15 +201,12 @@
     "12) Asynchronous Messaging/Images/Pasted image 20251230200449.png",
     "12) Asynchronous Messaging",
     "12) Asynchronous Messaging/Images/Pasted image 20251230144030.png",
-    "12) Asynchronous Messaging/Images/Pasted image 20251230143625.png",
-    "12) Asynchronous Messaging/Images/Pasted image 20251230113550.png",
     "10) Event Hub/Notes.md",
     "9) Event Grid/Notes.md",
     "12) Asynchronous Messaging/Images",
     "7) App Configuration/Notes.md",
     "11) Message Queues/Images",
     "11) Message Queues/Queue Storage.md",
-    "11) Message Queues",
     "6) Identity Platform/Notes.md",
     "8) API Gateway/Notes.md",
     "4) Cosmos/3) Change Feed.md",
