@@ -95,7 +95,7 @@
         "newlineCount": 166
       }
     },
-    "9) Event Grid/Images/Pasted image 20251222213537.png": {
+    "9) Event Grid/Images/Pasted image 20251218210240.png": {
       "isCountable": false,
       "targetNodeType": "file",
       "noteCount": 0,
@@ -110,9 +110,9 @@
       "linkCount": 0,
       "embedCount": 0,
       "aliases": [],
-      "createdDate": 1767564067473,
-      "modifiedDate": 1767564067473,
-      "sizeInBytes": 27273,
+      "createdDate": 1766091760496,
+      "modifiedDate": 1766091760497,
+      "sizeInBytes": 53043,
       "sessionStart": {
         "noteCount": 0,
         "pageCount": 0,
@@ -140,6 +140,33 @@
       "createdDate": 1766272737646,
       "modifiedDate": 1766272737647,
       "sizeInBytes": 157445,
+      "sessionStart": {
+        "noteCount": 0,
+        "pageCount": 0,
+        "wordCount": 0,
+        "characterCount": 0,
+        "nonWhitespaceCharacterCount": 0,
+        "newlineCount": 0
+      }
+    },
+    "9) Event Grid/Images/Pasted image 20251222213537.png": {
+      "isCountable": false,
+      "targetNodeType": "file",
+      "noteCount": 0,
+      "wordCount": 0,
+      "wordCountTowardGoal": 0,
+      "wordGoal": 0,
+      "pageCount": 0,
+      "characterCount": 0,
+      "nonWhitespaceCharacterCount": 0,
+      "newlineCount": 0,
+      "readingTimeInMinutes": 0,
+      "linkCount": 0,
+      "embedCount": 0,
+      "aliases": [],
+      "createdDate": 1767564067473,
+      "modifiedDate": 1767564067473,
+      "sizeInBytes": 27273,
       "sessionStart": {
         "noteCount": 0,
         "pageCount": 0,
@@ -203,7 +230,7 @@
         "newlineCount": 0
       }
     },
-    "9) Event Grid/Images/Pasted image 20251218210240.png": {
+    "9) Event Grid/Images/Pasted image 20251218203435.png": {
       "isCountable": false,
       "targetNodeType": "file",
       "noteCount": 0,
@@ -218,9 +245,9 @@
       "linkCount": 0,
       "embedCount": 0,
       "aliases": [],
-      "createdDate": 1766091760496,
-      "modifiedDate": 1766091760497,
-      "sizeInBytes": 53043,
+      "createdDate": 1766090075257,
+      "modifiedDate": 1766090075258,
+      "sizeInBytes": 57165,
       "sessionStart": {
         "noteCount": 0,
         "pageCount": 0,
@@ -248,33 +275,6 @@
       "createdDate": 1766091229218,
       "modifiedDate": 1766091229219,
       "sizeInBytes": 18881,
-      "sessionStart": {
-        "noteCount": 0,
-        "pageCount": 0,
-        "wordCount": 0,
-        "characterCount": 0,
-        "nonWhitespaceCharacterCount": 0,
-        "newlineCount": 0
-      }
-    },
-    "9) Event Grid/Images/Pasted image 20251218203435.png": {
-      "isCountable": false,
-      "targetNodeType": "file",
-      "noteCount": 0,
-      "wordCount": 0,
-      "wordCountTowardGoal": 0,
-      "wordGoal": 0,
-      "pageCount": 0,
-      "characterCount": 0,
-      "nonWhitespaceCharacterCount": 0,
-      "newlineCount": 0,
-      "readingTimeInMinutes": 0,
-      "linkCount": 0,
-      "embedCount": 0,
-      "aliases": [],
-      "createdDate": 1766090075257,
-      "modifiedDate": 1766090075258,
-      "sizeInBytes": 57165,
       "sessionStart": {
         "noteCount": 0,
         "pageCount": 0,
@@ -338,6 +338,33 @@
         "newlineCount": 0
       }
     },
+    "8) API Gateway/Images/Pasted image 20251215012622.png": {
+      "isCountable": false,
+      "targetNodeType": "file",
+      "noteCount": 0,
+      "wordCount": 0,
+      "wordCountTowardGoal": 0,
+      "wordGoal": 0,
+      "pageCount": 0,
+      "characterCount": 0,
+      "nonWhitespaceCharacterCount": 0,
+      "newlineCount": 0,
+      "readingTimeInMinutes": 0,
+      "linkCount": 0,
+      "embedCount": 0,
+      "aliases": [],
+      "createdDate": 1765761982262,
+      "modifiedDate": 1765761982264,
+      "sizeInBytes": 72951,
+      "sessionStart": {
+        "noteCount": 0,
+        "pageCount": 0,
+        "wordCount": 0,
+        "characterCount": 0,
+        "nonWhitespaceCharacterCount": 0,
+        "newlineCount": 0
+      }
+    },
     "8) API Gateway/Images/Pasted image 20251218000000.png": {
       "isCountable": false,
       "targetNodeType": "file",
@@ -383,33 +410,6 @@
       "createdDate": 1765918039644,
       "modifiedDate": 1765918039645,
       "sizeInBytes": 101313,
-      "sessionStart": {
-        "noteCount": 0,
-        "pageCount": 0,
-        "wordCount": 0,
-        "characterCount": 0,
-        "nonWhitespaceCharacterCount": 0,
-        "newlineCount": 0
-      }
-    },
-    "8) API Gateway/Images/Pasted image 20251215012622.png": {
-      "isCountable": false,
-      "targetNodeType": "file",
-      "noteCount": 0,
-      "wordCount": 0,
-      "wordCountTowardGoal": 0,
-      "wordGoal": 0,
-      "pageCount": 0,
-      "characterCount": 0,
-      "nonWhitespaceCharacterCount": 0,
-      "newlineCount": 0,
-      "readingTimeInMinutes": 0,
-      "linkCount": 0,
-      "embedCount": 0,
-      "aliases": [],
-      "createdDate": 1765761982262,
-      "modifiedDate": 1765761982264,
-      "sizeInBytes": 72951,
       "sessionStart": {
         "noteCount": 0,
         "pageCount": 0,
@@ -635,7 +635,7 @@
         "newlineCount": 0
       }
     },
-    "6) Identity Platform/Images/Pasted image 20251207154032.png": {
+    "6) Identity Platform/Images/Pasted image 20251206181429.png": {
       "isCountable": false,
       "targetNodeType": "file",
       "noteCount": 0,
@@ -650,9 +650,9 @@
       "linkCount": 0,
       "embedCount": 0,
       "aliases": [],
-      "createdDate": 1765141922176,
-      "modifiedDate": 1765141922176,
-      "sizeInBytes": 53690,
+      "createdDate": 1765044869492,
+      "modifiedDate": 1765044869495,
+      "sizeInBytes": 89067,
       "sessionStart": {
         "noteCount": 0,
         "pageCount": 0,
@@ -689,7 +689,7 @@
         "newlineCount": 0
       }
     },
-    "6) Identity Platform/Images/Pasted image 20251206181429.png": {
+    "6) Identity Platform/Images/Pasted image 20251207154032.png": {
       "isCountable": false,
       "targetNodeType": "file",
       "noteCount": 0,
@@ -704,9 +704,9 @@
       "linkCount": 0,
       "embedCount": 0,
       "aliases": [],
-      "createdDate": 1765044869492,
-      "modifiedDate": 1765044869495,
-      "sizeInBytes": 89067,
+      "createdDate": 1765141922176,
+      "modifiedDate": 1765141922176,
+      "sizeInBytes": 53690,
       "sessionStart": {
         "noteCount": 0,
         "pageCount": 0,
@@ -734,6 +734,33 @@
       "createdDate": 1764872135706,
       "modifiedDate": 1764872135706,
       "sizeInBytes": 76837,
+      "sessionStart": {
+        "noteCount": 0,
+        "pageCount": 0,
+        "wordCount": 0,
+        "characterCount": 0,
+        "nonWhitespaceCharacterCount": 0,
+        "newlineCount": 0
+      }
+    },
+    "6) Identity Platform/Images/convergence-scenarios-native.svg": {
+      "isCountable": false,
+      "targetNodeType": "file",
+      "noteCount": 0,
+      "wordCount": 0,
+      "wordCountTowardGoal": 0,
+      "wordGoal": 0,
+      "pageCount": 0,
+      "characterCount": 0,
+      "nonWhitespaceCharacterCount": 0,
+      "newlineCount": 0,
+      "readingTimeInMinutes": 0,
+      "linkCount": 0,
+      "embedCount": 0,
+      "aliases": [],
+      "createdDate": 1764890602171,
+      "modifiedDate": 1764890602590,
+      "sizeInBytes": 268932,
       "sessionStart": {
         "noteCount": 0,
         "pageCount": 0,
@@ -815,33 +842,6 @@
       "createdDate": 1764872135671,
       "modifiedDate": 1764872135671,
       "sizeInBytes": 112752,
-      "sessionStart": {
-        "noteCount": 0,
-        "pageCount": 0,
-        "wordCount": 0,
-        "characterCount": 0,
-        "nonWhitespaceCharacterCount": 0,
-        "newlineCount": 0
-      }
-    },
-    "6) Identity Platform/Images/convergence-scenarios-native.svg": {
-      "isCountable": false,
-      "targetNodeType": "file",
-      "noteCount": 0,
-      "wordCount": 0,
-      "wordCountTowardGoal": 0,
-      "wordGoal": 0,
-      "pageCount": 0,
-      "characterCount": 0,
-      "nonWhitespaceCharacterCount": 0,
-      "newlineCount": 0,
-      "readingTimeInMinutes": 0,
-      "linkCount": 0,
-      "embedCount": 0,
-      "aliases": [],
-      "createdDate": 1764890602171,
-      "modifiedDate": 1764890602590,
-      "sizeInBytes": 268932,
       "sessionStart": {
         "noteCount": 0,
         "pageCount": 0,
@@ -936,27 +936,27 @@
       "isCountable": true,
       "targetNodeType": "file",
       "noteCount": 1,
-      "wordCount": 1155,
+      "wordCount": 1180,
       "wordCountTowardGoal": 0,
       "wordGoal": null,
-      "pageCount": 3.85,
-      "characterCount": 9931,
-      "nonWhitespaceCharacterCount": 7573,
-      "newlineCount": 198,
-      "readingTimeInMinutes": 4.3584905660377355,
+      "pageCount": 3.933333333333333,
+      "characterCount": 10116,
+      "nonWhitespaceCharacterCount": 7888,
+      "newlineCount": 210,
+      "readingTimeInMinutes": 4.452830188679245,
       "linkCount": 0,
       "embedCount": 4,
       "aliases": null,
       "createdDate": 1768164908701,
-      "modifiedDate": 1768778041617,
-      "sizeInBytes": 9945,
+      "modifiedDate": 1768778973661,
+      "sizeInBytes": 10130,
       "sessionStart": {
         "noteCount": 1,
-        "pageCount": 3.6866666666666665,
-        "wordCount": 1106,
-        "characterCount": 9462,
-        "nonWhitespaceCharacterCount": 7362,
-        "newlineCount": 192
+        "pageCount": 3.85,
+        "wordCount": 1155,
+        "characterCount": 9721,
+        "nonWhitespaceCharacterCount": 7571,
+        "newlineCount": 195
       }
     },
     "5) Docker/Images/Pasted image 20260118154334.png": {
@@ -1445,33 +1445,6 @@
         "newlineCount": 0
       }
     },
-    "4) Cosmos/Images/hierarchy.png": {
-      "isCountable": false,
-      "targetNodeType": "file",
-      "noteCount": 0,
-      "wordCount": 0,
-      "wordCountTowardGoal": 0,
-      "wordGoal": 0,
-      "pageCount": 0,
-      "characterCount": 0,
-      "nonWhitespaceCharacterCount": 0,
-      "newlineCount": 0,
-      "readingTimeInMinutes": 0,
-      "linkCount": 0,
-      "embedCount": 0,
-      "aliases": [],
-      "createdDate": 1760984774520,
-      "modifiedDate": 1760984774520,
-      "sizeInBytes": 43823,
-      "sessionStart": {
-        "noteCount": 0,
-        "pageCount": 0,
-        "wordCount": 0,
-        "characterCount": 0,
-        "nonWhitespaceCharacterCount": 0,
-        "newlineCount": 0
-      }
-    },
     "4) Cosmos/Images/Pasted image 20251020153855.png": {
       "isCountable": false,
       "targetNodeType": "file",
@@ -1490,6 +1463,33 @@
       "createdDate": 1760984774376,
       "modifiedDate": 1760984774376,
       "sizeInBytes": 145398,
+      "sessionStart": {
+        "noteCount": 0,
+        "pageCount": 0,
+        "wordCount": 0,
+        "characterCount": 0,
+        "nonWhitespaceCharacterCount": 0,
+        "newlineCount": 0
+      }
+    },
+    "4) Cosmos/Images/hierarchy.png": {
+      "isCountable": false,
+      "targetNodeType": "file",
+      "noteCount": 0,
+      "wordCount": 0,
+      "wordCountTowardGoal": 0,
+      "wordGoal": 0,
+      "pageCount": 0,
+      "characterCount": 0,
+      "nonWhitespaceCharacterCount": 0,
+      "newlineCount": 0,
+      "readingTimeInMinutes": 0,
+      "linkCount": 0,
+      "embedCount": 0,
+      "aliases": [],
+      "createdDate": 1760984774520,
+      "modifiedDate": 1760984774520,
+      "sizeInBytes": 43823,
       "sessionStart": {
         "noteCount": 0,
         "pageCount": 0,
@@ -2228,6 +2228,87 @@
         "newlineCount": 0
       }
     },
+    "13) Monitoring/Notes.md": {
+      "isCountable": true,
+      "targetNodeType": "file",
+      "noteCount": 1,
+      "wordCount": 224,
+      "wordCountTowardGoal": 0,
+      "wordGoal": null,
+      "pageCount": 0.7466666666666667,
+      "characterCount": 1932,
+      "nonWhitespaceCharacterCount": 1555,
+      "newlineCount": 31,
+      "readingTimeInMinutes": 0.8452830188679246,
+      "linkCount": 0,
+      "embedCount": 2,
+      "aliases": null,
+      "createdDate": 1767564067468,
+      "modifiedDate": 1767564067468,
+      "sizeInBytes": 1932,
+      "sessionStart": {
+        "noteCount": 1,
+        "pageCount": 0.7466666666666667,
+        "wordCount": 224,
+        "characterCount": 1932,
+        "nonWhitespaceCharacterCount": 1555,
+        "newlineCount": 31
+      }
+    },
+    "13) Monitoring/Images/Pasted image 20260103133814.png": {
+      "isCountable": false,
+      "targetNodeType": "file",
+      "noteCount": 0,
+      "wordCount": 0,
+      "wordCountTowardGoal": 0,
+      "wordGoal": 0,
+      "pageCount": 0,
+      "characterCount": 0,
+      "nonWhitespaceCharacterCount": 0,
+      "newlineCount": 0,
+      "readingTimeInMinutes": 0,
+      "linkCount": 0,
+      "embedCount": 0,
+      "aliases": [],
+      "createdDate": 1767564067468,
+      "modifiedDate": 1767564067468,
+      "sizeInBytes": 200656,
+      "sessionStart": {
+        "noteCount": 0,
+        "pageCount": 0,
+        "wordCount": 0,
+        "characterCount": 0,
+        "nonWhitespaceCharacterCount": 0,
+        "newlineCount": 0
+      }
+    },
+    "13) Monitoring/Images/Pasted image 20260103131332.png": {
+      "isCountable": false,
+      "targetNodeType": "file",
+      "noteCount": 0,
+      "wordCount": 0,
+      "wordCountTowardGoal": 0,
+      "wordGoal": 0,
+      "pageCount": 0,
+      "characterCount": 0,
+      "nonWhitespaceCharacterCount": 0,
+      "newlineCount": 0,
+      "readingTimeInMinutes": 0,
+      "linkCount": 0,
+      "embedCount": 0,
+      "aliases": [],
+      "createdDate": 1767564067460,
+      "modifiedDate": 1767564067468,
+      "sizeInBytes": 300603,
+      "sessionStart": {
+        "noteCount": 0,
+        "pageCount": 0,
+        "wordCount": 0,
+        "characterCount": 0,
+        "nonWhitespaceCharacterCount": 0,
+        "newlineCount": 0
+      }
+    },
     "12) Asynchronous Messaging/Images/Pasted image 20260102154328.png": {
       "isCountable": false,
       "targetNodeType": "file",
@@ -2496,87 +2577,6 @@
         "characterCount": 9981,
         "nonWhitespaceCharacterCount": 7194,
         "newlineCount": 138
-      }
-    },
-    "13) Monitoring/Images/Pasted image 20260103133814.png": {
-      "isCountable": false,
-      "targetNodeType": "file",
-      "noteCount": 0,
-      "wordCount": 0,
-      "wordCountTowardGoal": 0,
-      "wordGoal": 0,
-      "pageCount": 0,
-      "characterCount": 0,
-      "nonWhitespaceCharacterCount": 0,
-      "newlineCount": 0,
-      "readingTimeInMinutes": 0,
-      "linkCount": 0,
-      "embedCount": 0,
-      "aliases": [],
-      "createdDate": 1767564067468,
-      "modifiedDate": 1767564067468,
-      "sizeInBytes": 200656,
-      "sessionStart": {
-        "noteCount": 0,
-        "pageCount": 0,
-        "wordCount": 0,
-        "characterCount": 0,
-        "nonWhitespaceCharacterCount": 0,
-        "newlineCount": 0
-      }
-    },
-    "13) Monitoring/Images/Pasted image 20260103131332.png": {
-      "isCountable": false,
-      "targetNodeType": "file",
-      "noteCount": 0,
-      "wordCount": 0,
-      "wordCountTowardGoal": 0,
-      "wordGoal": 0,
-      "pageCount": 0,
-      "characterCount": 0,
-      "nonWhitespaceCharacterCount": 0,
-      "newlineCount": 0,
-      "readingTimeInMinutes": 0,
-      "linkCount": 0,
-      "embedCount": 0,
-      "aliases": [],
-      "createdDate": 1767564067460,
-      "modifiedDate": 1767564067468,
-      "sizeInBytes": 300603,
-      "sessionStart": {
-        "noteCount": 0,
-        "pageCount": 0,
-        "wordCount": 0,
-        "characterCount": 0,
-        "nonWhitespaceCharacterCount": 0,
-        "newlineCount": 0
-      }
-    },
-    "13) Monitoring/Notes.md": {
-      "isCountable": true,
-      "targetNodeType": "file",
-      "noteCount": 1,
-      "wordCount": 224,
-      "wordCountTowardGoal": 0,
-      "wordGoal": null,
-      "pageCount": 0.7466666666666667,
-      "characterCount": 1932,
-      "nonWhitespaceCharacterCount": 1555,
-      "newlineCount": 31,
-      "readingTimeInMinutes": 0.8452830188679246,
-      "linkCount": 0,
-      "embedCount": 2,
-      "aliases": null,
-      "createdDate": 1767564067468,
-      "modifiedDate": 1767564067468,
-      "sizeInBytes": 1932,
-      "sessionStart": {
-        "noteCount": 1,
-        "pageCount": 0.7466666666666667,
-        "wordCount": 224,
-        "characterCount": 1932,
-        "nonWhitespaceCharacterCount": 1555,
-        "newlineCount": 31
       }
     },
     "11) Message Queues/Service Bus.md": {
@@ -2849,6 +2849,33 @@
         "newlineCount": 154
       }
     },
+    "10) Event Hub/Images/Pasted image 20251225184053.png": {
+      "isCountable": false,
+      "targetNodeType": "file",
+      "noteCount": 0,
+      "wordCount": 0,
+      "wordCountTowardGoal": 0,
+      "wordGoal": 0,
+      "pageCount": 0,
+      "characterCount": 0,
+      "nonWhitespaceCharacterCount": 0,
+      "newlineCount": 0,
+      "readingTimeInMinutes": 0,
+      "linkCount": 0,
+      "embedCount": 0,
+      "aliases": [],
+      "createdDate": 1767564067435,
+      "modifiedDate": 1767564067435,
+      "sizeInBytes": 153221,
+      "sessionStart": {
+        "noteCount": 0,
+        "pageCount": 0,
+        "wordCount": 0,
+        "characterCount": 0,
+        "nonWhitespaceCharacterCount": 0,
+        "newlineCount": 0
+      }
+    },
     "10) Event Hub/Images/Pasted image 20251227161722.png": {
       "isCountable": false,
       "targetNodeType": "file",
@@ -2921,33 +2948,6 @@
       "createdDate": 1767564067435,
       "modifiedDate": 1767564067435,
       "sizeInBytes": 16768,
-      "sessionStart": {
-        "noteCount": 0,
-        "pageCount": 0,
-        "wordCount": 0,
-        "characterCount": 0,
-        "nonWhitespaceCharacterCount": 0,
-        "newlineCount": 0
-      }
-    },
-    "10) Event Hub/Images/Pasted image 20251225184053.png": {
-      "isCountable": false,
-      "targetNodeType": "file",
-      "noteCount": 0,
-      "wordCount": 0,
-      "wordCountTowardGoal": 0,
-      "wordGoal": 0,
-      "pageCount": 0,
-      "characterCount": 0,
-      "nonWhitespaceCharacterCount": 0,
-      "newlineCount": 0,
-      "readingTimeInMinutes": 0,
-      "linkCount": 0,
-      "embedCount": 0,
-      "aliases": [],
-      "createdDate": 1767564067435,
-      "modifiedDate": 1767564067435,
-      "sizeInBytes": 153221,
       "sessionStart": {
         "noteCount": 0,
         "pageCount": 0,

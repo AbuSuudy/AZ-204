@@ -2,7 +2,7 @@
 
 Containers are lightweight and contain everything needed to run the application, so you don't need to rely on what's installed on the host.
 
-Containers that I use are generally based on Linux based images like ubuntu. This will be minimal system which included the below:
+Containers that I use are generally based on Linux  images like ubuntu. This will be a minimal system which included the below:
 
 | **Category**             | **Specific Components**                                                                                                                                                           |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12,7 +12,23 @@ Containers that I use are generally based on Linux based images like ubuntu. Thi
 | **System Configuration** | `/etc/passwd`, `/etc/group`, `/etc/os-release`, and `/etc/hostname`.                                                                                                              |
 | **Shared Libraries**     | Basic C libraries (`libc6`), `libselinux1`, and `libtinfo6` to support the binaries above.                                                                                        |
 | **Directory Tree**       | A full standard hierarchy: `/bin`, `/boot`, `/dev`, `/etc`, `/home`, `/lib`, `/media`, `/mnt`, `/opt`, `/proc`, `/root`, `/run`, `/sbin`, `/srv`, `/sys`, `/tmp`, `/usr`, `/var`. |
-You can add to this by installing stuff for the package manager, but he a bulk of the work will use the kernel on the host OS.
+This mostly utilities that allow you manage the container. You can add to this by installing stuff for the package manager, but he a bulk of the work will use the kernel on the host OS. 
+
+There extra dependencies are installed with .NET SDK Ubuntu based [Docker image](https://github.com/dotnet/dotnet-docker/blob/bb1c8cd2b964c36e7279ccea4c4831fef8b83295/src/sdk/10.0/noble/amd64/Dockerfile#L37C1-L43C35)
+```DOCKERFILE
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        curl \
+        git \
+        libatomic1 \
+        wget \
+    && rm -rf /var/lib/apt/lists/*
+```
+
+Command to manage the container
+```bash
+docker run --name=ubuntu -ti ubuntu
+```
 
 > [!NOTE] 
 > One best practice for containers is that each container should do one thing and do it well. While there are exceptions to this rule, avoid the tendency to have one container do multiple things.
@@ -145,7 +161,6 @@ https://github.com/dotnet/dotnet-docker/blob/main/documentation/supported-tags.m
 - defaults to ubuntu 
 - MCR it's not stored on docker hub but Microsoft container registry 
 - `docker image inspect mcr.microsoft.com/dotnet/aspnet:8.0` to inspect package 
-- An Ubuntu container includes a minimal root filesystem (`rootfs`) with essential system libraries, tools, and settings, but shares the host OS kernel
 - Docket file https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/10.0/noble/amd64/Dockerfile
 
 ## Docker File
