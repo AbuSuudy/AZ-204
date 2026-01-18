@@ -2,6 +2,18 @@
 
 Containers are lightweight and contain everything needed to run the application, so you don't need to rely on what's installed on the host.
 
+Containers that I use are generally based on Linux based images like ubuntu. This will be minimal system which included the below:
+
+| **Category**             | **Specific Components**                                                                                                                                                           |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **The Shells**           | `/bin/bash`                                                                                                                                                                       |
+| **Package Management**   | The `apt` database, `/etc/apt/sources.list`, and the `dpkg` binary.                                                                                                               |
+| **GNU Coreutils**        | Essential binaries: `cat`, `chown`, `cp`, `date`, `dd`, `df`, `echo`, `grep`, `hostname`, `id`, `ls`, `mkdir`, `mv`, `pwd`, `rm`, `sed`, `sleep`, `tar`.                          |
+| **System Configuration** | `/etc/passwd`, `/etc/group`, `/etc/os-release`, and `/etc/hostname`.                                                                                                              |
+| **Shared Libraries**     | Basic C libraries (`libc6`), `libselinux1`, and `libtinfo6` to support the binaries above.                                                                                        |
+| **Directory Tree**       | A full standard hierarchy: `/bin`, `/boot`, `/dev`, `/etc`, `/home`, `/lib`, `/media`, `/mnt`, `/opt`, `/proc`, `/root`, `/run`, `/sbin`, `/srv`, `/sys`, `/tmp`, `/usr`, `/var`. |
+You can add to this by installing stuff for the package manager, but he a bulk of the work will use the kernel on the host OS.
+
 > [!NOTE] 
 > One best practice for containers is that each container should do one thing and do it well. While there are exceptions to this rule, avoid the tendency to have one container do multiple things.
 ## Docker Architecture 
@@ -133,6 +145,8 @@ https://github.com/dotnet/dotnet-docker/blob/main/documentation/supported-tags.m
 - defaults to ubuntu 
 - MCR it's not stored on docker hub but Microsoft container registry 
 - `docker image inspect mcr.microsoft.com/dotnet/aspnet:8.0` to inspect package 
+- An Ubuntu container includes a minimal root filesystem (`rootfs`) with essential system libraries, tools, and settings, but shares the host OS kernel
+- Docket file https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/10.0/noble/amd64/Dockerfile
 
 ## Docker File
 
