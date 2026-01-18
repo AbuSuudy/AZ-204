@@ -37,7 +37,6 @@ RUN dotnet build "./RedisAPI.csproj" -c $BUILD_CONFIGURATION -o /app/build
 ```
 
 - *Container* -  is a isolate process of your application running. It's a runnable instance form an image. By default, a container is relatively well isolated from other containers and its host machine.  You can control how isolated a container's network, storage from other container or host system. 
-
 ## Docker Run Internals
 
 ```bash
@@ -107,6 +106,33 @@ volumes:
 
 ```
 
+## Image Layers
+Container images are composed into layers. Each of these layers once created are immutable.
+
+Each layer in an image contains a set of filesystem changes - additions, deletions, or modifications.
+
+Initially the container will have the same file structure base images until each layer makes the change
+
+![](Images/Pasted%20image%2020260118151149.png)
+
+You can create a container with the base ubuntu image. Run it and connect to the terminal.
+- `-t` -  connecting your terminal to the I/O streams of the container
+- `-i` -  lets you send input to the container through standard input
+
+```bash
+docker run --name=ubuntu -ti ubuntu
+```
+
+Here is how the file system will look like.  Each layer in the image will update this folder path.
+![](Images/Pasted%20image%2020260118154334.png)
+
+
+## Dot Net
+https://github.com/dotnet/dotnet-docker/blob/main/documentation/supported-tags.md#multi-platform-tags
+- tags
+- defaults to ubuntu 
+- MCR it's not stored on docker hub but Microsoft container registry 
+- `docker image inspect mcr.microsoft.com/dotnet/aspnet:8.0` to inspect package 
 
 ## Docker File
 
