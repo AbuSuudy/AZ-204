@@ -162,6 +162,7 @@ https://github.com/dotnet/dotnet-docker/blob/main/documentation/supported-tags.m
 - MCR it's not stored on docker hub but Microsoft container registry 
 - `docker image inspect mcr.microsoft.com/dotnet/aspnet:8.0` to inspect package 
 - Docket file https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/10.0/noble/amd64/Dockerfile
+- Base image used `amd64/buildpack-deps:noble-curl` https://github.com/docker-library/buildpack-deps/blob/master/ubuntu/noble/curl/Dockerfile
 
 ## Docker File
 
