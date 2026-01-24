@@ -1,6 +1,11 @@
-# Docker
+T# Docker
 
-Containers are lightweight and contain everything needed to run the application, so you don't need to rely on what's installed on the host.
+Containers are lightweight and contain the application and it's dependencies needed to un. It doesn't virtualise everything like VM, but it relies on the host kernel for a bulk of it's work. So it's quick to rebuild. 
+
+
+everything needed to run the application, so you don't need to rely on what's installed on the host.
+
+Containers are faster to start up because it 
 
 Containers that I use are generally based on Linux  images like ubuntu. This will be a minimal system which included the below:
 
@@ -163,6 +168,8 @@ https://github.com/dotnet/dotnet-docker/blob/main/documentation/supported-tags.m
 - `docker image inspect mcr.microsoft.com/dotnet/aspnet:8.0` to inspect package 
 - Docket file https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/10.0/noble/amd64/Dockerfile
 - Base image used `amd64/buildpack-deps:noble-curl` https://github.com/docker-library/buildpack-deps/blob/master/ubuntu/noble/curl/Dockerfile
+- https://docs.docker.com/reference/cli/docker/buildx/build/#platform
+- https://docs.docker.com/build/building/multi-platform/
 
 ## Docker File
 
