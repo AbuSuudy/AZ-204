@@ -1,13 +1,11 @@
-T# Docker
+# Docker
 
-Containers are lightweight and contain the application and it's dependencies needed to un. It doesn't virtualise everything like VM, but it relies on the host kernel for a bulk of it's work. So it's quick to rebuild. 
+Container is light weight virtualisation technology that can hold your application and it's dependencies need to for the application to run. The container will get most of it's resources from the host kernel which makes it light weight. Since containers needs to interact with the host kernel the container need to be based on the same OS to environment it's being deployed to.
 
+Ubuntu based container comes with these components. This mostly utilities that allow you manage the container. 
 
-everything needed to run the application, so you don't need to rely on what's installed on the host.
-
-Containers are faster to start up because it 
-
-Containers that I use are generally based on Linux  images like ubuntu. This will be a minimal system which included the below:
+> [!NOTE] 
+> There could be trimmed version of image that doesn't come with: Shell, package manager etc for security. To reduce the attack space especially when you don't need to use these tools
 
 | **Category**             | **Specific Components**                                                                                                                                                           |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -17,9 +15,8 @@ Containers that I use are generally based on Linux  images like ubuntu. This wil
 | **System Configuration** | `/etc/passwd`, `/etc/group`, `/etc/os-release`, and `/etc/hostname`.                                                                                                              |
 | **Shared Libraries**     | Basic C libraries (`libc6`), `libselinux1`, and `libtinfo6` to support the binaries above.                                                                                        |
 | **Directory Tree**       | A full standard hierarchy: `/bin`, `/boot`, `/dev`, `/etc`, `/home`, `/lib`, `/media`, `/mnt`, `/opt`, `/proc`, `/root`, `/run`, `/sbin`, `/srv`, `/sys`, `/tmp`, `/usr`, `/var`. |
-This mostly utilities that allow you manage the container. You can add to this by installing stuff for the package manager, but he a bulk of the work will use the kernel on the host OS. 
-
 There extra dependencies are installed with .NET SDK Ubuntu based [Docker image](https://github.com/dotnet/dotnet-docker/blob/bb1c8cd2b964c36e7279ccea4c4831fef8b83295/src/sdk/10.0/noble/amd64/Dockerfile#L37C1-L43C35)
+
 ```DOCKERFILE
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -29,59 +26,118 @@ RUN apt-get update \
         wget \
     && rm -rf /var/lib/apt/lists/*
 ```
-
-Command to manage the container
-```bash
-docker run --name=ubuntu -ti ubuntu
-```
-
-> [!NOTE] 
-> One best practice for containers is that each container should do one thing and do it well. While there are exceptions to this rule, avoid the tendency to have one container do multiple things.
 ## Docker Architecture 
-Docker uses a client-server architecture. The Docker client talks to the Docker daemon, which does the heavy lifting of building, running, and distributing your Docker containers. The Docker client and daemon communicate using a REST API, over UNIX sockets or a network interface.
+Docker uses a client-server architecture. The Docker client talks to the Docker daemon which does the heavy lifting. The Docker client and daemon communicate using a REST API, over UNIX sockets or a network interface.
 
 ![](Images/Pasted%20image%2020260117133212.png)
 
 - *Docker Daemon*-  listens for Docker API requests and manages Docker objects such as images, containers, networks, and volumes.
 - *Docker Client* - CLI to interact with daemon
 - *Docker Desktop* - provides a GUI and includes:  Docker daemon (`dockerd`), the Docker client (`docker`), Docker Compose, Docker Content Trust, Kubernetes, and Credential Helper.
-- *Docker Registry*- Stores docker images and Docker Hub is public registry.  Or private registry like Azure Container Registry.
+- *Docker Registry*- Stores docker images and Docker Hub is public registry Or private registry like Azure Container Registry.
 ## Docker Objects
 
 ![](Images/Pasted%20image%2020260117135303.png)
 
-- *DockerFile* - This is the source code for a docker image. It contains all the dependencies required of the container and the application itself. For example for a .NET Web API docker file will contain: .NET Runtime, Steps to Build and Publish file and entry point of the application.
+- *DockerFile* - This is the source code that generates the docker image. It contains all the dependencies required of the container and the application itself. 
   
-- *Image* -  image is a standardized package that includes all of the files, binaries, libraries, and configurations to run a container. All the publish artifacts. Images are immutable. Once an image is created, it can't be modified. You can only create new ones.
-  
-  Each layer represents a set of file system changes that add, remove, or modify files.. When you change the DockerFile and rebuild the image, only those layers which have changed are rebuilt. This is part of what makes images so lightweight, small, and fast.
+- *Image* - Image is a standardized package that includes all of the files, binaries, libraries, and configurations to run a container. Images are immutable and it's use to upload to a container registry. Each layer represents a set of file system changes that add, remove, or modify files. Each layer is saved a `.tar` in the blob in blob folder. Once extracted will contain all the binaries need to run the app. `OverlayFS` layers two directories on a single Linux host and presents them as a single directory and used. 
 
-  Images are stored in a public registries that can be pulled down. You can create images from other images. If you are building a .NET  app, you can start from the .NET image and add additional layers to specify your application code to be run.
+![500](Images/Pasted%20image%2020260125210842.png)
 
-```DockerFile
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-ARG BUILD_CONFIGURATION=Release
-WORKDIR /src
-COPY ["RedisAPI/RedisAPI.csproj", "RedisAPI/"]
-RUN dotnet restore "./RedisAPI/RedisAPI.csproj"
-COPY . .
-WORKDIR "/src/RedisAPI"
-RUN dotnet build "./RedisAPI.csproj" -c $BUILD_CONFIGURATION -o /app/build
+If you extract all the blob files it will reveal the all directory and files in the container 
+![](Images/Pasted%20image%2020260126001744.png)
+
+Is the location of the .NET runtime 
+```
+\usr\share\dotnet\shared
 ```
 
-- *Container* -  is a isolate process of your application running. It's a runnable instance form an image. By default, a container is relatively well isolated from other containers and its host machine.  You can control how isolated a container's network, storage from other container or host system. 
-## Docker Run Internals
+![](Images/Pasted%20image%2020260126002634.png)
 
+With way I setup my DockerFile the the publish artifact of my API is in App folder. 
+![](Images/Pasted%20image%2020260126002817.png)
+
+- *Container* -  is a running instance of  docker image.  
+## Common Commands 
+### Run 
 ```bash
-docker run -i -t ubuntu /bin/bash
+docker run ubuntu
 ```
 
 1) If you don't have the `ubuntu` image locally, Docker pulls it from your configured registry, as though you had run `docker pull ubuntu` manually.
 2) Docker creates a new container from the pulled image a `docker container create` command manually.
 3) Docker allocates a read-write filesystem to the container, as its final layer. Allow container to modify files in it's local filesystem.
 4) Docker creates a network interface to connect the container to the default network. This includes assigning an IP address to the container. By default, containers can connect to external networks using the host machine's network connection.
-5) Docker starts the container and executes `/bin/bash`. This will open up bash terminal and attach it your session so you could provide input to your container.
-6) When you run `exit` to terminate the `/bin/bash` command, the container stops but isn't removed
+
+```bash
+docker run -i -t ubuntu /bin/bash
+```
+
+Does the same as above but adds to two extra flags:
+- Docker starts the container and executes `/bin/bash`. This will open up bash terminal and attach it your session so you could provide input to your container. So you can debug issues within the running container.
+### Images
+``` bash
+#Pull docker image from docker hub 
+docker pull redis:latest
+
+#Or you can create Image from DockerFile
+docker build -t redisapi -f RedisAPI/Dockerfile .
+
+#List docker images
+docker images
+
+#Remove images
+docker rmi redisapi
+```
+### Containers
+``` shell
+#creates a new container from the specified image
+docker create --name redisapi 
+
+#Start container
+docker start  redisapi 
+
+#list running containers
+docker ps
+
+#list all containers
+docker ps -a
+
+#Remove Container
+docker rm redisapi
+```
+### Clean up 
+Event if you  remove the container there are still lagging object: volume, network and cache
+``` bash 
+#Remove Image
+docker rmi redisapi
+
+#Remove Container
+docker rm redisapi
+
+#Remove orphaned: network, cache
+docker network prune
+docker builder prune
+
+#Remove orphaned volumes
+#Will need do additional command to remove named volumes
+docker volume prune
+```
+
+## DockerFile
+
+### Multi Layer Docker File
+
+## Networking in Docker
+- Container networking refers to the ability for containers to connect to and communicate with each other.
+- A container has no information about what kind of network it's attached to.
+- A container only sees a network interface with an IP address, a gateway, a routing table, DNS services, and other networking details.
+- When Docker Engine on Linux starts for the first time, it has a single built-in network called the "default bridge" network. When you run a container without the `--network` option, it is connected to the default bridge.
+
+![500](Images/Pasted%20image%2020260126220745.png)
+
+- User defined network https://docs.docker.com/engine/network/#user-defined-networks
 ## Docker Compose
 Allows you to run multiple containers in based on a single YAML file. To save you run the command to run each container individually. 
 
@@ -108,23 +164,23 @@ services:
     build:
       context: .
       dockerfile: RedisAPI/Dockerfile
-
+      
     ports:
       - "8080:80"     # HTTP
       - "8443:443"    # HTTPS
-
+        
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
       - ASPNETCORE_Kestrel__Certificates__Default__Password=TEST12
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
-
+        
     volumes:
       - /mnt/c/Users/asuudy/.aspnet/https:/https:ro
-
+        
     depends_on:
       - redis
-
+        
   redis:
     image: redis
     container_name: redis
@@ -136,28 +192,16 @@ services:
 
 volumes:
   redisdata:
-
 ```
 
-## Image Layers
-Container images are composed into layers. Each of these layers once created are immutable.
+## Looking into  .NET Docker File
 
-Each layer in an image contains a set of filesystem changes - additions, deletions, or modifications.
 
-Initially the container will have the same file structure base images until each layer makes the change
 
-![](Images/Pasted%20image%2020260118151149.png)
 
-You can create a container with the base ubuntu image. Run it and connect to the terminal.
-- `-t` -  connecting your terminal to the I/O streams of the container
-- `-i` -  lets you send input to the container through standard input
 
-```bash
-docker run --name=ubuntu -ti ubuntu
-```
 
-Here is how the file system will look like.  Each layer in the image will update this folder path.
-![](Images/Pasted%20image%2020260118154334.png)
+
 
 
 ## Dot Net
