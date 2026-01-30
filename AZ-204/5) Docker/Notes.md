@@ -130,14 +130,33 @@ docker volume prune
 ### Multi Layer Docker File
 
 ## Networking in Docker
-- Container networking refers to the ability for containers to connect to and communicate with each other.
-- A container has no information about what kind of network it's attached to.
-- A container only sees a network interface with an IP address, a gateway, a routing table, DNS services, and other networking details.
-- When Docker Engine on Linux starts for the first time, it has a single built-in network called the "default bridge" network. When you run a container without the `--network` option, it is connected to the default bridge.
+You may have solution that consist of different container. You will have to think about how they connect together. For example, a frontend container may have external access, and a `--internal`network to communicate with containers running backend services that do not need external network access.
+### Types of Network
+You can create networks yourself and each driver is type of network with its own use case.
+
+| Driver                                                             | Description                                                         |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------- |
+| [bridge](https://docs.docker.com/engine/network/drivers/bridge/)   | The default network driver.                                         |
+| [host](https://docs.docker.com/engine/network/drivers/host/)       | Remove network isolation between the container and the Docker host. |
+| [none](https://docs.docker.com/engine/network/drivers/none/)       | Completely isolate a container from the host and other containers.  |
+| [overlay](https://docs.docker.com/engine/network/drivers/overlay/) | Swarm Overlay networks connect multiple Docker daemons together.    |
+| [ipvlan](https://docs.docker.com/engine/network/drivers/ipvlan/)   | Connect containers to external VLANs.                               |
+| [macvlan](https://docs.docker.com/engine/network/drivers/macvlan/) | Containers appear as devices on the host's network.                 |
+### Bridge
+When you run a container without the `--network` option, it is connected to the default bridge network.
 
 ![500](Images/Pasted%20image%2020260126220745.png)
 
-- User defined network https://docs.docker.com/engine/network/#user-defined-networks
+The network will have subnet mask and each connected device will get IP address from that range. All resources connected to the bridge have access to each other, but only if you have the IP address of the resource. The bridge doesn't allow for name resolution. For outbound internet access it will egress the host network card. When sending packets, if the destination is an address in a directly connected network, packets are sent to that network. Otherwise, packets are sent to a default gateway for routing to their destination.
+
+![400](Images/Pasted%20image%2020260130180115.png)
+### User Defined Network
+Containers that attach to a custom network use Docker's embedded DNS server. The embedded DNS server forwards external DNS lookups. Which allows for name resolution. The hostname defaults to be the container's ID in Docker..  Containers use the same DNS servers as the host by default. The config for the DNS server could be found  `\etc\resolv.conf`
+  ![](Images/Pasted%20image%2020260130173941.png)
+Resources have to explicitly be ask to be put on it which allows you plan and organise your network. Provides good network isolation by default. 
+
+![400](Images/Pasted%20image%2020260130181037.png)
+
 ## Docker Compose
 Allows you to run multiple containers in based on a single YAML file. To save you run the command to run each container individually. 
 
