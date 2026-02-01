@@ -157,10 +157,44 @@ Resources have to explicitly be ask to be put on it which allows you plan and or
 
 ![400](Images/Pasted%20image%2020260130181037.png)
 
-## Docker Compose
-Allows you to run multiple containers in based on a single YAML file. To save you run the command to run each container individually. 
+## DockerFile
 
-You will have create user defined network that is shared so containers can communicate, run Redis on that network along with .NET Web API.
+#ToDo
+
+```Dockerfile
+# See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
+# This stage is used when running from VS in fast mode (Default for Debug configuration)
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+USER $APP_UID
+WORKDIR /app
+EXPOSE 8080
+EXPOSE 8081
+
+# This stage is used to build the service project
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+ARG BUILD_CONFIGURATION=Release
+WORKDIR /src
+COPY ["RedisAPI/RedisAPI.csproj", "RedisAPI/"]
+RUN dotnet restore "./RedisAPI/RedisAPI.csproj"
+COPY . .
+WORKDIR "/src/RedisAPI"
+RUN dotnet build "./RedisAPI.csproj" -c $BUILD_CONFIGURATION -o /app/build
+
+# This stage is used to publish the service project to be copied to the final stage
+FROM build AS publish
+ARG BUILD_CONFIGURATION=Release
+RUN dotnet publish "./RedisAPI.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+
+# This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "RedisAPI.dll"]
+```
+
+## Docker Compose
+Allows you to run multiple containers in based on a single YAML file. To save you run the command to run each container individually. You will have create user defined network that is shared so containers can communicate, run Redis on that network along with .NET Web API.
 
 ```bash 
 docker network create mynet
@@ -191,7 +225,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=TEST12
+      - ASPNETCORE_Kestrel__Certificates__Default__Password={{password}}
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
         
     volumes:
@@ -213,61 +247,8 @@ volumes:
   redisdata:
 ```
 
-## Looking into  .NET Docker File
+To use https in docker compose you'll have to create a certificate and use the that certificate and password in compose YAML.
 
-
-
-
-
-
-
-
-
-## Dot Net
-https://github.com/dotnet/dotnet-docker/blob/main/documentation/supported-tags.md#multi-platform-tags
-- tags
-- defaults to ubuntu 
-- MCR it's not stored on docker hub but Microsoft container registry 
-- `docker image inspect mcr.microsoft.com/dotnet/aspnet:8.0` to inspect package 
-- Docket file https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/10.0/noble/amd64/Dockerfile
-- Base image used `amd64/buildpack-deps:noble-curl` https://github.com/docker-library/buildpack-deps/blob/master/ubuntu/noble/curl/Dockerfile
-- https://docs.docker.com/reference/cli/docker/buildx/build/#platform
-- https://docs.docker.com/build/building/multi-platform/
-
-## Docker File
-
-## Running Containers Manually 
-
-*Redis*
-``` bash
-docker pull redis:latest
-
-docker run -d --name redis -p 6379:6379 redis:latest
-```
-
-*.NET API API*
-```bash
-#Docker build process to create a Docker image
-docker build -t redisapi -f RedisAPI/Dockerfile .
-
-#creates a new container
-docker create --name redisapi redisapi
-
-#Run Container
-docker run -d --name redisapi -p 5000:8080 redisapi
-```
-
-## Networking in Containers 
-User-defined networks allows you connect groups of containers to the same network.
-
-```bash 
-docker network create mynet
-docker run -d --name redis --network mynet -p 6379:6379 redis
-docker run -d --name redisapi --network mynet -p 5000:8080 redisapi
-```
-## Docker Compose 
-
-### Creating Certificate for Kestrel to work in Docker Container
 https://learn.microsoft.com/en-us/aspnet/core/security/docker-compose-https?view=aspnetcore-10.0
 
 ```powershell
@@ -279,3 +260,18 @@ dotnet dev-certs https
 
 dotnet dev-certs https --trust
 ``` 
+## Looking into .NET Docker File
+.NET default image is based on Ubuntu from `amd64/buildpack-deps:noble-curl`. This image is ubuntu based image with some dependencies via the package manager. 
+- *.NET Docker File* : https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/10.0/noble/amd64/Dockerfile
+- *Base Image* : https://github.com/docker-library/buildpack-deps/blob/master/ubuntu/noble/curl/Dockerfile
+## Dot Net
+https://github.com/dotnet/dotnet-docker/blob/main/documentation/supported-tags.md#multi-platform-tags
+- tags
+- defaults to ubuntu 
+- MCR it's not stored on docker hub but Microsoft container registry 
+- `docker image inspect mcr.microsoft.com/dotnet/aspnet:8.0` to inspect package 
+- Docket file https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/10.0/noble/amd64/Dockerfile
+- Base image used `amd64/buildpack-deps:noble-curl` https://github.com/docker-library/buildpack-deps/blob/master/ubuntu/noble/curl/Dockerfile
+- https://docs.docker.com/reference/cli/docker/buildx/build/#platform
+- https://docs.docker.com/build/building/multi-platform/
+
