@@ -157,14 +157,29 @@ Resources have to explicitly be ask to be put on it which allows you plan and or
 
 ![400](Images/Pasted%20image%2020260130181037.png)
 
-## DockerFile
+## Looking into .NET Docker File
+.NET default image is based on Ubuntu from `amd64/buildpack-deps:noble-curl`. This image is ubuntu based image with some dependencies via the package manager. 
+- *.NET SDK Docker File* : https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/10.0/noble/amd64/Dockerfile
+- *ASP.NET Runtime Docker file* : https://github.com/dotnet/dotnet-docker/blob/main/src/aspnet/10.0/noble/amd64/Dockerfile
+- *Base Image* : https://github.com/docker-library/buildpack-deps/blob/master/ubuntu/noble/curl/Dockerfile
+## Multi-Platform 
+Containers share the host kernel, which means that the code that's running inside the container must be compatible with the host's architecture. Multi-platform builds solve this problem by packaging multiple variants of the same application into a single image.  When you push a multi-platform image to a registry, the registry stores the manifest list and all the individual manifests. When you pull the image, the registry returns the manifest list, and Docker automatically selects the correct variant based on the host's architecture.
 
-#ToDo
+![](Images/Pasted%20image%2020260207150903.png)
+
+You could also specify via tag which platform you want if no tag is specified it will get that information from the host os which version is compatible. Similar to negotiation process:
+https://mcr.microsoft.com/en-us/artifact/mar/dotnet/sdk/tags
+## DockerFile
+This Docker File that use multi stage build. This allow you not ship your build time dependencies into you runtime instance to keep the last docker file slim. Each `From` starts a new stage:
+1) The first stage only contains the runtime used to quickly runt he application via visual studio or used as slim container to deploy. *mcr* means it's getting image form Microsoft container registry.
+2) The second stage is build container and will need tool to accomplish this task. This will come from .NET SDK e.g `dotnet build`, `dotnet restore` and `dotnet publish` 
+3) Uses the SDK image from build to create the publish file 
+4) The first stage which only have the runtime installed will extract the publish files and run this command `dotnet RedisAPI.dll` when the container is ready to start the application. 
 
 ```Dockerfile
 # See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-# This stage is used when running from VS in fast mode (Default for Debug configuration)
+# This stage is used when running from VS in fast mode (Default for Debug configuration) MCR is microsoft container registry 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 USER $APP_UID
 WORKDIR /app
@@ -260,18 +275,3 @@ dotnet dev-certs https
 
 dotnet dev-certs https --trust
 ``` 
-## Looking into .NET Docker File
-.NET default image is based on Ubuntu from `amd64/buildpack-deps:noble-curl`. This image is ubuntu based image with some dependencies via the package manager. 
-- *.NET Docker File* : https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/10.0/noble/amd64/Dockerfile
-- *Base Image* : https://github.com/docker-library/buildpack-deps/blob/master/ubuntu/noble/curl/Dockerfile
-## Dot Net
-https://github.com/dotnet/dotnet-docker/blob/main/documentation/supported-tags.md#multi-platform-tags
-- tags
-- defaults to ubuntu 
-- MCR it's not stored on docker hub but Microsoft container registry 
-- `docker image inspect mcr.microsoft.com/dotnet/aspnet:8.0` to inspect package 
-- Docket file https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/10.0/noble/amd64/Dockerfile
-- Base image used `amd64/buildpack-deps:noble-curl` https://github.com/docker-library/buildpack-deps/blob/master/ubuntu/noble/curl/Dockerfile
-- https://docs.docker.com/reference/cli/docker/buildx/build/#platform
-- https://docs.docker.com/build/building/multi-platform/
-
