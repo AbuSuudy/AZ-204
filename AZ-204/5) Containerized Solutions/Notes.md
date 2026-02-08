@@ -31,7 +31,7 @@ az acr build \
 	--image helloacrtasks:v1 \
 	--file /path/to/Dockerfile/path/to/build/context.
 ```
-#### Automatically triggered task 
+### Automatically triggered task 
 You can generate build of containers if certain conditions are met:
 1)  *Source code update*
    
