@@ -14,6 +14,7 @@ https://learn.microsoft.com/en-us/azure/container-apps/compare-options
 ![500](Images/Pasted%20image%2020260219225537.png)
 
 You can create azure container instance in the azure cli. The `name` fields is the name of the container group.  
+
 ```bash 
 DNS_NAME_LABEL=aci-example-$RANDOM
 
