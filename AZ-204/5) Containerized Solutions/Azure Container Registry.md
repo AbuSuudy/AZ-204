@@ -1,5 +1,3 @@
-# Containerized Solutions
-
 # Azure Container Registry 
 Azure Container Registry is a managed registry service based on the open-source Docker Registry 2.0.  This is to store container image and related images.
 - You can configure images to be rebuilt when on check in to keep them in sync. 

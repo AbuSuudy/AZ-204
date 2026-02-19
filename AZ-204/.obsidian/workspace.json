@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "5) Containerized Solutions/Notes.md",
+                "file": "5) Containerized Solutions/Containers.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Notes"
+              "title": "Containers"
             }
           }
         ]
@@ -170,9 +170,13 @@
   },
   "active": "a45a5abdde7202b7",
   "lastOpenFiles": [
+    "5) Containerized Solutions/Images/Pasted image 20260219225537.png",
+    "5) Containerized Solutions/Images/Pasted image 20260219224339.png",
+    "5) Containerized Solutions/Containers.md",
+    "5) Containerized Solutions/Images/Pasted image 20260219220404.png",
     "5) Containerized Solutions/Images",
+    "5) Containerized Solutions/Azure Container Registry.md",
     "14) Cache & CDN ❌/Notes.md",
-    "5) Containerized Solutions/Notes.md",
     "5) Containerized Solutions/Docker/Notes.md",
     "5) Containerized Solutions",
     "5) Containerized Solutions/Docker/Images/Pasted image 20260207150903.png",
@@ -183,8 +187,6 @@
     "5) Containerized Solutions/Docker/Images/Pasted image 20260126220745.png",
     "5) Docker/Images/Pasted image 20260126220336.png",
     "5) Containerized Solutions/Docker/Images/Pasted image 20260126002817.png",
-    "5) Containerized Solutions/Docker/Images/Pasted image 20260126002634.png",
-    "5) Docker/Images/Pasted image 20260126002629.png",
     "5) Containerized Solutions/Docker/Images",
     "4) Cosmos/Untitled.md",
     "5) Containerized Solutions/Docker",
@@ -202,7 +204,6 @@
     "12) Asynchronous Messaging",
     "10) Event Hub/Notes.md",
     "9) Event Grid/Notes.md",
-    "12) Asynchronous Messaging/Images",
     "7) App Configuration/Notes.md",
     "11) Message Queues/Queue Storage.md",
     "6) Identity Platform/Notes.md",
