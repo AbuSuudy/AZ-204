@@ -12,8 +12,23 @@ https://learn.microsoft.com/en-us/azure/container-apps/compare-options
 
 
 ![500](Images/Pasted%20image%2020260219225537.png)
+
+You can create azure container instance in the azure cli. The `name` fields is the name of the container group.  
+```bash 
+DNS_NAME_LABEL=aci-example-$RANDOM
+
+az container create --resource-group myResourceGroup \
+    --name mycontainer \
+    --image mcr.microsoft.com/azuredocs/aci-helloworld \
+    --ports 80 \
+    --dns-name-label $DNS_NAME_LABEL --location myLocation \
+    --os-type Linux \
+    --cpu 1 \
+    --memory 1.5 
+```
+### Azure Container Apps
+
 ### Azure App Service Containers 
 
-### Azure Container Apps
 
 ### Azure Kubernetes Service 
