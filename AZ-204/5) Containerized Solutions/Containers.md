@@ -1,5 +1,7 @@
 # Containers 
 
+https://learn.microsoft.com/en-us/azure/container-apps/compare-options#azure-container-apps
+
 ## Types of Containers in Azure
 
 ### Azure Container Instances 
@@ -32,11 +34,10 @@ Optimized to run general purpose containers. Is managed solution that doesn't pr
 - Azure functions support deployments to azure container apps when you need to run the event driven function in the same environment as your other containers.  [Azure Functions base image repos](https://mcr.microsoft.com/en-us/artifact/mar/azure-functions/dotnet-isolated/tags).
 
 ![](Images/Pasted%20image%2020260222145847.png)
-
 ### Azure App Service Containers
-You can use the base image of the app service as the base container. You can deploy the container to the app service that will have an amount of compute it can get from the app service plan.  
+Azure App Service provides fully managed hosting for web applications including websites and web APIs. You can deploy these web applications using code or containers. Azure App Service is optimized for web applications. App service (application) will have:  scale rules, deployment slots, configuration etc..
 
-App service (application) will have:  scale rules, deployment slots, configuration etc..
+You can use the app service cotnainer as the base container. You can deploy the container to the app service that will have an amount of compute it can get from the app service plan.  
 
 ```DockerFile
 FROM mcr.microsoft.com/appsvc/dotnetcore:lts
