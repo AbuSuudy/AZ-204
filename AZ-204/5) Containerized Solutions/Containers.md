@@ -13,7 +13,7 @@ Azure Container Instance (ACI) was the first containerised solution in Azure it 
 
 The top-level resource in Azure Container Instances is the _container group_. Container groups can share an external IP.  You must expose the port of the IP address from the container.
 
-![500](Images/Pasted%20image%2020260219225537.png)
+![](Images/Pasted%20image%2020260222220838.png)
 
 You can create azure container instance in the azure cli. The `name` fields is the name of the container group.  
 
