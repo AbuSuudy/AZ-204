@@ -22,7 +22,7 @@
             }
           },
           {
-            "id": "07f501fb3945c098",
+            "id": "605fdb94be6f6eda",
             "type": "leaf",
             "state": {
               "type": "image",
@@ -90,8 +90,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "62fdcff39ed67652",
@@ -182,21 +181,23 @@
   },
   "active": "a45a5abdde7202b7",
   "lastOpenFiles": [
-    "8) API Gateway/Images/Pasted image 20260313225444.png",
+    "8) API Gateway/Notes.md",
+    "4) Cosmos/1) Cosmos Architecture.md",
     "8) API Gateway/Code.md",
+    "8) API Gateway/Images/Pasted image 20260314144948.png",
+    "8) API Gateway/Images/Pasted image 20260314144930.png",
+    "8) API Gateway/Images/Pasted image 20260313225444.png",
+    "15) Labs/Labs.md",
+    "6) Identity Platform/Notes.md",
     "8) API Gateway/Images/Pasted image 20260313225314.png",
     "8) API Gateway/Images/Pasted image 20260313224653.png",
     "8) API Gateway/Images/Pasted image 20260313222340.png",
     "8) API Gateway/Images/Pasted image 20260313221958.png",
     "8) API Gateway/Images/Pasted image 20260313221840.png",
-    "8) API Gateway/Notes.md",
-    "15) Labs/Labs.md",
     "5) Containerized Solutions/Containers.md",
     "15) Labs",
     "5) Containerized Solutions/Images/Pasted image 20260222220838.png",
     "5) Containerized Solutions/Images/Pasted image 20260222202723.png",
-    "5) Containerized Solutions/Images/Pasted image 20260222145847.png",
-    "5) Containerized Solutions/Images/Pasted image 20260219225537.png",
     "5) Containerized Solutions/Images",
     "5) Containerized Solutions/Azure Container Registry.md",
     "14) Cache & CDN ❌/Notes.md",
@@ -205,7 +206,6 @@
     "5) Containerized Solutions/Docker/Images",
     "4) Cosmos/Untitled.md",
     "5) Containerized Solutions/Docker",
-    "4) Cosmos/1) Cosmos Architecture.md",
     "14) Cache & CDN ❌/Images",
     "14) Cache & CDN ❌",
     "14) Cache/Notes.md",
@@ -220,7 +220,6 @@
     "9) Event Grid/Notes.md",
     "7) App Configuration/Notes.md",
     "11) Message Queues/Queue Storage.md",
-    "6) Identity Platform/Notes.md",
     "4) Cosmos/3) Change Feed.md",
     "4) Cosmos/2) SP, UDF, Triggers.md",
     "3) Blob Storage/Notes.md",

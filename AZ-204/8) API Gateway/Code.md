@@ -1,5 +1,6 @@
 # Code Examples 
 
+## Generate Token from Application Registration
 I create azure application registration in azure set secrets and use that secret to generate a JWT using the client credential flow. 
 
 ```c#
@@ -9,7 +10,7 @@ var clientSecret = "-tT8Q~FkuT2CSYebspyIYyWtbXXWfvFentxZMaSk";
 
 var authority = $"https://login.microsoftonline.com/{tenantId}/v2.0";
 
-var scopes = new[] { "api://45c072b9-bf82-4e02-bd77-f9c7a5c8342a/.default" };
+var scopes = new[] { $"api://{clientId}/.default" };
 
 IConfidentialClientApplication app = ConfidentialClientApplicationBuilder
 	.Create(clientId)
@@ -30,7 +31,7 @@ client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bear
 
 var respose = await client.GetAsync("/FA-Function-Monitoring/HealthCheck");
 ```
-
+## Enable JWT Validation on all endpoint in APIM
 I create a policy on all operation to validate JWT with information 
 
 ![](Images/Pasted%20image%2020260313221958.png)
@@ -45,11 +46,29 @@ In the application registration you'll need to expose an API to be able to set t
 var scopes = new[] { "api://45c072b9-bf82-4e02-bd77-f9c7a5c8342a/.default" };
 ```
 
-Will need to look into 
-
-- Delegate permission - Ask user what it need permission for. This will be authorization flow. 
-  https://learn.microsoft.com/en-us/entra/identity-platform/howto-update-permissions?pivots=portal 
-- Application scopes - Machine to machine you will need to create app roles 
-  https://learn.microsoft.com/en-us/entra/identity-platform/howto-add-app-roles-in-apps
-
 ![](Images/Pasted%20image%2020260313225444.png)
+
+- *Delegate permission* - Ask user what it need permission it needs. What action can delegated to the application service principle. For example, to add an email notification feature to your application, it needs to access your user’s emails. To do so, you would need to request access for the `Mail.ReadWrite` permission.  User will need to present to approve so won't be used for Machine to Machine communication.
+
+- *Application permission* - Used for machine to machine you create JWT token for an application that has set roles claims in JWT. This can be used on the API to role based access if the JWT container certain claims.
+
+![800](Images/Pasted%20image%2020260314144930.png)
+
+![400](Images/Pasted%20image%2020260314144948.png)
+  
+```json
+{
+  "aud": "api://your-app-id",
+  "iss": "https://login.microsoftonline.com/{tenant-id}/v2.0",
+  "roles": ["Admin"]
+}
+```
+
+```c#
+[Authorize(Roles = "Admin")]
+[HttpGet("admin-only")]
+public IActionResult GetAdminData()
+{
+    return Ok("You are an admin!");
+}
+```

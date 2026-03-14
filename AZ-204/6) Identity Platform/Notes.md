@@ -15,7 +15,7 @@ string clientId = "<YOUR_CLIENT_ID>";
 string tenantId = "<YOUR_TENANT_ID>";
 string redirectUri = "https://localhost:5001/signin-oidc";
 
-string authority = $"https://login.microsoftonline.com/{tenantId}";
+string authority = $"https://login.microsoftonline.com/{tenantId}/v2.0";
 
 // Create Public Client for interactive login
 var app = PublicClientApplicationBuilder.Create(clientId)
