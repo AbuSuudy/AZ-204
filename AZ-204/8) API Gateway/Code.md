@@ -53,6 +53,13 @@ var scopes = new[] { "api://45c072b9-bf82-4e02-bd77-f9c7a5c8342a/.default" };
 - *Application permission* - Used for machine to machine you create JWT token for an application that has set roles claims in JWT. This can be used on the API to role based access if the JWT container certain claims. 
 
 ## Creating Role for Claims
+*Claim* - key value pair in a JWT
+
+*Role* - is a type of claim that gives information on what type of user.
+
+*Scopes*-  define what an application is allowed to do with a specific token. Users of the same role can have different claims to give more granular permission. 
+
+Adding a scope here creates only *delegated permissions*. If you're an application using client credential flow you're a application so you won't be delegating permissions from an existing user. If you are looking to create application-only scopes, use 'App roles' shown below.
 
 ![](Images/Pasted%20image%2020260315002930.png)
 
@@ -98,3 +105,4 @@ public IActionResult GetAdminData()
     return Ok("You are an admin!");
 }
 ```
+
