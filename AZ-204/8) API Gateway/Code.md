@@ -50,7 +50,9 @@ var scopes = new[] { "api://45c072b9-bf82-4e02-bd77-f9c7a5c8342a/.default" };
 
 - *Delegate permission* - Ask user what it need permission it needs. What action can delegated to the application service principle. For example, to add an email notification feature to your application, it needs to access your user’s emails. To do so, you would need to request access for the `Mail.ReadWrite` permission.  User will need to present to approve so won't be used for Machine to Machine communication.
 
-- *Application permission* - Used for machine to machine you create JWT token for an application that has set roles claims in JWT. This can be used on the API to role based access if the JWT container certain claims.
+- *Application permission* - Used for machine to machine you create JWT token for an application that has set roles claims in JWT. This can be used on the API to role based access if the JWT container certain claims. 
+
+## Creating Role for Claims
 
 ![](Images/Pasted%20image%2020260315002930.png)
 
