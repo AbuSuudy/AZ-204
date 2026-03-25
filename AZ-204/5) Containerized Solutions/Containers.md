@@ -38,6 +38,30 @@ Optimized to run general purpose containers. It's a managed Kubernetes solution 
 - Azure functions support deployments to azure container apps when you need to run the event driven function in the same environment as your other containers.  [Azure Functions base image repos](https://mcr.microsoft.com/en-us/artifact/mar/azure-functions/dotnet-isolated/tags).
 
 ![](Images/Pasted%20image%2020260222145847.png)
+
+A container app live Container Apps Environment which creates a secure boundary around a group of container apps. Container Apps deployed to the same environment are deployed in the same virtual network and write logs to the same Log Analytics workspace.  The Container Apps runtime manages each environment by handling OS upgrades, scale operations, failover procedures, and resource balancing.
+
+```bash
+az containerapp env create \
+    --name my-container-env \
+    --resource-group myResourceGroup \
+    --location uksouth
+
+# By setting --ingress to external, you make the container app available to public requests. 
+
+az containerapp create \
+    --name my-container-app \
+    --resource-group myResourceGroup \
+    --environment my-container-env \
+    --image mcr.microsoft.com/azuredocs/containerapps-helloworld:latest \
+    --target-port 80 \
+    --ingress 'external' \
+    --query properties.configuration.ingress.fqdn
+```
+
+![](Images/Pasted%20image%2020260325170926.png)
+
+![](Images/Pasted%20image%2020260325165728.png)
 ### Azure App Service Containers
 Azure App Service provides fully managed hosting for web applications including websites and web APIs. You can deploy these web applications using code or containers. Azure App Service is optimized for web applications. App service (application) will have:  scale rules, deployment slots, configuration etc..
 

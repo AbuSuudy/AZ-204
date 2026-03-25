@@ -111,6 +111,6 @@ public IActionResult GetAdminData()
 1) You can give external client the client secret and let them generate the JWT with them communicating with your identity provider, but the issue is when you need rotate client secret you will need align with them and also you have to trust them to keep the secret safe.
    ![](Images/Pasted%20image%2020260315213019.png)
    
-2) This flow you keep the app registration secret in your own API. External provider passes a key we generate the JWT from our identity provider and pass it back. We never give the app registration secret and also we can refresh client secret without having to align with external provider.
+2) **Recommended:** This flow you keep the app registration secret in your own API. External provider passes a key we generate the JWT from our identity provider and pass it back. We never give the app registration secret and also we can refresh client secret without having to align with external provider.
 
 ![](Images/Pasted%20image%2020260315213804.png)
