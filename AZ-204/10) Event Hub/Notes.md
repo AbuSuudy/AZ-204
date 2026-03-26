@@ -37,6 +37,62 @@ It's a best practice for publishers to remain unaware of the specific partitioni
 ## Checkpoint
 Checkpointing Is a process by which consumer marks their position within a partition event sequence. This is stored in blob store. Checkpointing is the responsibility of the consumer and occurs on a per-partition basis within a consumer group. Offset can be seen a cursor. 
 
+Below is an example of using check point without a blob storage account, but this kept in memory so if process crashes check point data is lost.
+
+*EventHubConsumerClient* - is a lightweight, manual, single‑partition reader best suited for dev/test or simple scenarios.
+
+![](Images/Pasted%20image%2020260326210027.png)
+
+*EventProcessorClient* - is the robust, production‑grade option for consuming all partitions with automatic load balancing and check pointing. The checkpointing is not automatic and only imitated when the client calls `UpdateCheckpointAsync()`
+
+```c#
+BlobContainerClient storageClient = new BlobContainerClient(
+    new Uri(
+    "https://<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/<BLOB_CONTAINER_NAME>"),
+    new DefaultAzureCredential());
+
+// Create an event processor client to process events in the event hub
+// TODO: Replace the <EVENT_HUBS_NAMESPACE> and <HUB_NAME> placeholder values
+var processor = new EventProcessorClient(
+    storageClient,
+    EventHubConsumerClient.DefaultConsumerGroupName,
+    "<EVENT_HUB_NAMESPACE>.servicebus.windows.net",
+    "<HUB_NAME>",
+    new DefaultAzureCredential());
+
+// Register handlers for processing events and handling errors
+processor.ProcessEventAsync += ProcessEventHandler;
+//You can have error handler removed function for brevity 
+processor.ProcessErrorAsync += ProcessErrorHandler;
+
+// Start the processing
+await processor.StartProcessingAsync();
+
+// Wait for 30 seconds for the events to be processed
+await Task.Delay(TimeSpan.FromSeconds(30));
+
+// Stop the processing
+await processor.StopProcessingAsync();
+
+private static int _counter = 0;
+private const int CheckpointInterval = 50;
+
+Task ProcessEventHandler(ProcessEventArgs eventArgs)
+{
+    // Write the body of the event to the console window
+	    Console.WriteLine("\tReceived event: {0}",                                         Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray()));
+        Console.ReadLine();
+    
+    // Update checkpoining every 50 times
+    if (_counter % CheckpointInterval == 0)
+    {
+        await processor.UpdateCheckpointAsync(eventArgs.CancellationToken);
+    }
+    return Task.CompletedTask;
+}
+```
+
+
 If a reader disconnects from a partition, when it reconnects it begins reading at the checkpoint that was previously submitted by the last reader of that partition in that consumer group.
 
 Users should decide the frequency of updating the checkpoint. Updating after each successfully processed event can have performance and cost implications as it triggers a write operation to the underlying checkpoint store. Also, checkpointing every single event is indicative of a queued messaging pattern for which a Service Bus queue might be a better option than an event hub. The idea behind Event Hubs is that you get "at least once" delivery at great scale.

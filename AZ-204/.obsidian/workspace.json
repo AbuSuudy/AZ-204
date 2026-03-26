@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "5) Containerized Solutions/Containers.md",
+                "file": "10) Event Hub/Notes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Containers"
+              "title": "Notes"
             }
           }
         ]
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "62fdcff39ed67652",
@@ -170,10 +169,14 @@
   },
   "active": "a45a5abdde7202b7",
   "lastOpenFiles": [
+    "10) Event Hub/Images/Pasted image 20260326210027.png",
+    "9) Event Grid/Notes.md",
+    "9) Event Grid/Images/Pasted image 20260326185049.png",
+    "15) Labs/Labs.md",
+    "5) Containerized Solutions/Containers.md",
     "5) Containerized Solutions/Images/Pasted image 20260325170926.png",
     "5) Containerized Solutions/Images/Pasted image 20260325165728.png",
     "5) Containerized Solutions/Azure Container Registry.md",
-    "15) Labs/Labs.md",
     "8) API Gateway/Code.md",
     "8) API Gateway/Images/Pasted image 20260315213804.png",
     "8) API Gateway/Images/Pasted image 20260315213203.png",
@@ -183,12 +186,9 @@
     "5) Containerized Solutions/Docker/Notes.md",
     "8) API Gateway/Images/Pasted image 20260315003728.png",
     "8) API Gateway/Images/Pasted image 20260315003331.png",
-    "8) API Gateway/Images/Pasted image 20260315003152.png",
-    "8) API Gateway/Images/Pasted image 20260315002930.png",
     "8) API Gateway/Notes.md",
     "4) Cosmos/1) Cosmos Architecture.md",
     "6) Identity Platform/Notes.md",
-    "5) Containerized Solutions/Containers.md",
     "15) Labs",
     "5) Containerized Solutions/Images",
     "14) Cache & CDN ❌/Notes.md",
@@ -207,7 +207,6 @@
     "12) Asynchronous Messaging/Asynchronous Messaging.md",
     "11) Message Queues/Service Bus.md",
     "10) Event Hub/Notes.md",
-    "9) Event Grid/Notes.md",
     "7) App Configuration/Notes.md",
     "11) Message Queues/Queue Storage.md",
     "4) Cosmos/3) Change Feed.md",

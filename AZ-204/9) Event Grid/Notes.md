@@ -11,6 +11,8 @@ Event grid is push notification system that can use HTTP and MQTT protocols. Rem
 
 ![](Images/Pasted%20image%2020251220003600.png)
 
+Types of endpoint Event grid notifies:
+![](Images/Pasted%20image%2020260326185049.png)
 ## System Topic vs Custom Topic
 *System Topic* in Event Grid represents one or more events published by Azure services.
 
