@@ -26,7 +26,9 @@ Messages are sent to and received from **queues**. Queues store messages until 
 ## Topic
 Publishers send messages to a topic in the same way that they send messages to a queue. But, consumers don't receive messages directly from the topic. Instead, consumers receive messages from subscriptions of the topic. A topic subscription resembles a virtual queue that receives certain copies of the messages that are sent to the topic.
 
-*Subscriptions* are durable by default, but can be configured to expire and then be automatically deleted. You can have rules on each subscription that filter messages that are received in each topic  and an optional **action** that can modify message metadata.
+*Subscriptions* are durable by default, but can be configured to expire and then be automatically deleted. You can have rules on each subscription that filter messages that are received in each topic  and an optional **action** that can modify message metadata. 
+
+Messages can fan out to multiple subscription 
 
 ![](Images/Pasted%20image%2020251228150408.png)
 ## Filter and Actions

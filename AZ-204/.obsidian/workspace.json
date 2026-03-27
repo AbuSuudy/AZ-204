@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "10) Event Hub/Notes.md",
+                "file": "8) API Gateway/Code.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Notes"
+              "title": "Code"
             }
           }
         ]
@@ -169,6 +169,16 @@
   },
   "active": "a45a5abdde7202b7",
   "lastOpenFiles": [
+    "8) API Gateway/Images/Pasted image 20260327182606.png",
+    "8) API Gateway/Images/Pasted image 20260327182427.png",
+    "8) API Gateway/Notes.md",
+    "8) API Gateway/Code.md",
+    "11) Message Queues/Service bus Code.md",
+    "11) Message Queues/Images/Pasted image 20260327181421.png",
+    "11) Message Queues/Service Bus.md",
+    "11) Message Queues/Azure Queue Storage.md",
+    "12) Asynchronous Messaging/Asynchronous Messaging.md",
+    "10) Event Hub/Notes.md",
     "10) Event Hub/Images/Pasted image 20260326210027.png",
     "9) Event Grid/Notes.md",
     "9) Event Grid/Images/Pasted image 20260326185049.png",
@@ -177,16 +187,11 @@
     "5) Containerized Solutions/Images/Pasted image 20260325170926.png",
     "5) Containerized Solutions/Images/Pasted image 20260325165728.png",
     "5) Containerized Solutions/Azure Container Registry.md",
-    "8) API Gateway/Code.md",
     "8) API Gateway/Images/Pasted image 20260315213804.png",
     "8) API Gateway/Images/Pasted image 20260315213203.png",
     "8) API Gateway/Images/Pasted image 20260315213019.png",
     "8) API Gateway/Images/Pasted image 20260315205801.png",
-    "8) API Gateway/Images/Pasted image 20260315205534.png",
     "5) Containerized Solutions/Docker/Notes.md",
-    "8) API Gateway/Images/Pasted image 20260315003728.png",
-    "8) API Gateway/Images/Pasted image 20260315003331.png",
-    "8) API Gateway/Notes.md",
     "4) Cosmos/1) Cosmos Architecture.md",
     "6) Identity Platform/Notes.md",
     "15) Labs",
@@ -202,18 +207,13 @@
     "13) Monitoring/Notes.md",
     "14) Cache",
     "13) Monitoring/Images",
-    "11) Message Queues/Azure Queue Storage.md",
     "13) Monitoring",
-    "12) Asynchronous Messaging/Asynchronous Messaging.md",
-    "11) Message Queues/Service Bus.md",
-    "10) Event Hub/Notes.md",
     "7) App Configuration/Notes.md",
     "11) Message Queues/Queue Storage.md",
     "4) Cosmos/3) Change Feed.md",
     "4) Cosmos/2) SP, UDF, Triggers.md",
     "3) Blob Storage/Notes.md",
     "2) Functions/Notes.md",
-    "1) App Service/Notes.md",
-    "Untitled 1.md"
+    "1) App Service/Notes.md"
   ]
 }
