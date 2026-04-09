@@ -1,5 +1,7 @@
-img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+img[src$="#center"],
+span[src$="#center"],
+div[src$="#center"],
+.cm-content .image-embed[src$="#center"] {
+display: block;
+margin-inline: auto !important;
 }
