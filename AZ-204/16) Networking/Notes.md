@@ -2,7 +2,7 @@
 
 Bible: https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview
 
-You use a **Virtual Network (VNet)** in Azure because it’s the _foundation_ for controlling traffic flow, securing resources, and building private, isolated environments. You can peer different virtual networks to each other and depending on the configuration you can have access to  their resources and vice verse,. To filter network traffic between resources in a virtual network, use a network security group or Network Virtual Appliance like firewall.  
+You use a **Virtual Network (VNet)** in Azure because it’s the _foundation_ for controlling traffic flow, securing resources, and building private, isolated environments. You can peer different virtual networks to each other and depending on the configuration you can have access to  their resources and vice verse,. To filter network traffic between resources in a virtual network, use a network security group or Network Virtual Appliance like firewall. 
 ### System Route
 Azure automatically creates system routes and assigns the routes to each subnet in a virtual network. You can't create system routes, and you can't remove system routes, but you can override some system routes with user defined route.
 
@@ -64,8 +64,37 @@ You can specify the following next hop types when you create a UDR:
 | `deny-internet` | `0.0.0.0/0`    | `None`        | Blocks all outbound internet |
 
 - **Internet**: Specify the **Internet** option when you want to explicitly route traffic destined to an address prefix to the internet.
+## How Azure selects routes for traffic routing
+When outbound traffic is sent from a subnet, Azure selects a route based on the destination IP address by using the longest prefix match algorithm. The algorithm used by routers is to select the *most specific route* for a destination IP address. Longest prefix
 
-https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview#how-azure-selects-routes-for-traffic-routing
+For example, a route table has two routes
+
+```
+10.0.0.0/24
+
+32 − 24 = 8
+
+2^8 = 256 (IP Addresses)
+```
+
+```
+10.0.0.0/16
+
+32 − 16 = 16
+
+2^16 = 65,536 (IP Addresses)
+```
+
+Azure directs traffic destined for *10.0.0.5* to the next hop type specified in the route with the *10.0.0.0/24* address prefix. This process occurs because 10.0.0.0/24 is a longer prefix than 10.0.0.0/16, even though 10.0.0.5 falls within both address prefixes.
+
+If multiple routes contain the same address prefix, Azure selects the route type based on the following priority:
+1. User-defined route
+2. BGP route
+3. System route
+## 0.0.0.0/0 address prefix
+When a subnet is created, Azure creates a default route to the 0.0.0.0/0 address prefix, with the Internet next hop type.  If you don't override this route, Azure routes all traffic destined to IP addresses not included in the address prefix of any other route to the internet. The exception is that traffic to the public IP addresses of Azure services remains on the Azure backbone network and isn't routed to the internet.
+
+When you override the 0.0.0.0/0 address prefix, outbound traffic from the subnet flows through the virtual network gateway or virtual appliance. . Including traffic sent to public IP addresses of Azure services.
 ## Network Security Groups
 You can use an Azure network security group to filter network traffic between Azure resources in Azure virtual networks. A network security group contains security rules that allow or deny inbound network traffic to, or outbound network traffic. NSG can be used at both subnet and NIC level.
 
